@@ -3,6 +3,6 @@
 import pigpio
 pi = pigpio.pi()
 
-while true:
+while (true):
 	pi.set_mode(4,pigpio.INPUT)
 	print(pi.read(11))

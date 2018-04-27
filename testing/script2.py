@@ -1,7 +1,3 @@
-from script1.py import stringa, printstat, rand1
+import script1.py
 
-valb = 15
-while True:
-	print(stringa)
-	print(valb)
 

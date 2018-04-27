@@ -1,7 +1,7 @@
 from script1.py import stringa, printstat, rand1
 
+valb = 15
 while True:
 	print(stringa)
-	if(printstat == True):
-		print(rand1-10)
+	print(valb)
 

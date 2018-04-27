@@ -1,1 +1,0 @@
-# Thrust stand data

@@ -4,11 +4,13 @@ Servo myESC;
 
 //pin values
 const int wind_Input = A2;
-const int motor_Output = 12;
-const int TC_ESC = A4;
-const int OPRPM = A6;
+const int motor_Output = 12; //This controls the motor, sends out a PWM
+const int TC_ESC = A4; //The Analog Signal of 
+const int OPRPM = A6; //optical RPM
 float windSpeed;
 float start_Time;
+float RPM;
+boolean sys_Start = false;
 
 int esc_Speed = 30;
 
@@ -30,21 +32,20 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-
-
-
-
-
-
-
-
-	Serial.print(millis() - start_time);
-	Serial.print(",");
-	Serial.print(windSpeed);
-	Serial.print(",");
-	Serial.print(OPRPM);
-	Serial.print(",");
-	Serial.println(PWM);
+  TC_Sync();
+  if(sys_Start == true){
+    windSpeed = readWind();    
+    RPM = analogRead(OPRPM);
+    PWM = motor_Control(windSpeed);
+    
+  	Serial.print(millis() - start_time);
+  	Serial.print(",");
+  	Serial.print(windSpeed);
+  	Serial.print(",");
+  	Serial.print(RPM);
+  	Serial.print(",");
+  	Serial.println(PWM);
+  }
 }
 
 
@@ -53,14 +54,16 @@ float readWind(){
 }
 
 
-boolean TC_Sync(){
+void TC_Sync(){
   int TC_signal = pulseIn(TC_ESC,HIGH);
-  if(TC_signal > 1500) return true;
-  else return false; 
+  if(TC_signal > 1500){
+    timer_start();
+    sys_Start = true;} 
 }
-int motor_Control(float windSpeed){
-
+float motor_Control(float windSpeed){
+  
 }
 void timer_start(){
+
 	start_time = millis();
 }

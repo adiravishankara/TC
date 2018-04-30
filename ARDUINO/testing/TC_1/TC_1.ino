@@ -46,6 +46,9 @@ void loop() {
   	Serial.print(",");
   	Serial.println(pwm);
   }
+  else{
+    Serial.println("No activation signal");
+  }
 }
 
 

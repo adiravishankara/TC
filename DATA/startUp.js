@@ -20,3 +20,5 @@ function send_start(){
     rcb.output.pwm("esc",1500);
     rcb.wait(readSensor(),0.00000000001);
 }
+
+send_start();

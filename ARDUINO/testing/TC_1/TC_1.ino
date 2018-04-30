@@ -1,4 +1,4 @@
-include <Servo.h>
+#include <Servo.h>
 // objects to read/write PWM
 Servo myESC;
 
@@ -7,8 +7,8 @@ const int wind_Input = A2;
 const int motor_Output = 12; //This controls the motor, sends out a PWM
 const int TC_ESC = A4; //The Analog Signal of 
 const int OPRPM = A6; //optical RPM
-float windSpeed;
-float start_Time;
+float windSpeed,wSD, P = 0.09,pwmD = 40;
+float start_Time,pwm;
 float RPM;
 boolean sys_Start = false;
 
@@ -36,15 +36,15 @@ void loop() {
   if(sys_Start == true){
     windSpeed = readWind();    
     RPM = analogRead(OPRPM);
-    PWM = motor_Control(windSpeed);
-    
-  	Serial.print(millis() - start_time);
+    pwm = motor_Control(windSpeed);
+    analogWrite(motor_Output, pwm);
+  	Serial.print(millis() - start_Time);
   	Serial.print(",");
   	Serial.print(windSpeed);
   	Serial.print(",");
   	Serial.print(RPM);
   	Serial.print(",");
-  	Serial.println(PWM);
+  	Serial.println(pwm);
   }
 }
 
@@ -61,9 +61,12 @@ void TC_Sync(){
     sys_Start = true;} 
 }
 float motor_Control(float windSpeed){
-  
+  float err = wSD - windSpeed;
+  float uC = P*err;
+  pwm = pwmD + pwmD*uC;
+  return pwm;
 }
 void timer_start(){
 
-	start_time = millis();
-}
+	start_Time = millis();
+} 

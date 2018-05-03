@@ -11,14 +11,9 @@ function readDone(result){
     rcb.console.setVerbose(true);
 }
 function send_start(){
-    rcb.output.pwm("esc", 1000);
+    rcb.output.pwm("esc", 2300);
     rcb.wait(function(){},1);
-    rcb.output.pwm("esc", 1000);
-    rcb.wait(function(){},1);
-    rcb.output.pwm("esc",1000);
-    rcb.wait(function(){},1);
-    rcb.output.pwm("esc",1500);
-    rcb.wait(readSensor(),0.00000000001);
+    rcb.wait(readSensor,0.00000000001);
 }
 
-send_start();
+rcb.wait(send_start,1);

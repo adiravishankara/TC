@@ -6,9 +6,10 @@ Servo myESC;
 const int wind_Input = A2;
 const int motor_Output = 12;
 const int OptRPM = A6;
+int stopper = 0;
 
 //Variables
-int pwm, pwmD = 40;
+int pwm, pwmD = 55;
 float wSD = 500, P = 0.09, wS, rpm;
 float runTime;
 
@@ -22,6 +23,7 @@ void setup()
 	//Starting the Servo
 	myESC.attach(motor_Output);
 	myESC.write(30);
+  delay(3000);
 
 	//Printing the Headers and initial values.
     
@@ -36,21 +38,30 @@ void setup()
 
 }	
 void loop()
+
 {
+    stopper1();
+	  if(stopper != 0){
+    pwm = 30;
+    Serial.println("STOPPED");
+    break;
+  }
+    else{
+      pwm = pwmD;}
+      
 	wS = readWind();
-	rpm = readRPM();
-	pwm = pwmD;
+	//rpm = readRPM();
+
 	myESC.write(pwm);
-  Serial.print("Native   ");
 	Serial.print(millis()-runTime);
   Serial.print(",");
   Serial.print(wS);
   Serial.print(",");
-  Serial.print(rpm);
-  Serial.print(",");
+  //Serial.print(rpm);
+  //Serial.print(",");
   Serial.println(pwm);
 
-  delay(100);
+  delay(10);
 
 }
 float readWind(){
@@ -65,3 +76,9 @@ int setPWM(float wS){
 	int P = int(pwmD + pwmD*uC);
 	return P;
 }
+void stopper1(){
+  if(Serial.available()){
+    stopper = Serial.read();
+  }
+}
+

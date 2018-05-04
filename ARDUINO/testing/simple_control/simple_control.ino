@@ -62,7 +62,7 @@ float readRPM(){
 }
 int setPWM(float wS){
 	pwmD = map(analogRead(potPin),0,1023,0,90);
-	float err = wSD - wS;
+	f	loat err = wSD - wS;
 	float uC = P*err;
 	int P = int(pwmD + pwmD*uC);
 	return P;

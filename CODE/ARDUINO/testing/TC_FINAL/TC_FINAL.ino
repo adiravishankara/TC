@@ -7,8 +7,8 @@ const int wind_Input = A2;
 const int motor_Output = 12; //This controls the motor, sends out a PWM
 const int activation = A3; //This controls the activation signal from the RC board
 
-int wS, wsD; //these values are the wind speed, and desired wind speed
-float P = 0.09, pwmD = 50; //these values are for the control system.
+int wS, wsD = 680; //these values are the wind speed, and desired wind speed
+float P = 0.0040, pwmD = 40; //these values are for the control system.
 
 int active = 0; //This will read the esc output of the RCboard
 int pwm = 30;
@@ -36,12 +36,14 @@ void setup(){
 }
 void loop()
 {
-  active = pulseIn(activation,HIGH);
-  if(active > 1000){
-    sysStatus = 1;
-    pwm = pwmD;
-  }
   wS = analogRead(wind_Input);
+  active = pulseIn(activation,HIGH);
+  if(active > 1500){
+    sysStatus = 1;
+    //pwm = pwmD;
+    pwm = motor_Control(wS,pwm);
+  }
+  pwm = constrain(pwm,0,80);
   myESC.write(pwm);
   Serial.print(millis() - startTime);
   Serial.print(",");
@@ -51,3 +53,14 @@ void loop()
   Serial.print(",");
   Serial.println(sysStatus);
 }
+float motor_Control(float windSpeed,float ppwm){
+  int err = wsD - windSpeed;
+  float uC = P*err;
+  pwm = pwmD + pwmD*uC;
+
+  
+
+
+  return pwm;
+}
+

@@ -44,17 +44,19 @@ void loop()
   if(active > 1500){
     sysStatus = 1;
     steps(30,30);
+    steps(30,38);
+    steps(30,39);
     steps(30,40);
+    steps(30,41);
     steps(30,42);
+    steps(30,43);
     steps(30,44);
+    steps(30,45);
     steps(30,46);
+    steps(30,47);
     steps(30,48);
+    steps(30,49);
     steps(30,50);
-    steps(30,52);
-    steps(30,54);
-    steps(30,56);
-    steps(30,58);
-    steps(30,60);
     //steps(5,40);
     //steps(5,45);
     //steps(5,50);

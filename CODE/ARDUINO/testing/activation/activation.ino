@@ -9,12 +9,8 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  active = pulseIn(activation_pin,HIGH);
-  Serial.print(active);
-  Serial.print(",");
-  if (active > 1000){
-    Serial.println("SYSTEM ACTIVE");
-  }else if(active < 1000){
-    Serial.println("SYSTEM INACTIVE");
-  }
+  active = analogRead(activation_pin);
+  Serial.println(active);
+  delay(100);
+
 }

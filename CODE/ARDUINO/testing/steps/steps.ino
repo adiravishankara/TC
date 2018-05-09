@@ -43,9 +43,26 @@ void loop()
   active = pulseIn(activation,HIGH);
   if(active > 1500){
     sysStatus = 1;
-    steps(10,41);
-    steps(10,42);
-    steps(10,43);
+    steps(30,30);
+    steps(30,40);
+    steps(30,42);
+    steps(30,44);
+    steps(30,46);
+    steps(30,48);
+    steps(30,50);
+    steps(30,52);
+    steps(30,54);
+    steps(30,56);
+    steps(30,58);
+    steps(30,60);
+    //steps(5,40);
+    //steps(5,45);
+    //steps(5,50);
+  }
+  else if (active < 1000){
+    pwm = 30;
+    myESC.write(pwm);
+    sysStatus = 0;
   }
   wS = analogRead(wind_Input);
   Serial.print(millis() - startTime);

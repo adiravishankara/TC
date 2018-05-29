@@ -1,0 +1,395 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"sys",
+				"sysStatus"
+			],
+			[
+				"ac",
+				"active"
+			],
+			[
+				"active",
+				"activeTime"
+			],
+			[
+				"acti",
+				"activeTime"
+			],
+			[
+				"pin",
+				"pinMode\tArduino pinMode"
+			],
+			[
+				"TC",
+				"TC_ESC"
+			],
+			[
+				"po",
+				"potPin"
+			],
+			[
+				"wS",
+				"wS"
+			],
+			[
+				"rea",
+				"readRPM"
+			],
+			[
+				"W",
+				"wind_Input"
+			],
+			[
+				"air",
+				"airwheeltxt"
+			],
+			[
+				"airwheel",
+				"airwheeltxt1"
+			],
+			[
+				"xyz",
+				"xyztxt"
+			],
+			[
+				"OSC",
+				"OSCMessage"
+			],
+			[
+				"mot",
+				"motor_Output"
+			],
+			[
+				"ana",
+				"analogWrite\tArduino analogWrite"
+			],
+			[
+				"ws",
+				"windSpeed"
+			],
+			[
+				"TC_",
+				"TC_Sync"
+			],
+			[
+				"read",
+				"readWind"
+			],
+			[
+				"f",
+				"flicktxt"
+			],
+			[
+				"pr",
+				"print"
+			],
+			[
+				"wind",
+				"windSpeed"
+			],
+			[
+				"Tc",
+				"TC_signal"
+			],
+			[
+				"w",
+				"wind_Input"
+			],
+			[
+				"att",
+				"attach"
+			],
+			[
+				"sens",
+				"sens_val"
+			],
+			[
+				"l",
+				"loop\tArduino loop"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "/begin {document}\n/header",
+			"file": "first_draft.tex",
+			"file_size": 0,
+			"file_write_time": 131720041794459688,
+			"settings":
+			{
+				"buffer_size": 25,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"package settings",
+				"Preferences: Package Control Settings – Default"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/adiravishankara/Documents/GIT/TC",
+		"/home/adiravishankara/Documents/GIT/TC/CODE",
+		"/home/adiravishankara/Documents/GIT/TC/CODE/ARDUINO",
+		"/home/adiravishankara/Documents/GIT/TC/CODE/ARDUINO/testing",
+		"/home/adiravishankara/Documents/GIT/TC/CODE/ARDUINO/testing/steps",
+		"/home/adiravishankara/Documents/GIT/TC/CODE/ARDUINO/testing/TC_1",
+		"/home/adiravishankara/Documents/GIT/TC/CODE/ARDUINO/testing/TC_FINAL"
+	],
+	"file_history":
+	[
+		"/home/adiravishankara/.config/sublime-text-3/Packages/Package Control/Package Control.sublime-settings",
+		"/home/adiravishankara/Documents/GIT/TC/CODE/ARDUINO/testing/steps/steps.ino",
+		"/home/adiravishankara/Documents/GIT/TC/CODE/ARDUINO/testing/steps2.ino",
+		"/home/adiravishankara/Documents/GIT/TC/CODE/ARDUINO/testing/TC_1/TC_1.ino",
+		"/home/adiravishankara/Documents/GIT/TC/CODE/ARDUINO/testing/old_code.ino",
+		"/home/adiravishankara/Documents/GIT/TC/DATA/startUp.js",
+		"/home/adiravishankara/Documents/GIT/TC/CODE/JS/activation.js",
+		"/home/adiravishankara/Documents/GIT/TC/CODE/ARDUINO/testing/wS_measurement/ws_measurement/ws_measurement.ino",
+		"/home/adiravishankara/Documents/GIT/TC/CODE/ARDUINO/testing/wS_measurement/ws_measurement.ino",
+		"/home/adiravishankara/Documents/GIT/TC/CODE/ARDUINO/testing/TC_2.ino",
+		"/home/adiravishankara/Documents/GIT/TC/DATA/TC_2018-04-30_143158.csv",
+		"/home/adiravishankara/Documents/GIT/TC/ARDUINO/testing/simple_control.ino",
+		"/home/adiravishankara/Documents/GIT/STARS2/demo.py",
+		"/home/adiravishankara/Documents/GIT/STARS/flick-demo",
+		"/home/adiravishankara/Documents/GIT/TC/ARDUINO/testing/TC_1/TC_1.ino",
+		"/home/adiravishankara/Documents/GIT/TC/ARDUINO/testing/TC_2/TC_2.ino",
+		"/home/adiravishankara/Documents/GIT/TC/ARDUINO/testing/TC_1/Motor_Control.ino",
+		"/home/adiravishankara/Documents/GIT/TC/ARDUINO/testing/TC_1/Start_reading.ino",
+		"/home/adiravishankara/Documents/GIT/TC/ARDUINO/testing/TC_1/Wind_sensor.ino",
+		"/home/adiravishankara/Documents/GIT/TC/ARDUINO/testing/TC_2.ino",
+		"/home/adiravishankara/Documents/GIT/TC/ARDUINO/testing/TC_2",
+		"/home/adiravishankara/.config/sublime-text-3/Packages/User/Stino/Default (Linux).sublime-keymap",
+		"/home/adiravishankara/Documents/GIT/TC/testing/pwmTest.py",
+		"/home/adiravishankara/Documents/GIT/TC/testing/script2.py",
+		"/home/adiravishankara/Documents/GIT/TC/testing/script1.py",
+		"/home/adiravishankara/Documents/GIT/STARS/testing/flick_test.py",
+		"/home/adiravishankara/Documents/GIT/TC/wSensor/gpioTest1.py",
+		"/home/adiravishankara/Documents/GIT/TC/wSensor/gpioTest2.py"
+	],
+	"find":
+	{
+		"height": 207.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "first_draft.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 25,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								25,
+								25
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 207.0
+	},
+	"input":
+	{
+		"height": 207.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 162.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.stino_build_panel":
+	{
+		"height": 207.0
+	},
+	"output.stino_panel":
+	{
+		"height": 207.0
+	},
+	"pinned_build_system": "",
+	"project": "paper.sublime-project",
+	"replace":
+	{
+		"height": 410.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "TC",
+		"selected_items":
+		[
+			[
+				"TC",
+				"~/Documents/GIT/STARS/osc_test.sublime-workspace"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 222.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

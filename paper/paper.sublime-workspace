@@ -115,18 +115,6 @@
 	},
 	"buffers":
 	[
-		{
-			"contents": "/begin {document}\n/header",
-			"file": "first_draft.tex",
-			"file_size": 0,
-			"file_write_time": 131720041794459688,
-			"settings":
-			{
-				"buffer_size": 25,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -188,16 +176,10 @@
 	},
 	"expanded_folders":
 	[
-		"/home/adiravishankara/Documents/GIT/TC",
-		"/home/adiravishankara/Documents/GIT/TC/CODE",
-		"/home/adiravishankara/Documents/GIT/TC/CODE/ARDUINO",
-		"/home/adiravishankara/Documents/GIT/TC/CODE/ARDUINO/testing",
-		"/home/adiravishankara/Documents/GIT/TC/CODE/ARDUINO/testing/steps",
-		"/home/adiravishankara/Documents/GIT/TC/CODE/ARDUINO/testing/TC_1",
-		"/home/adiravishankara/Documents/GIT/TC/CODE/ARDUINO/testing/TC_FINAL"
 	],
 	"file_history":
 	[
+		"/home/adiravishankara/Documents/GIT/TC/paper/first_draft.tex",
 		"/home/adiravishankara/.config/sublime-text-3/Packages/Package Control/Package Control.sublime-settings",
 		"/home/adiravishankara/Documents/GIT/TC/CODE/ARDUINO/testing/steps/steps.ino",
 		"/home/adiravishankara/Documents/GIT/TC/CODE/ARDUINO/testing/steps2.ino",
@@ -260,37 +242,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "first_draft.tex",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 25,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								25,
-								25
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/LaTeX/LaTeX.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],

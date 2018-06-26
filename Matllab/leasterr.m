@@ -13,8 +13,8 @@ A = [w i];
 
 p = (A'*A)\A'*v;
 V = A * p;
-n = mvregress(A,v)
-m = mvregress(
+[ke, Ra] = mvregress(A,v)
+
 figure(1);
 plot(sdData.Times,v,sdData.Times,V)
 figure(2)

@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[twocolumn]{article}
 \begin{document}
 
 
@@ -12,8 +12,6 @@ In general, there are two different types of control loops; open and closed. Ope
 
 %Intro into the problem
 The main problem we are trying to answer is how to create an effective, efficient, and reasonable solution to having a closed loop control system. This would include having a type of sensor which would measure the thrust output of the propellor and relay that onto the ESC so that the ESC can control the thrust output accordingly.
-
-\\
 
 %What are some of the technologies available, what are their pros and cons
 The simplest closed loop system available is the measurement of the voltage and current that the ESC sends to the motor. The theory is that for a motor to spin at a constant speed, the voltage and current are constant too. If there are disturbances in the air, then there would be a change in the voltage to keep the rpm the same. While this is simplistic, requires minimal computational power, and is easily applied,  it is a slow measurement as well not very precise. To fix this there are other methods researchers have gathered. One of the most common methods is modelling the wind forces using either an accelerometer, IMU, or some other similar method. This may also be used in combination with the v/a sensing. While this is a more robust method and gives back body frame data, there is still the issue of latency of the device as well as a high computational load based on having to determine the position of the drone. Therefore a less computationally intense solution is using some sort of external sensor to measure a physical response of the propellors. One way some researchers have gone about this is using torque sensors to mesure the constant torque provided by the motor. While strain guages have a fast response and could be used, they are subject to lots of errors and therefore are not feasible. 
@@ -87,7 +85,7 @@ i_a = \frac{T_d \tau}{2 \rho A (v_i^2 + v_i v_s) k_q}
 Once these values are calculated, they are sent to the ESC at which point the esc controls the speed of the motor. 
 Data from the ESC is collected to help make the thrust estimation. 
 Our wind sensor data will be replacing the estimation for the real value which will allow for a more accurate and crisp response.
-\end{document}
+
 
 %Theory of the wind sensor
 talk about stream velocity and induced velocity. 
@@ -100,7 +98,10 @@ Based on the math above, we will
 %Proof of the mahoney paper
 
 %Proof of the wind sensor
-	
+Graph showing the response of wind sensor and force torque.
+response of rpm based on voltage
+response to blocking. 
+
 \section{IV}
 %Experimental setup
 wind sensor hooked to the ESC so that 2khz speed rather than 50 hz

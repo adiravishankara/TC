@@ -1,0 +1,12 @@
+\documentclass[twocolumn]{article}
+\begin{document}
+	%Talk about the theory of the wind.
+	%Theory of things like the low pass filter, the algoright, the PID controller, and whatever else we have. Maybe even the statistics
+	In the scope of this paper we are strictly working on the static propeller tests. This allows us to fully define and measure how the motor-rotor system will respond to any external stimuli. To start characterizing the propeller output we have to define the three different velocities that we are measuring.\\
+	
+	\noindent $v_{x}$ , $ v_{y}$ , $ v_{z}$  Is the velocity of the drone, the body frame velocity. 
+	$v^s_{x}$ , $v^s_{y}$ , $v^s_{z}$  is the velocity of the wind approaching the propellers, the stream velocity. 
+	$v^i_{x}$ , $v^i_{y}$ , $v^i_{z}$ is the induced velocity of the propellers. Since we are doing only the static tests,horizontal wind can be considered irrelevant, therefore $v_s = v^s_{z}$ and $v_i = v^i_{z}$. What the wind sensor will notice is $v_{tot} = v_{i} + v_{s}$. In real life settings we could calculate $v_s$ based on the data from the MAV's IMU. Since this is not the case, we can instead set a particular voltage as the desired voltage, $v_d$. This desired voltage is ideally the voltage the wind sensor measures when there are no external forces. The goal of the algorithm would be to efficiently and accurately return the measured voltage from the wind sensor towards the desired voltage. 
+	
+	Since the signal of the wind sensor is an analog voltage, we have to expect some noise. Therefore we use a first order low-pass filter to reduce the noise from the wind sensor.
+\end{document}

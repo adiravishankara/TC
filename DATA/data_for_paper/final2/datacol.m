@@ -1,0 +1,1 @@
+t_data = csvread("wind_model.csv",1,0);

@@ -28,8 +28,8 @@
     ;%
     ;% Auto data (step_test_P)
     ;%
-      section.nData     = 35;
-      section.data(35)  = dumData; %prealloc
+      section.nData     = 40;
+      section.data(40)  = dumData; %prealloc
       
 	  ;% step_test_P.DiscretePIDController_I
 	  section.data(1).logicalSrcIdx = 0;
@@ -139,37 +139,57 @@
 	  section.data(27).logicalSrcIdx = 26;
 	  section.data(27).dtTransOffset = 26;
 	
-	  ;% step_test_P.Constant2_Value
+	  ;% step_test_P.Constant1_Value
 	  section.data(28).logicalSrcIdx = 27;
 	  section.data(28).dtTransOffset = 27;
 	
-	  ;% step_test_P.Constant_Value_k
+	  ;% step_test_P.Gain2_Gain
 	  section.data(29).logicalSrcIdx = 28;
 	  section.data(29).dtTransOffset = 28;
 	
-	  ;% step_test_P.Gain_Gain_k
+	  ;% step_test_P.Constant2_Value
 	  section.data(30).logicalSrcIdx = 29;
 	  section.data(30).dtTransOffset = 29;
 	
-	  ;% step_test_P.Integrator_IC_j
+	  ;% step_test_P.Constant_Value_k
 	  section.data(31).logicalSrcIdx = 30;
 	  section.data(31).dtTransOffset = 30;
 	
-	  ;% step_test_P.Constant1_Value
+	  ;% step_test_P.TransferFcn1_A
 	  section.data(32).logicalSrcIdx = 31;
 	  section.data(32).dtTransOffset = 31;
 	
-	  ;% step_test_P.Constant3_Value_d
+	  ;% step_test_P.TransferFcn1_C
 	  section.data(33).logicalSrcIdx = 32;
 	  section.data(33).dtTransOffset = 32;
 	
-	  ;% step_test_P.Gain2_Gain
+	  ;% step_test_P.Gain_Gain_k
 	  section.data(34).logicalSrcIdx = 33;
 	  section.data(34).dtTransOffset = 33;
 	
-	  ;% step_test_P.Constant4_Value_p
+	  ;% step_test_P.Integrator_IC_j
 	  section.data(35).logicalSrcIdx = 34;
 	  section.data(35).dtTransOffset = 34;
+	
+	  ;% step_test_P.Constant1_Value_i
+	  section.data(36).logicalSrcIdx = 35;
+	  section.data(36).dtTransOffset = 35;
+	
+	  ;% step_test_P.Constant3_Value_d
+	  section.data(37).logicalSrcIdx = 36;
+	  section.data(37).dtTransOffset = 36;
+	
+	  ;% step_test_P.Gain2_Gain_c
+	  section.data(38).logicalSrcIdx = 37;
+	  section.data(38).dtTransOffset = 37;
+	
+	  ;% step_test_P.Constant4_Value_p
+	  section.data(39).logicalSrcIdx = 38;
+	  section.data(39).dtTransOffset = 38;
+	
+	  ;% step_test_P.Constant4_Value_g
+	  section.data(40).logicalSrcIdx = 39;
+	  section.data(40).dtTransOffset = 39;
 	
       nTotData = nTotData + section.nData;
       paramMap.sections(1) = section;
@@ -179,11 +199,11 @@
       section.data(2)  = dumData; %prealloc
       
 	  ;% step_test_P.ManualSwitch_CurrentSetting
-	  section.data(1).logicalSrcIdx = 35;
+	  section.data(1).logicalSrcIdx = 40;
 	  section.data(1).dtTransOffset = 0;
 	
 	  ;% step_test_P.ManualSwitch1_CurrentSetting
-	  section.data(2).logicalSrcIdx = 36;
+	  section.data(2).logicalSrcIdx = 41;
 	  section.data(2).dtTransOffset = 1;
 	
       nTotData = nTotData + section.nData;
@@ -231,8 +251,8 @@
     ;%
     ;% Auto data (step_test_B)
     ;%
-      section.nData     = 17;
-      section.data(17)  = dumData; %prealloc
+      section.nData     = 18;
+      section.data(18)  = dumData; %prealloc
       
 	  ;% step_test_B.ZeroOrderHold1
 	  section.data(1).logicalSrcIdx = 0;
@@ -294,13 +314,17 @@
 	  section.data(15).logicalSrcIdx = 14;
 	  section.data(15).dtTransOffset = 20;
 	
-	  ;% step_test_B.LowpassFilter
+	  ;% step_test_B.Sum_i
 	  section.data(16).logicalSrcIdx = 15;
 	  section.data(16).dtTransOffset = 21;
 	
-	  ;% step_test_B.MovingAverage
+	  ;% step_test_B.LowpassFilter
 	  section.data(17).logicalSrcIdx = 16;
 	  section.data(17).dtTransOffset = 22;
+	
+	  ;% step_test_B.MovingAverage
+	  section.data(18).logicalSrcIdx = 17;
+	  section.data(18).dtTransOffset = 23;
 	
       nTotData = nTotData + section.nData;
       sigMap.sections(1) = section;
@@ -310,7 +334,7 @@
       section.data(1)  = dumData; %prealloc
       
 	  ;% step_test_B.ZeroOrderHold
-	  section.data(1).logicalSrcIdx = 17;
+	  section.data(1).logicalSrcIdx = 18;
 	  section.data(1).dtTransOffset = 0;
 	
       nTotData = nTotData + section.nData;
@@ -589,8 +613,8 @@
   ;%
 
 
-  targMap.checksum0 = 4233122725;
-  targMap.checksum1 = 1226131374;
-  targMap.checksum2 = 3254979755;
-  targMap.checksum3 = 2824095720;
+  targMap.checksum0 = 866684759;
+  targMap.checksum1 = 4033129876;
+  targMap.checksum2 = 1638840440;
+  targMap.checksum3 = 3197379108;
 

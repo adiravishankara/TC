@@ -7,9 +7,9 @@
  *
  * Code generation for model "step_test".
  *
- * Model version              : 1.19
+ * Model version              : 1.21
  * Simulink Coder version : 8.14 (R2018a) 06-Feb-2018
- * C source code generated on : Mon Aug 27 14:28:14 2018
+ * C source code generated on : Tue Aug 28 13:31:25 2018
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -92,7 +92,7 @@ static void rt_ertODEUpdateContinuousStates(RTWSolverInfo *si )
   real_T *f2 = id->f[2];
   real_T hB[3];
   int_T i;
-  int_T nXc = 2;
+  int_T nXc = 3;
   rtsiSetSimTimeStep(si,MINOR_TIME_STEP);
 
   /* Save the state values at time t in y, we'll use x as ynew. */
@@ -538,7 +538,7 @@ void step_test_step(void)
         step_test_P.Constant_Value_j;
     }
 
-    /* FromWorkspace: '<S3>/FromWs' */
+    /* FromWorkspace: '<S6>/FromWs' */
     {
       real_T *pDataValues = (real_T *) step_test_DW.FromWs_PWORK.DataPtr;
       real_T *pTimeValues = (real_T *) step_test_DW.FromWs_PWORK.TimePtr;
@@ -548,8 +548,8 @@ void step_test_step(void)
       /* Get index */
       if (t <= pTimeValues[0]) {
         currTimeIndex = 0;
-      } else if (t >= pTimeValues[40]) {
-        currTimeIndex = 39;
+      } else if (t >= pTimeValues[21]) {
+        currTimeIndex = 20;
       } else {
         if (t < pTimeValues[currTimeIndex]) {
           while (t < pTimeValues[currTimeIndex]) {
@@ -583,7 +583,7 @@ void step_test_step(void)
           d1 = pDataValues[TimeIndex];
           d2 = pDataValues[TimeIndex + 1];
           rtb_FromWs = (real_T) rtInterpolate(d1, d2, f1, f2);
-          pDataValues += 41;
+          pDataValues += 22;
         }
       }
     }
@@ -685,16 +685,39 @@ void step_test_step(void)
     step_test_B.PWMsaturation = step_test_P.TransferFcn_C *
       step_test_X.TransferFcn_CSTATE;
 
+    /* Gain: '<S9>/Gain1' */
+    step_test_B.Gain1_a = step_test_P.Gain1_Gain_f * step_test_B.PWMsaturation;
+
+    /* Math: '<S9>/Square' */
+    step_test_B.Square_c = step_test_B.PWMsaturation * step_test_B.PWMsaturation;
+
+    /* Math: '<S9>/Power1' incorporates:
+     *  Constant: '<S9>/Constant1'
+     */
+    if ((step_test_B.PWMsaturation < 0.0) && (step_test_P.Constant1_Value >
+         floor(step_test_P.Constant1_Value))) {
+      step_test_B.PWMsaturation = -rt_powd_snf(-step_test_B.PWMsaturation,
+        step_test_P.Constant1_Value);
+    } else {
+      step_test_B.PWMsaturation = rt_powd_snf(step_test_B.PWMsaturation,
+        step_test_P.Constant1_Value);
+    }
+
+    /* End of Math: '<S9>/Power1' */
+
     /* Sum: '<S9>/Sum1' incorporates:
      *  Constant: '<S9>/Constant2'
      *  Constant: '<S9>/Constant3'
-     *  Gain: '<S9>/Gain1'
-     *  Math: '<S9>/Square'
+     *  Gain: '<S9>/Gain2'
      *  Product: '<S9>/Product'
      */
-    step_test_B.Sum1 = (step_test_B.PWMsaturation * step_test_B.PWMsaturation *
-                        step_test_P.Constant3_Value + step_test_P.Gain1_Gain_f *
+    step_test_B.Sum1 = ((step_test_P.Constant3_Value * step_test_B.Square_c +
+                         step_test_B.Gain1_a) + step_test_P.Gain2_Gain *
                         step_test_B.PWMsaturation) + step_test_P.Constant2_Value;
+
+    /* TransferFcn: '<S9>/Transfer Fcn1' */
+    step_test_B.PWMsaturation = step_test_P.TransferFcn1_C *
+      step_test_X.TransferFcn1_CSTATE;
 
     /* Math: '<S9>/Power' incorporates:
      *  Constant: '<S9>/Constant'
@@ -741,7 +764,7 @@ void step_test_step(void)
       /* Sum: '<Root>/Sum' incorporates:
        *  Constant: '<Root>/Constant1'
        */
-      step_test_B.Sum = step_test_B.Merge - step_test_P.Constant1_Value;
+      step_test_B.Sum = step_test_B.Merge - step_test_P.Constant1_Value_i;
     }
 
     /* Derivative: '<S7>/Derivative' */
@@ -787,8 +810,8 @@ void step_test_step(void)
        *  Constant: '<S13>/Constant4'
        *  Gain: '<S13>/Gain2'
        */
-      step_test_B.Sum1_h = step_test_P.Gain2_Gain * step_test_B.MathFunction1 +
-        step_test_P.Constant4_Value_p;
+      step_test_B.Sum1_h = step_test_P.Gain2_Gain_c * step_test_B.MathFunction1
+        + step_test_P.Constant4_Value_p;
 
       /* Product: '<S7>/Product1' */
       step_test_B.Product1 = step_test_B.Sum * step_test_B.Sum1_h;
@@ -857,6 +880,12 @@ void step_test_step(void)
 
       /* MATLABSystem: '<Root>/Moving Average' */
       step_test_B.MovingAverage = step_test_B.PWMsaturation / 5.0;
+
+      /* Sum: '<S9>/Sum' incorporates:
+       *  Constant: '<S9>/Constant4'
+       */
+      step_test_B.Sum_i = step_test_B.LowpassFilter -
+        step_test_P.Constant4_Value_g;
 
       /* Start for MATLABSystem: '<S1>/PWM1' */
       MW_PWM_SetDutyCycle(step_test_DW.obj_n.MW_PWM_HANDLE, step_test_B.Merge);
@@ -997,7 +1026,13 @@ void step_test_derivatives(void)
   _rtXdot->TransferFcn_CSTATE = 0.0;
   _rtXdot->TransferFcn_CSTATE += step_test_P.TransferFcn_A *
     step_test_X.TransferFcn_CSTATE;
-  _rtXdot->TransferFcn_CSTATE += step_test_B.LowpassFilter;
+  _rtXdot->TransferFcn_CSTATE += step_test_B.Sum_i;
+
+  /* Derivatives for TransferFcn: '<S9>/Transfer Fcn1' */
+  _rtXdot->TransferFcn1_CSTATE = 0.0;
+  _rtXdot->TransferFcn1_CSTATE += step_test_P.TransferFcn1_A *
+    step_test_X.TransferFcn1_CSTATE;
+  _rtXdot->TransferFcn1_CSTATE += step_test_B.LowpassFilter;
 
   /* Derivatives for Integrator: '<S7>/Integrator' */
   _rtXdot->Integrator_CSTATE = step_test_B.Sum_l;
@@ -1050,10 +1085,10 @@ void step_test_initialize(void)
   step_test_M->Timing.stepSize0 = 0.01;
 
   /* External mode info */
-  step_test_M->Sizes.checksums[0] = (4233122725U);
-  step_test_M->Sizes.checksums[1] = (1226131374U);
-  step_test_M->Sizes.checksums[2] = (3254979755U);
-  step_test_M->Sizes.checksums[3] = (2824095720U);
+  step_test_M->Sizes.checksums[0] = (866684759U);
+  step_test_M->Sizes.checksums[1] = (4033129876U);
+  step_test_M->Sizes.checksums[2] = (1638840440U);
+  step_test_M->Sizes.checksums[3] = (3197379108U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -1202,18 +1237,15 @@ void step_test_initialize(void)
 
     /* End of Start for MATLABSystem: '<S4>/Lowpass Filter' */
 
-    /* Start for FromWorkspace: '<S3>/FromWs' */
+    /* Start for FromWorkspace: '<S6>/FromWs' */
     {
-      static real_T pTimeValues0[] = { -0.0, 15.0, 15.0, 30.0, 45.0, 60.0, 75.0,
-        75.0, 90.0, 90.0, 105.0, 105.0, 120.0, 120.0, 135.0, 135.0, 150.0, 150.0,
-        165.0, 165.0, 180.0, 180.0, 195.0, 195.0, 210.0, 210.0, 225.0, 225.0,
-        240.0, 240.0, 255.0, 255.0, 270.0, 270.0, 285.0, 285.0, 300.0, 300.0,
-        315.0, 315.0, 400.0 } ;
+      static real_T pTimeValues0[] = { 0.0, 30.0, 30.0, 60.0, 60.0, 90.0, 90.0,
+        120.0, 120.0, 150.0, 150.0, 180.0, 180.0, 210.0, 210.0, 240.0, 240.0,
+        270.0, 270.0, 300.0, 300.0, 340.0 } ;
 
-      static real_T pDataValues0[] = { -0.0, -0.0, 4.0, 4.0, 4.0, 4.0, 4.0, 5.0,
-        5.0, 6.0, 6.0, 7.0, 7.0, 8.0, 8.0, 9.0, 9.0, 10.0, 10.0, 11.0, 11.0,
-        12.0, 12.0, 13.0, 13.0, 14.0, 14.0, 15.0, 15.0, 16.0, 16.0, 17.0, 17.0,
-        18.0, 18.0, 19.0, 19.0, 20.0, 20.0, 0.0, 0.0 } ;
+      static real_T pDataValues0[] = { 0.0, 0.0, 4.0, 4.0, 6.0, 6.0, 8.0, 8.0,
+        10.0, 10.0, 12.0, 12.0, 14.0, 14.0, 16.0, 16.0, 18.0, 18.0, 20.0, 20.0,
+        0.0, 0.0 } ;
 
       step_test_DW.FromWs_PWORK.TimePtr = (void *) pTimeValues0;
       step_test_DW.FromWs_PWORK.DataPtr = (void *) pDataValues0;
@@ -1293,6 +1325,9 @@ void step_test_initialize(void)
 
     /* InitializeConditions for TransferFcn: '<S9>/Transfer Fcn' */
     step_test_X.TransferFcn_CSTATE = 0.0;
+
+    /* InitializeConditions for TransferFcn: '<S9>/Transfer Fcn1' */
+    step_test_X.TransferFcn1_CSTATE = 0.0;
 
     /* InitializeConditions for Integrator: '<S7>/Integrator' */
     step_test_X.Integrator_CSTATE = step_test_P.Integrator_IC_j;

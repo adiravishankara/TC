@@ -7,9 +7,9 @@
  *
  * Code generation for model "step_test".
  *
- * Model version              : 1.19
+ * Model version              : 1.21
  * Simulink Coder version : 8.14 (R2018a) 06-Feb-2018
- * C source code generated on : Mon Aug 27 14:28:14 2018
+ * C source code generated on : Tue Aug 28 13:31:25 2018
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping

@@ -7,9 +7,9 @@
  *
  * Code generation for model "step_test".
  *
- * Model version              : 1.19
+ * Model version              : 1.21
  * Simulink Coder version : 8.14 (R2018a) 06-Feb-2018
- * C source code generated on : Mon Aug 27 14:28:14 2018
+ * C source code generated on : Tue Aug 28 13:31:25 2018
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -148,25 +148,45 @@ P_step_test_T step_test_P = {
    */
   50.0,
 
-  /* Expression: -0.2766
+  /* Expression: .6859
    * Referenced by: '<S9>/Gain1'
    */
-  -0.2766,
+  0.6859,
 
-  /* Expression: 0.0002219
+  /* Expression: .2314
    * Referenced by: '<S9>/Constant3'
    */
-  0.0002219,
+  0.2314,
 
-  /* Expression: 86.44
+  /* Expression: 3
+   * Referenced by: '<S9>/Constant1'
+   */
+  3.0,
+
+  /* Expression: 0.03836
+   * Referenced by: '<S9>/Gain2'
+   */
+  0.03836,
+
+  /* Expression: 0.8882
    * Referenced by: '<S9>/Constant2'
    */
-  86.44,
+  0.8882,
 
   /* Expression: 16.36
    * Referenced by: '<S9>/Constant'
    */
   16.36,
+
+  /* Computed Parameter: TransferFcn1_A
+   * Referenced by: '<S9>/Transfer Fcn1'
+   */
+  -50.0,
+
+  /* Computed Parameter: TransferFcn1_C
+   * Referenced by: '<S9>/Transfer Fcn1'
+   */
+  50.0,
 
   /* Expression: 1
    * Referenced by: '<S9>/Gain'
@@ -198,10 +218,15 @@ P_step_test_T step_test_P = {
    */
   0.005561,
 
+  /* Expression: 686.2
+   * Referenced by: '<S9>/Constant4'
+   */
+  686.2,
+
   /* Computed Parameter: ManualSwitch_CurrentSetting
    * Referenced by: '<Root>/Manual Switch'
    */
-  0U,
+  1U,
 
   /* Computed Parameter: ManualSwitch1_CurrentSetting
    * Referenced by: '<Root>/Manual Switch1'

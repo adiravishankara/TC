@@ -7,9 +7,9 @@
  *
  * Code generation for model "step_test".
  *
- * Model version              : 1.19
+ * Model version              : 1.21
  * Simulink Coder version : 8.14 (R2018a) 06-Feb-2018
- * C source code generated on : Mon Aug 27 14:28:14 2018
+ * C source code generated on : Tue Aug 28 13:31:25 2018
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -70,7 +70,7 @@ static const char_T * rtDataTypeNames[] = {
 
 /* data type transitions for block I/O structure */
 static DataTypeTransition rtBTransitions[] = {
-  { (char_T *)(&step_test_B.ZeroOrderHold1), 0, 0, 23 },
+  { (char_T *)(&step_test_B.ZeroOrderHold1), 0, 0, 24 },
 
   { (char_T *)(&step_test_B.ZeroOrderHold), 5, 0, 1 }
   ,
@@ -106,7 +106,7 @@ static DataTypeTransitionTable rtBTransTable = {
 
 /* data type transitions for Parameters structure */
 static DataTypeTransition rtPTransitions[] = {
-  { (char_T *)(&step_test_P.DiscretePIDController_I), 0, 0, 35 },
+  { (char_T *)(&step_test_P.DiscretePIDController_I), 0, 0, 40 },
 
   { (char_T *)(&step_test_P.ManualSwitch_CurrentSetting), 3, 0, 2 }
 };

@@ -7,9 +7,9 @@
  *
  * Code generation for model "step_test".
  *
- * Model version              : 1.19
+ * Model version              : 1.21
  * Simulink Coder version : 8.14 (R2018a) 06-Feb-2018
- * C source code generated on : Mon Aug 27 14:28:14 2018
+ * C source code generated on : Tue Aug 28 13:31:25 2018
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -192,11 +192,14 @@ typedef struct {
   real_T Sum1_h;                       /* '<S13>/Sum1' */
   real_T Product1;                     /* '<S7>/Product1' */
   real_T Sum_l;                        /* '<S7>/Sum' */
+  real_T Sum_i;                        /* '<S9>/Sum' */
   real_T LowpassFilter;                /* '<S4>/Lowpass Filter' */
   real_T MovingAverage;                /* '<Root>/Moving Average' */
   real_T MathFunction1;                /* '<S13>/Math Function1' */
   real_T Product_d;                    /* '<S8>/Product' */
   real_T PWMsaturation;                /* '<S1>/PWM saturation' */
+  real_T Gain1_a;                      /* '<S9>/Gain1' */
+  real_T Square_c;                     /* '<S9>/Square' */
   uint16_T ZeroOrderHold;              /* '<S4>/Zero-Order Hold' */
 } B_step_test_T;
 
@@ -221,7 +224,7 @@ typedef struct {
     void *TimePtr;
     void *DataPtr;
     void *RSimInfoPtr;
-  } FromWs_PWORK;                      /* '<S3>/FromWs' */
+  } FromWs_PWORK;                      /* '<S6>/FromWs' */
 
   struct {
     void *LoggedData[4];
@@ -245,7 +248,7 @@ typedef struct {
 
   struct {
     int_T PrevIndex;
-  } FromWs_IWORK;                      /* '<S3>/FromWs' */
+  } FromWs_IWORK;                      /* '<S6>/FromWs' */
 
   int8_T Integrator_PrevResetState;    /* '<S15>/Integrator' */
   int8_T If_ActiveSubsystem;           /* '<S1>/If' */
@@ -262,18 +265,21 @@ typedef struct {
 /* Continuous states (default storage) */
 typedef struct {
   real_T TransferFcn_CSTATE;           /* '<S9>/Transfer Fcn' */
+  real_T TransferFcn1_CSTATE;          /* '<S9>/Transfer Fcn1' */
   real_T Integrator_CSTATE;            /* '<S7>/Integrator' */
 } X_step_test_T;
 
 /* State derivatives (default storage) */
 typedef struct {
   real_T TransferFcn_CSTATE;           /* '<S9>/Transfer Fcn' */
+  real_T TransferFcn1_CSTATE;          /* '<S9>/Transfer Fcn1' */
   real_T Integrator_CSTATE;            /* '<S7>/Integrator' */
 } XDot_step_test_T;
 
 /* State disabled  */
 typedef struct {
   boolean_T TransferFcn_CSTATE;        /* '<S9>/Transfer Fcn' */
+  boolean_T TransferFcn1_CSTATE;       /* '<S9>/Transfer Fcn1' */
   boolean_T Integrator_CSTATE;         /* '<S7>/Integrator' */
 } XDis_step_test_T;
 
@@ -365,17 +371,29 @@ struct P_step_test_T_ {
   real_T TransferFcn_C;                /* Computed Parameter: TransferFcn_C
                                         * Referenced by: '<S9>/Transfer Fcn'
                                         */
-  real_T Gain1_Gain_f;                 /* Expression: -0.2766
+  real_T Gain1_Gain_f;                 /* Expression: .6859
                                         * Referenced by: '<S9>/Gain1'
                                         */
-  real_T Constant3_Value;              /* Expression: 0.0002219
+  real_T Constant3_Value;              /* Expression: .2314
                                         * Referenced by: '<S9>/Constant3'
                                         */
-  real_T Constant2_Value;              /* Expression: 86.44
+  real_T Constant1_Value;              /* Expression: 3
+                                        * Referenced by: '<S9>/Constant1'
+                                        */
+  real_T Gain2_Gain;                   /* Expression: 0.03836
+                                        * Referenced by: '<S9>/Gain2'
+                                        */
+  real_T Constant2_Value;              /* Expression: 0.8882
                                         * Referenced by: '<S9>/Constant2'
                                         */
   real_T Constant_Value_k;             /* Expression: 16.36
                                         * Referenced by: '<S9>/Constant'
+                                        */
+  real_T TransferFcn1_A;               /* Computed Parameter: TransferFcn1_A
+                                        * Referenced by: '<S9>/Transfer Fcn1'
+                                        */
+  real_T TransferFcn1_C;               /* Computed Parameter: TransferFcn1_C
+                                        * Referenced by: '<S9>/Transfer Fcn1'
                                         */
   real_T Gain_Gain_k;                  /* Expression: 1
                                         * Referenced by: '<S9>/Gain'
@@ -383,17 +401,20 @@ struct P_step_test_T_ {
   real_T Integrator_IC_j;              /* Expression: 0
                                         * Referenced by: '<S7>/Integrator'
                                         */
-  real_T Constant1_Value;              /* Expression: 40
+  real_T Constant1_Value_i;            /* Expression: 40
                                         * Referenced by: '<Root>/Constant1'
                                         */
   real_T Constant3_Value_d;            /* Expression: 0.3933
                                         * Referenced by: '<S13>/Constant3'
                                         */
-  real_T Gain2_Gain;                   /* Expression: 0.03432
+  real_T Gain2_Gain_c;                 /* Expression: 0.03432
                                         * Referenced by: '<S13>/Gain2'
                                         */
   real_T Constant4_Value_p;            /* Expression: 0.005561
                                         * Referenced by: '<S13>/Constant4'
+                                        */
+  real_T Constant4_Value_g;            /* Expression: 686.2
+                                        * Referenced by: '<S9>/Constant4'
                                         */
   uint8_T ManualSwitch_CurrentSetting; /* Computed Parameter: ManualSwitch_CurrentSetting
                                         * Referenced by: '<Root>/Manual Switch'
@@ -416,8 +437,8 @@ struct tag_RTM_step_test_T {
   boolean_T zCCacheNeedsReset;
   boolean_T derivCacheNeedsReset;
   boolean_T CTOutputIncnstWithState;
-  real_T odeY[2];
-  real_T odeF[3][2];
+  real_T odeY[3];
+  real_T odeF[3][3];
   ODE3_IntgData intgData;
 
   /*
@@ -485,9 +506,9 @@ extern RT_MODEL_step_test_T *const step_test_M;
  * These blocks were eliminated from the model due to optimizations:
  *
  * Block '<S2>/FromWs' : Unused code path elimination
+ * Block '<S3>/FromWs' : Unused code path elimination
  * Block '<S4>/Cast1' : Unused code path elimination
  * Block '<S5>/FromWs' : Unused code path elimination
- * Block '<S6>/FromWs' : Unused code path elimination
  * Block '<Root>/Cast' : Eliminate redundant data type conversion
  * Block '<S1>/RT' : Eliminated since input and output rates are identical
  * Block '<S1>/RT1' : Eliminated since input and output rates are identical

@@ -1,6 +1,10 @@
-ramp_test = csvread("new_/ramp_test3.csv",1,0);
+wind= csvread("new_/wind.csv",1,0);
+% dist_testtorq = dist_test;
+[r,c] = find(wind(:,10) == 0);
 
-[r,c] = find(ramp_test(:,10) == 0);
+wind(r,:) = [];
 
-ramp_test(r,:) = [];
-
+% [r,c] = find(dist_testtorq(:,9) == 0);
+% 
+% dist_testtorq(r,:) = [];
+% 

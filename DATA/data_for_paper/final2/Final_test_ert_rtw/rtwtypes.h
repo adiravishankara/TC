@@ -7,9 +7,9 @@
  *
  * Code generation for model "Final_test".
  *
- * Model version              : 1.36
+ * Model version              : 1.39
  * Simulink Coder version : 8.14 (R2018a) 06-Feb-2018
- * C source code generated on : Fri Aug 31 13:49:27 2018
+ * C source code generated on : Wed Sep  5 12:04:40 2018
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping

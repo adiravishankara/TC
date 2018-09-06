@@ -430,8 +430,8 @@
       dworkMap.sections(5) = section;
       clear section
       
-      section.nData     = 5;
-      section.data(5)  = dumData; %prealloc
+      section.nData     = 6;
+      section.data(6)  = dumData; %prealloc
       
 	  ;% Final_test_DW.FromWs_PWORK.TimePtr
 	  section.data(1).logicalSrcIdx = 9;
@@ -453,6 +453,10 @@
 	  section.data(5).logicalSrcIdx = 13;
 	  section.data(5).dtTransOffset = 7;
 	
+	  ;% Final_test_DW.Scope1_PWORK_g.LoggedData
+	  section.data(6).logicalSrcIdx = 14;
+	  section.data(6).dtTransOffset = 8;
+	
       nTotData = nTotData + section.nData;
       dworkMap.sections(6) = section;
       clear section
@@ -461,7 +465,7 @@
       section.data(1)  = dumData; %prealloc
       
 	  ;% Final_test_DW.FromWs_IWORK.PrevIndex
-	  section.data(1).logicalSrcIdx = 14;
+	  section.data(1).logicalSrcIdx = 15;
 	  section.data(1).dtTransOffset = 0;
 	
       nTotData = nTotData + section.nData;
@@ -472,19 +476,19 @@
       section.data(4)  = dumData; %prealloc
       
 	  ;% Final_test_DW.Integrator_PrevResetState
-	  section.data(1).logicalSrcIdx = 15;
+	  section.data(1).logicalSrcIdx = 16;
 	  section.data(1).dtTransOffset = 0;
 	
 	  ;% Final_test_DW.If_ActiveSubsystem
-	  section.data(2).logicalSrcIdx = 16;
+	  section.data(2).logicalSrcIdx = 17;
 	  section.data(2).dtTransOffset = 1;
 	
 	  ;% Final_test_DW.IfActionSubsystem1_SubsysRanBC
-	  section.data(3).logicalSrcIdx = 17;
+	  section.data(3).logicalSrcIdx = 18;
 	  section.data(3).dtTransOffset = 2;
 	
 	  ;% Final_test_DW.IfActionSubsystem_SubsysRanBC
-	  section.data(4).logicalSrcIdx = 18;
+	  section.data(4).logicalSrcIdx = 19;
 	  section.data(4).dtTransOffset = 3;
 	
       nTotData = nTotData + section.nData;
@@ -495,15 +499,15 @@
       section.data(3)  = dumData; %prealloc
       
 	  ;% Final_test_DW.objisempty
-	  section.data(1).logicalSrcIdx = 19;
+	  section.data(1).logicalSrcIdx = 20;
 	  section.data(1).dtTransOffset = 0;
 	
 	  ;% Final_test_DW.objisempty_b
-	  section.data(2).logicalSrcIdx = 20;
+	  section.data(2).logicalSrcIdx = 21;
 	  section.data(2).dtTransOffset = 1;
 	
 	  ;% Final_test_DW.objisempty_h
-	  section.data(3).logicalSrcIdx = 21;
+	  section.data(3).logicalSrcIdx = 22;
 	  section.data(3).dtTransOffset = 2;
 	
       nTotData = nTotData + section.nData;
@@ -536,8 +540,8 @@
   ;%
 
 
-  targMap.checksum0 = 4144863442;
-  targMap.checksum1 = 2725880597;
-  targMap.checksum2 = 4273214233;
-  targMap.checksum3 = 500927478;
+  targMap.checksum0 = 2946863433;
+  targMap.checksum1 = 1710839790;
+  targMap.checksum2 = 2091369673;
+  targMap.checksum3 = 1246343091;
 

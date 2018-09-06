@@ -7,9 +7,9 @@
  *
  * Code generation for model "Final_test".
  *
- * Model version              : 1.36
+ * Model version              : 1.39
  * Simulink Coder version : 8.14 (R2018a) 06-Feb-2018
- * C source code generated on : Fri Aug 31 13:49:27 2018
+ * C source code generated on : Wed Sep  5 12:04:40 2018
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -79,7 +79,7 @@ static DataTypeTransition rtBTransitions[] = {
 
   { (char_T *)(&Final_test_DW.DelayInput1_DSTATE), 0, 0, 8 },
 
-  { (char_T *)(&Final_test_DW.FromWs_PWORK.TimePtr), 11, 0, 8 },
+  { (char_T *)(&Final_test_DW.FromWs_PWORK.TimePtr), 11, 0, 9 },
 
   { (char_T *)(&Final_test_DW.FromWs_IWORK.PrevIndex), 10, 0, 1 },
 

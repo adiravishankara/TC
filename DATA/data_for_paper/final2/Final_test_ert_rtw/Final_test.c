@@ -7,9 +7,9 @@
  *
  * Code generation for model "Final_test".
  *
- * Model version              : 1.36
+ * Model version              : 1.39
  * Simulink Coder version : 8.14 (R2018a) 06-Feb-2018
- * C source code generated on : Fri Aug 31 13:49:27 2018
+ * C source code generated on : Wed Sep  5 12:04:40 2018
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -328,35 +328,35 @@ void Final_test_step(void)
   Final_test_B.TransferFcn1 += Final_test_P.TransferFcn1_C *
     Final_test_X.TransferFcn1_CSTATE;
 
-  /* Sum: '<S6>/Sum' incorporates:
+  /* Sum: '<S7>/Sum' incorporates:
    *  Constant: '<Root>/Wind_des'
    */
   Final_test_B.e = Final_test_P.Wind_des_Value - Final_test_B.TransferFcn1;
 
-  /* Product: '<S6>/Product' incorporates:
+  /* Product: '<S7>/Product' incorporates:
    *  Constant: '<Root>/Automatic Control'
    */
   Final_test_B.Product = Final_test_B.e * Final_test_P.AutomaticControl_Value;
   if (rtmIsMajorTimeStep(Final_test_M)) {
-    /* RelationalOperator: '<S58>/FixPt Relational Operator' incorporates:
+    /* RelationalOperator: '<S53>/FixPt Relational Operator' incorporates:
      *  Constant: '<Root>/Automatic Control'
-     *  UnitDelay: '<S58>/Delay Input1'
+     *  UnitDelay: '<S53>/Delay Input1'
      */
     rtb_FixPtRelationalOperator = (Final_test_P.AutomaticControl_Value !=
       Final_test_DW.DelayInput1_DSTATE);
 
-    /* DiscreteIntegrator: '<S59>/Integrator' */
+    /* DiscreteIntegrator: '<S54>/Integrator' */
     if (rtb_FixPtRelationalOperator && (Final_test_DW.Integrator_PrevResetState <=
          0)) {
       Final_test_DW.Integrator_DSTATE = Final_test_P.Integrator_IC;
     }
 
-    /* Sum: '<S6>/Sum2' incorporates:
+    /* Sum: '<S7>/Sum2' incorporates:
      *  Constant: '<Root>/Wind_des'
-     *  Constant: '<S6>/Constant'
-     *  Gain: '<S6>/Gain'
-     *  Gain: '<S6>/Gain1'
-     *  Math: '<S6>/Square'
+     *  Constant: '<S7>/Constant'
+     *  Gain: '<S7>/Gain'
+     *  Gain: '<S7>/Gain1'
+     *  Math: '<S7>/Square'
      */
     Final_test_B.Sum2 = (Final_test_P.Wind_des_Value *
                          Final_test_P.Wind_des_Value * Final_test_P.Gain1_Gain +
@@ -365,10 +365,10 @@ void Final_test_step(void)
 
     /* Product: '<S3>/Product' incorporates:
      *  Constant: '<Root>/Enable'
-     *  DiscreteIntegrator: '<S59>/Integrator'
-     *  Gain: '<S59>/Proportional Gain'
-     *  Sum: '<S59>/Sum'
-     *  Sum: '<S6>/Sum1'
+     *  DiscreteIntegrator: '<S54>/Integrator'
+     *  Gain: '<S54>/Proportional Gain'
+     *  Sum: '<S54>/Sum'
+     *  Sum: '<S7>/Sum1'
      */
     Final_test_B.Product_m = ((Final_test_P.DiscretePIDController_P *
       Final_test_B.Product + Final_test_DW.Integrator_DSTATE) +
@@ -461,9 +461,9 @@ void Final_test_step(void)
    *  Clock: '<S3>/Clock'
    *  Constant: '<Root>/Motor Switch'
    *  Constant: '<S3>/min PWM'
-   *  Constant: '<S55>/Constant'
+   *  Constant: '<S50>/Constant'
    *  Product: '<S3>/Product1'
-   *  RelationalOperator: '<S55>/Compare'
+   *  RelationalOperator: '<S50>/Compare'
    */
   Final_test_B.Add = rtb_PWMsaturation * Final_test_P.MotorSwitch_Value *
     (real_T)(Final_test_M->Timing.t[0] > Final_test_P.CompareToConstant_const) +
@@ -471,7 +471,7 @@ void Final_test_step(void)
   if (rtmIsMajorTimeStep(Final_test_M)) {
     /* If: '<S3>/If' incorporates:
      *  Constant: '<S3>/Run Sim'
-     *  Inport: '<S57>/In1'
+     *  Inport: '<S52>/In1'
      *  ZeroOrderHold: '<S3>/Zero-Order Hold'
      */
     if (rtmIsMajorTimeStep(Final_test_M)) {
@@ -482,19 +482,19 @@ void Final_test_step(void)
     switch (Final_test_DW.If_ActiveSubsystem) {
      case 0:
       /* Outputs for IfAction SubSystem: '<S3>/If Action Subsystem' incorporates:
-       *  ActionPort: '<S56>/Action Port'
+       *  ActionPort: '<S51>/Action Port'
        */
-      /* Stop: '<S56>/Stop Simulation' incorporates:
+      /* Stop: '<S51>/Stop Simulation' incorporates:
        *  Constant: '<S3>/Constant4'
-       *  DataTypeConversion: '<S56>/Cast'
+       *  DataTypeConversion: '<S51>/Cast'
        */
       if (Final_test_P.Constant4_Value != 0.0) {
         rtmSetStopRequested(Final_test_M, 1);
       }
 
-      /* End of Stop: '<S56>/Stop Simulation' */
+      /* End of Stop: '<S51>/Stop Simulation' */
 
-      /* SignalConversion: '<S56>/OutportBufferForOut1' incorporates:
+      /* SignalConversion: '<S51>/OutportBufferForOut1' incorporates:
        *  Constant: '<S3>/Constant4'
        */
       Final_test_B.Merge = Final_test_P.Constant4_Value;
@@ -507,7 +507,7 @@ void Final_test_step(void)
 
      case 1:
       /* Outputs for IfAction SubSystem: '<S3>/If Action Subsystem1' incorporates:
-       *  ActionPort: '<S57>/Action Port'
+       *  ActionPort: '<S52>/Action Port'
        */
       Final_test_B.Merge = Final_test_B.Add;
       if (rtmIsMajorTimeStep(Final_test_M)) {
@@ -524,8 +524,8 @@ void Final_test_step(void)
   /* Clock: '<Root>/Clock' */
   Final_test_B.Clock = Final_test_M->Timing.t[0];
 
-  /* Math: '<S7>/Power' incorporates:
-   *  Constant: '<S7>/b'
+  /* Math: '<S8>/Power' incorporates:
+   *  Constant: '<S8>/b'
    */
   if ((Final_test_B.TransferFcn1 < 0.0) && (Final_test_P.b_Value > floor
        (Final_test_P.b_Value))) {
@@ -536,12 +536,12 @@ void Final_test_step(void)
       Final_test_P.b_Value);
   }
 
-  /* End of Math: '<S7>/Power' */
+  /* End of Math: '<S8>/Power' */
 
-  /* Gain: '<S7>/a' */
+  /* Gain: '<S8>/a' */
   Final_test_B.a = Final_test_P.a_Gain * rtb_PWMsaturation;
 
-  /* Integrator: '<S8>/Integrator1' */
+  /* Integrator: '<S9>/Integrator1' */
   Final_test_B.Integrator1 = Final_test_X.Integrator1_CSTATE;
   if (rtmIsMajorTimeStep(Final_test_M)) {
     /* Sum: '<Root>/Sum' incorporates:
@@ -549,8 +549,8 @@ void Final_test_step(void)
      */
     rtb_PWMsaturation = Final_test_B.Merge - Final_test_P.Constant1_Value;
 
-    /* Math: '<S10>/Math Function1' incorporates:
-     *  Constant: '<S10>/a'
+    /* Math: '<S11>/Math Function1' incorporates:
+     *  Constant: '<S11>/a'
      */
     if ((rtb_PWMsaturation < 0.0) && (Final_test_P.a_Value > floor
          (Final_test_P.a_Value))) {
@@ -559,12 +559,12 @@ void Final_test_step(void)
       rtb_Product1 = rt_powd_snf(rtb_PWMsaturation, Final_test_P.a_Value);
     }
 
-    /* End of Math: '<S10>/Math Function1' */
+    /* End of Math: '<S11>/Math Function1' */
 
-    /* Product: '<S10>/Product1' incorporates:
-     *  Constant: '<S10>/c'
-     *  Gain: '<S10>/b'
-     *  Sum: '<S10>/Sum1'
+    /* Product: '<S11>/Product1' incorporates:
+     *  Constant: '<S11>/c'
+     *  Gain: '<S11>/b'
+     *  Sum: '<S11>/Sum1'
      */
     rtb_Product1 = (Final_test_P.b_Gain * rtb_Product1 + Final_test_P.c_Value) *
       rtb_PWMsaturation;
@@ -644,8 +644,8 @@ void Final_test_step(void)
       }
     }
 
-    /* Math: '<S60>/Math Function1' incorporates:
-     *  Constant: '<S60>/a'
+    /* Math: '<S55>/Math Function1' incorporates:
+     *  Constant: '<S55>/a'
      */
     if ((rtb_PWMsaturation < 0.0) && (Final_test_P.a_Value_d > floor
          (Final_test_P.a_Value_d))) {
@@ -654,31 +654,31 @@ void Final_test_step(void)
       rtb_Product1 = rt_powd_snf(rtb_PWMsaturation, Final_test_P.a_Value_d);
     }
 
-    /* End of Math: '<S60>/Math Function1' */
+    /* End of Math: '<S55>/Math Function1' */
 
-    /* Gain: '<S8>/Gain2' incorporates:
-     *  Constant: '<S60>/c'
-     *  Gain: '<S60>/b'
-     *  Product: '<S8>/Product1'
-     *  Sum: '<S60>/Sum1'
+    /* Gain: '<S9>/Gain2' incorporates:
+     *  Constant: '<S55>/c'
+     *  Gain: '<S55>/b'
+     *  Product: '<S9>/Product1'
+     *  Sum: '<S55>/Sum1'
      */
     Final_test_B.Gain2 = (Final_test_P.b_Gain_n * rtb_Product1 +
                           Final_test_P.c_Value_e) * rtb_PWMsaturation *
       Final_test_P.Gain2_Gain;
   }
 
-  /* Integrator: '<S8>/Integrator' */
+  /* Integrator: '<S9>/Integrator' */
   Final_test_B.Integrator = Final_test_X.Integrator_CSTATE;
 
-  /* Sum: '<S8>/Sum' incorporates:
-   *  Gain: '<S8>/Gain'
-   *  Gain: '<S8>/Gain1'
+  /* Sum: '<S9>/Sum' incorporates:
+   *  Gain: '<S9>/Gain'
+   *  Gain: '<S9>/Gain1'
    */
   Final_test_B.Sum = (Final_test_B.Gain2 - Final_test_P.Gain1_Gain_h *
                       Final_test_B.Integrator1) - Final_test_P.Gain_Gain_n *
     Final_test_B.Integrator;
   if (rtmIsMajorTimeStep(Final_test_M)) {
-    /* Gain: '<S59>/Integral Gain' */
+    /* Gain: '<S54>/Integral Gain' */
     rtb_IntegralGain = Final_test_P.DiscretePIDController_I *
       Final_test_B.Product;
   }
@@ -770,12 +770,12 @@ void Final_test_step(void)
 
   if (rtmIsMajorTimeStep(Final_test_M)) {
     if (rtmIsMajorTimeStep(Final_test_M)) {
-      /* Update for UnitDelay: '<S58>/Delay Input1' incorporates:
+      /* Update for UnitDelay: '<S53>/Delay Input1' incorporates:
        *  Constant: '<Root>/Automatic Control'
        */
       Final_test_DW.DelayInput1_DSTATE = Final_test_P.AutomaticControl_Value;
 
-      /* Update for DiscreteIntegrator: '<S59>/Integrator' */
+      /* Update for DiscreteIntegrator: '<S54>/Integrator' */
       Final_test_DW.Integrator_DSTATE += Final_test_P.Integrator_gainval *
         rtb_IntegralGain;
       Final_test_DW.Integrator_PrevResetState = (int8_T)
@@ -859,10 +859,10 @@ void Final_test_derivatives(void)
     Final_test_X.TransferFcn1_CSTATE;
   _rtXdot->TransferFcn1_CSTATE += Final_test_B.ZeroOrderHold1;
 
-  /* Derivatives for Integrator: '<S8>/Integrator1' */
+  /* Derivatives for Integrator: '<S9>/Integrator1' */
   _rtXdot->Integrator1_CSTATE = Final_test_B.Integrator;
 
-  /* Derivatives for Integrator: '<S8>/Integrator' */
+  /* Derivatives for Integrator: '<S9>/Integrator' */
   _rtXdot->Integrator_CSTATE = Final_test_B.Sum;
 }
 
@@ -914,10 +914,10 @@ void Final_test_initialize(void)
   Final_test_M->Timing.stepSize0 = 0.01;
 
   /* External mode info */
-  Final_test_M->Sizes.checksums[0] = (4144863442U);
-  Final_test_M->Sizes.checksums[1] = (2725880597U);
-  Final_test_M->Sizes.checksums[2] = (4273214233U);
-  Final_test_M->Sizes.checksums[3] = (500927478U);
+  Final_test_M->Sizes.checksums[0] = (2946863433U);
+  Final_test_M->Sizes.checksums[1] = (1710839790U);
+  Final_test_M->Sizes.checksums[2] = (2091369673U);
+  Final_test_M->Sizes.checksums[3] = (1246343091U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -1054,17 +1054,17 @@ void Final_test_initialize(void)
   /* InitializeConditions for TransferFcn: '<S4>/Transfer Fcn1' */
   Final_test_X.TransferFcn1_CSTATE = 0.0;
 
-  /* InitializeConditions for UnitDelay: '<S58>/Delay Input1' */
+  /* InitializeConditions for UnitDelay: '<S53>/Delay Input1' */
   Final_test_DW.DelayInput1_DSTATE = Final_test_P.DetectChange_vinit;
 
-  /* InitializeConditions for DiscreteIntegrator: '<S59>/Integrator' */
+  /* InitializeConditions for DiscreteIntegrator: '<S54>/Integrator' */
   Final_test_DW.Integrator_DSTATE = Final_test_P.Integrator_IC;
   Final_test_DW.Integrator_PrevResetState = 2;
 
-  /* InitializeConditions for Integrator: '<S8>/Integrator1' */
+  /* InitializeConditions for Integrator: '<S9>/Integrator1' */
   Final_test_X.Integrator1_CSTATE = Final_test_P.Integrator1_IC;
 
-  /* InitializeConditions for Integrator: '<S8>/Integrator' */
+  /* InitializeConditions for Integrator: '<S9>/Integrator' */
   Final_test_X.Integrator_CSTATE = Final_test_P.Integrator_IC_e;
 
   /* SystemInitialize for MATLAB Function: '<S1>/MATLAB Function' */

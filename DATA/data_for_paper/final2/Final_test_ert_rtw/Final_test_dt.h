@@ -7,9 +7,9 @@
  *
  * Code generation for model "Final_test".
  *
- * Model version              : 1.39
+ * Model version              : 1.42
  * Simulink Coder version : 8.14 (R2018a) 06-Feb-2018
- * C source code generated on : Wed Sep  5 12:04:40 2018
+ * C source code generated on : Fri Sep  7 12:34:04 2018
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -96,9 +96,9 @@ static DataTypeTransitionTable rtBTransTable = {
 
 /* data type transitions for Parameters structure */
 static DataTypeTransition rtPTransitions[] = {
-  { (char_T *)(&Final_test_P.DiscretePIDController_I), 0, 0, 38 },
+  { (char_T *)(&Final_test_P.DiscretePIDController_I), 0, 0, 41 },
 
-  { (char_T *)(&Final_test_P.ManualSwitch_CurrentSetting), 3, 0, 2 }
+  { (char_T *)(&Final_test_P.ManualSwitch_CurrentSetting), 3, 0, 3 }
 };
 
 /* data type transition table for Parameters structure */

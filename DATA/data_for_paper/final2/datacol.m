@@ -1,10 +1,11 @@
-curr= csvread("new_/ramp_new.csv",1,0);
-% dist_testtorq = dist_test;
-[r,c] = find(curr(:,10) == 0);
+pt= csvread("../final3/sync_test.csv",1,0);
+%  curr_testtorq = pt;
+[r,c] = find(pt(:,10) == 0);
 
-curr(r,:) = [];
+pt(r,:) = [];
 
-% [r,c] = find(dist_testtorq(:,9) == 0);
+% [r,c] = find(curr_testtorq(:,9) == 0);
 % 
-% dist_testtorq(r,:) = [];
+% curr_testtorq(r,:) = [];
 % 
+clear r c

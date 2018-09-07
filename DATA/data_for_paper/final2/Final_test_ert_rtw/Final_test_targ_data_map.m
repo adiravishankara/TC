@@ -28,8 +28,8 @@
     ;%
     ;% Auto data (Final_test_P)
     ;%
-      section.nData     = 38;
-      section.data(38)  = dumData; %prealloc
+      section.nData     = 41;
+      section.data(41)  = dumData; %prealloc
       
 	  ;% Final_test_P.DiscretePIDController_I
 	  section.data(1).logicalSrcIdx = 0;
@@ -47,95 +47,95 @@
 	  section.data(4).logicalSrcIdx = 3;
 	  section.data(4).dtTransOffset = 3;
 	
-	  ;% Final_test_P.AnalogInput_SampleTime
+	  ;% Final_test_P.Gain_Gain
 	  section.data(5).logicalSrcIdx = 4;
 	  section.data(5).dtTransOffset = 4;
 	
-	  ;% Final_test_P.TransferFcn1_A
+	  ;% Final_test_P.AnalogInput_SampleTime
 	  section.data(6).logicalSrcIdx = 5;
 	  section.data(6).dtTransOffset = 5;
 	
-	  ;% Final_test_P.TransferFcn1_C
+	  ;% Final_test_P.TransferFcn1_A
 	  section.data(7).logicalSrcIdx = 6;
 	  section.data(7).dtTransOffset = 6;
 	
-	  ;% Final_test_P.Wind_des_Value
+	  ;% Final_test_P.TransferFcn1_C
 	  section.data(8).logicalSrcIdx = 7;
 	  section.data(8).dtTransOffset = 7;
 	
-	  ;% Final_test_P.RunSim_Value
+	  ;% Final_test_P.Wind_des_Value
 	  section.data(9).logicalSrcIdx = 8;
 	  section.data(9).dtTransOffset = 8;
 	
-	  ;% Final_test_P.AutomaticControl_Value
+	  ;% Final_test_P.RunSim_Value
 	  section.data(10).logicalSrcIdx = 9;
 	  section.data(10).dtTransOffset = 9;
 	
-	  ;% Final_test_P.Enable_Value
+	  ;% Final_test_P.AutomaticControl_Value
 	  section.data(11).logicalSrcIdx = 10;
 	  section.data(11).dtTransOffset = 10;
 	
-	  ;% Final_test_P.Integrator_gainval
+	  ;% Final_test_P.Enable_Value
 	  section.data(12).logicalSrcIdx = 11;
 	  section.data(12).dtTransOffset = 11;
 	
-	  ;% Final_test_P.Integrator_IC
+	  ;% Final_test_P.Integrator_gainval
 	  section.data(13).logicalSrcIdx = 12;
 	  section.data(13).dtTransOffset = 12;
 	
-	  ;% Final_test_P.Gain1_Gain
+	  ;% Final_test_P.Integrator_IC
 	  section.data(14).logicalSrcIdx = 13;
 	  section.data(14).dtTransOffset = 13;
 	
-	  ;% Final_test_P.Gain_Gain
+	  ;% Final_test_P.Gain1_Gain
 	  section.data(15).logicalSrcIdx = 14;
 	  section.data(15).dtTransOffset = 14;
 	
-	  ;% Final_test_P.Constant_Value
+	  ;% Final_test_P.Gain_Gain_g
 	  section.data(16).logicalSrcIdx = 15;
 	  section.data(16).dtTransOffset = 15;
 	
-	  ;% Final_test_P.Constant_Value_j
+	  ;% Final_test_P.Constant_Value
 	  section.data(17).logicalSrcIdx = 16;
 	  section.data(17).dtTransOffset = 16;
 	
-	  ;% Final_test_P.ManualPWM_Gain
+	  ;% Final_test_P.Constant_Value_j
 	  section.data(18).logicalSrcIdx = 17;
 	  section.data(18).dtTransOffset = 17;
 	
-	  ;% Final_test_P.Switch2_Threshold
+	  ;% Final_test_P.ManualPWM_Gain
 	  section.data(19).logicalSrcIdx = 18;
 	  section.data(19).dtTransOffset = 18;
 	
-	  ;% Final_test_P.PWMsaturation_UpperSat
+	  ;% Final_test_P.Switch2_Threshold
 	  section.data(20).logicalSrcIdx = 19;
 	  section.data(20).dtTransOffset = 19;
 	
-	  ;% Final_test_P.PWMsaturation_LowerSat
+	  ;% Final_test_P.PWMsaturation_UpperSat
 	  section.data(21).logicalSrcIdx = 20;
 	  section.data(21).dtTransOffset = 20;
 	
-	  ;% Final_test_P.MotorSwitch_Value
+	  ;% Final_test_P.PWMsaturation_LowerSat
 	  section.data(22).logicalSrcIdx = 21;
 	  section.data(22).dtTransOffset = 21;
 	
-	  ;% Final_test_P.minPWM_Value
+	  ;% Final_test_P.MotorSwitch_Value
 	  section.data(23).logicalSrcIdx = 22;
 	  section.data(23).dtTransOffset = 22;
 	
-	  ;% Final_test_P.Constant4_Value
+	  ;% Final_test_P.minPWM_Value
 	  section.data(24).logicalSrcIdx = 23;
 	  section.data(24).dtTransOffset = 23;
 	
-	  ;% Final_test_P.b_Value
+	  ;% Final_test_P.Constant4_Value
 	  section.data(25).logicalSrcIdx = 24;
 	  section.data(25).dtTransOffset = 24;
 	
-	  ;% Final_test_P.a_Gain
+	  ;% Final_test_P.Constant_Value_n
 	  section.data(26).logicalSrcIdx = 25;
 	  section.data(26).dtTransOffset = 25;
 	
-	  ;% Final_test_P.Integrator1_IC
+	  ;% Final_test_P.Gain_Gain_j
 	  section.data(27).logicalSrcIdx = 26;
 	  section.data(27).dtTransOffset = 26;
 	
@@ -143,60 +143,76 @@
 	  section.data(28).logicalSrcIdx = 27;
 	  section.data(28).dtTransOffset = 27;
 	
-	  ;% Final_test_P.a_Value
+	  ;% Final_test_P.Integrator1_IC
 	  section.data(29).logicalSrcIdx = 28;
 	  section.data(29).dtTransOffset = 28;
 	
-	  ;% Final_test_P.b_Gain
+	  ;% Final_test_P.Constant1_Value_i
 	  section.data(30).logicalSrcIdx = 29;
 	  section.data(30).dtTransOffset = 29;
 	
-	  ;% Final_test_P.c_Value
+	  ;% Final_test_P.a_Value
 	  section.data(31).logicalSrcIdx = 30;
 	  section.data(31).dtTransOffset = 30;
 	
-	  ;% Final_test_P.a_Value_d
+	  ;% Final_test_P.b_Gain
 	  section.data(32).logicalSrcIdx = 31;
 	  section.data(32).dtTransOffset = 31;
 	
-	  ;% Final_test_P.b_Gain_n
+	  ;% Final_test_P.c_Value
 	  section.data(33).logicalSrcIdx = 32;
 	  section.data(33).dtTransOffset = 32;
 	
-	  ;% Final_test_P.c_Value_e
+	  ;% Final_test_P.a_Value_d
 	  section.data(34).logicalSrcIdx = 33;
 	  section.data(34).dtTransOffset = 33;
 	
-	  ;% Final_test_P.Gain2_Gain
+	  ;% Final_test_P.b_Gain_n
 	  section.data(35).logicalSrcIdx = 34;
 	  section.data(35).dtTransOffset = 34;
 	
-	  ;% Final_test_P.Integrator_IC_e
+	  ;% Final_test_P.c_Value_e
 	  section.data(36).logicalSrcIdx = 35;
 	  section.data(36).dtTransOffset = 35;
 	
-	  ;% Final_test_P.Gain_Gain_n
+	  ;% Final_test_P.Gain2_Gain
 	  section.data(37).logicalSrcIdx = 36;
 	  section.data(37).dtTransOffset = 36;
 	
-	  ;% Final_test_P.Gain1_Gain_h
+	  ;% Final_test_P.Integrator_IC_e
 	  section.data(38).logicalSrcIdx = 37;
 	  section.data(38).dtTransOffset = 37;
+	
+	  ;% Final_test_P.Gain_Gain_n
+	  section.data(39).logicalSrcIdx = 38;
+	  section.data(39).dtTransOffset = 38;
+	
+	  ;% Final_test_P.Gain1_Gain_h
+	  section.data(40).logicalSrcIdx = 39;
+	  section.data(40).dtTransOffset = 39;
+	
+	  ;% Final_test_P.Constant_Value_p
+	  section.data(41).logicalSrcIdx = 40;
+	  section.data(41).dtTransOffset = 40;
 	
       nTotData = nTotData + section.nData;
       paramMap.sections(1) = section;
       clear section
       
-      section.nData     = 2;
-      section.data(2)  = dumData; %prealloc
+      section.nData     = 3;
+      section.data(3)  = dumData; %prealloc
       
 	  ;% Final_test_P.ManualSwitch_CurrentSetting
-	  section.data(1).logicalSrcIdx = 38;
+	  section.data(1).logicalSrcIdx = 41;
 	  section.data(1).dtTransOffset = 0;
 	
-	  ;% Final_test_P.ManualSwitch1_CurrentSetting
-	  section.data(2).logicalSrcIdx = 39;
+	  ;% Final_test_P.ManualSwitch2_CurrentSetting
+	  section.data(2).logicalSrcIdx = 42;
 	  section.data(2).dtTransOffset = 1;
+	
+	  ;% Final_test_P.ManualSwitch1_CurrentSetting
+	  section.data(3).logicalSrcIdx = 43;
+	  section.data(3).dtTransOffset = 2;
 	
       nTotData = nTotData + section.nData;
       paramMap.sections(2) = section;
@@ -266,7 +282,7 @@
 	  section.data(5).logicalSrcIdx = 4;
 	  section.data(5).dtTransOffset = 4;
 	
-	  ;% Final_test_B.ManualPWM
+	  ;% Final_test_B.ManualSwitch2
 	  section.data(6).logicalSrcIdx = 5;
 	  section.data(6).dtTransOffset = 5;
 	
@@ -282,7 +298,7 @@
 	  section.data(9).logicalSrcIdx = 8;
 	  section.data(9).dtTransOffset = 8;
 	
-	  ;% Final_test_B.a
+	  ;% Final_test_B.Sum
 	  section.data(10).logicalSrcIdx = 9;
 	  section.data(10).dtTransOffset = 9;
 	
@@ -302,11 +318,11 @@
 	  section.data(14).logicalSrcIdx = 13;
 	  section.data(14).dtTransOffset = 20;
 	
-	  ;% Final_test_B.Sum
+	  ;% Final_test_B.Sum_k
 	  section.data(15).logicalSrcIdx = 14;
 	  section.data(15).dtTransOffset = 21;
 	
-	  ;% Final_test_B.ZeroOrderHold1
+	  ;% Final_test_B.Sum_l
 	  section.data(16).logicalSrcIdx = 15;
 	  section.data(16).dtTransOffset = 22;
 	
@@ -540,8 +556,8 @@
   ;%
 
 
-  targMap.checksum0 = 2946863433;
-  targMap.checksum1 = 1710839790;
-  targMap.checksum2 = 2091369673;
-  targMap.checksum3 = 1246343091;
+  targMap.checksum0 = 2869276618;
+  targMap.checksum1 = 1565971779;
+  targMap.checksum2 = 3718118278;
+  targMap.checksum3 = 1192946006;
 

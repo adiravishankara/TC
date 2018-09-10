@@ -1,4 +1,4 @@
-pt= csvread("../final3/sync_test.csv",1,0);
+pt= csvread("../final3/thr2pwm.csv",1,0);
 %  curr_testtorq = pt;
 [r,c] = find(pt(:,10) == 0);
 

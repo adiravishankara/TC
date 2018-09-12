@@ -29,11 +29,11 @@
 <tr name="9" id="9">
 <td><a id="l9" class='ln'>9</a></td><td><span class="ct"> *</span></td></tr>
 <tr name="10" id="10">
-<td><a id="l10" class='ln'>10</a></td><td><span class="ct"> * Model version              : 1.42</span></td></tr>
+<td><a id="l10" class='ln'>10</a></td><td><span class="ct"> * Model version              : 1.49</span></td></tr>
 <tr name="11" id="11">
 <td><a id="l11" class='ln'>11</a></td><td><span class="ct"> * Simulink Coder version : 8.14 (R2018a) 06-Feb-2018</span></td></tr>
 <tr name="12" id="12">
-<td><a id="l12" class='ln'>12</a></td><td><span class="ct"> * C source code generated on : Fri Sep  7 12:34:04 2018</span></td></tr>
+<td><a id="l12" class='ln'>12</a></td><td><span class="ct"> * C source code generated on : Wed Sep 12 11:44:58 2018</span></td></tr>
 <tr name="13" id="13">
 <td><a id="l13" class='ln'>13</a></td><td><span class="ct"> *</span></td></tr>
 <tr name="14" id="14">
@@ -85,115 +85,115 @@
 <tr name="37" id="37">
 <td><a id="l37" class='ln'>37</a></td><td></td></tr>
 <tr name="38" id="38">
-<td><a id="l38" class='ln'>38</a></td><td><span class="ct">/* Custom Type definition for MATLABSystem: '&lt;S4&gt;/Analog Input' */</span></td></tr>
+<td><a id="l38" class='ln'>38</a></td><td><span class="pp">#ifndef</span> <a id="38c9" class="tk">typedef_dsp_private_SlidingWindowAv_f_T</a></td></tr>
 <tr name="39" id="39">
-<td><a id="l39" class='ln'>39</a></td><td><span class="pp">#include "MW_SVD.h"</span></td></tr>
+<td><a id="l39" class='ln'>39</a></td><td><span class="pp">#define</span> <a id="39c9" class="tk">typedef_dsp_private_SlidingWindowAv_f_T</a></td></tr>
 <tr name="40" id="40">
-<td><a id="l40" class='ln'>40</a></td><td><span class="pp">#ifndef</span> <a id="40c9" class="tk">typedef_cell_wrap_Final_test_T</a></td></tr>
+<td><a id="l40" class='ln'>40</a></td><td></td></tr>
 <tr name="41" id="41">
-<td><a id="l41" class='ln'>41</a></td><td><span class="pp">#define</span> <a id="41c9" class="tk">typedef_cell_wrap_Final_test_T</a></td></tr>
+<td><a id="l41" class='ln'>41</a></td><td><span class="kw">typedef</span> <span class="kw">struct</span> <span class="br">{</span></td></tr>
 <tr name="42" id="42">
-<td><a id="l42" class='ln'>42</a></td><td></td></tr>
+<td><a id="l42" class='ln'>42</a></td><td>  <a id="42c3" class="tk">int32_T</a> <a id="42c11" class="tk">isInitialized</a>;</td></tr>
 <tr name="43" id="43">
-<td><a id="l43" class='ln'>43</a></td><td><span class="kw">typedef</span> <span class="kw">struct</span> <span class="br">{</span></td></tr>
+<td><a id="l43" class='ln'>43</a></td><td>  <a id="43c3" class="tk">boolean_T</a> <a id="43c13" class="tk">isSetupComplete</a>;</td></tr>
 <tr name="44" id="44">
-<td><a id="l44" class='ln'>44</a></td><td>  <a id="44c3" class="tk">uint32_T</a> <a id="44c12" class="tk">f1</a>[8];</td></tr>
+<td><a id="l44" class='ln'>44</a></td><td>  <a id="44c3" class="tk">real_T</a> <a id="44c10" class="tk">pCumSum</a>;</td></tr>
 <tr name="45" id="45">
-<td><a id="l45" class='ln'>45</a></td><td><span class="br">}</span> <a id="45c3" class="tk">cell_wrap_Final_test_T</a>;</td></tr>
+<td><a id="l45" class='ln'>45</a></td><td>  <a id="45c3" class="tk">real_T</a> <a id="45c10" class="tk">pCumSumRev</a>[9];</td></tr>
 <tr name="46" id="46">
-<td><a id="l46" class='ln'>46</a></td><td></td></tr>
+<td><a id="l46" class='ln'>46</a></td><td>  <a id="46c3" class="tk">real_T</a> <a id="46c10" class="tk">pCumRevIndex</a>;</td></tr>
 <tr name="47" id="47">
-<td><a id="l47" class='ln'>47</a></td><td><span class="pp">#endif</span>                                 <span class="ct">/*typedef_cell_wrap_Final_test_T*/</span></td></tr>
+<td><a id="l47" class='ln'>47</a></td><td><span class="br">}</span> <a id="47c3" class="tk">dsp_private_SlidingWindowAv_f_T</a>;</td></tr>
 <tr name="48" id="48">
 <td><a id="l48" class='ln'>48</a></td><td></td></tr>
 <tr name="49" id="49">
-<td><a id="l49" class='ln'>49</a></td><td><span class="pp">#ifndef</span> <a id="49c9" class="tk">typedef_cell_Final_test_T</a></td></tr>
+<td><a id="l49" class='ln'>49</a></td><td><span class="pp">#endif</span>                                 <span class="ct">/*typedef_dsp_private_SlidingWindowAv_f_T*/</span></td></tr>
 <tr name="50" id="50">
-<td><a id="l50" class='ln'>50</a></td><td><span class="pp">#define</span> <a id="50c9" class="tk">typedef_cell_Final_test_T</a></td></tr>
+<td><a id="l50" class='ln'>50</a></td><td></td></tr>
 <tr name="51" id="51">
-<td><a id="l51" class='ln'>51</a></td><td></td></tr>
+<td><a id="l51" class='ln'>51</a></td><td><span class="ct">/* Custom Type definition for MATLABSystem: '&lt;S3&gt;/Analog Input' */</span></td></tr>
 <tr name="52" id="52">
-<td><a id="l52" class='ln'>52</a></td><td><span class="kw">typedef</span> <span class="kw">struct</span> <span class="br">{</span></td></tr>
+<td><a id="l52" class='ln'>52</a></td><td><span class="pp">#include "MW_SVD.h"</span></td></tr>
 <tr name="53" id="53">
-<td><a id="l53" class='ln'>53</a></td><td>  <a id="53c3" class="tk">char_T</a> <a id="53c10" class="tk">f1</a>;</td></tr>
+<td><a id="l53" class='ln'>53</a></td><td><span class="pp">#ifndef</span> <a id="53c9" class="tk">typedef_cell_wrap_Final_test_T</a></td></tr>
 <tr name="54" id="54">
-<td><a id="l54" class='ln'>54</a></td><td>  <a id="54c3" class="tk">char_T</a> <a id="54c10" class="tk">f2</a>;</td></tr>
+<td><a id="l54" class='ln'>54</a></td><td><span class="pp">#define</span> <a id="54c9" class="tk">typedef_cell_wrap_Final_test_T</a></td></tr>
 <tr name="55" id="55">
-<td><a id="l55" class='ln'>55</a></td><td>  <a id="55c3" class="tk">char_T</a> <a id="55c10" class="tk">f3</a>;</td></tr>
+<td><a id="l55" class='ln'>55</a></td><td></td></tr>
 <tr name="56" id="56">
-<td><a id="l56" class='ln'>56</a></td><td>  <a id="56c3" class="tk">char_T</a> <a id="56c10" class="tk">f4</a>;</td></tr>
+<td><a id="l56" class='ln'>56</a></td><td><span class="kw">typedef</span> <span class="kw">struct</span> <span class="br">{</span></td></tr>
 <tr name="57" id="57">
-<td><a id="l57" class='ln'>57</a></td><td>  <a id="57c3" class="tk">char_T</a> <a id="57c10" class="tk">f5</a>;</td></tr>
+<td><a id="l57" class='ln'>57</a></td><td>  <a id="57c3" class="tk">uint32_T</a> <a id="57c12" class="tk">f1</a>[8];</td></tr>
 <tr name="58" id="58">
-<td><a id="l58" class='ln'>58</a></td><td>  <a id="58c3" class="tk">char_T</a> <a id="58c10" class="tk">f6</a>;</td></tr>
+<td><a id="l58" class='ln'>58</a></td><td><span class="br">}</span> <a id="58c3" class="tk">cell_wrap_Final_test_T</a>;</td></tr>
 <tr name="59" id="59">
-<td><a id="l59" class='ln'>59</a></td><td>  <a id="59c3" class="tk">char_T</a> <a id="59c10" class="tk">f7</a>;</td></tr>
+<td><a id="l59" class='ln'>59</a></td><td></td></tr>
 <tr name="60" id="60">
-<td><a id="l60" class='ln'>60</a></td><td>  <a id="60c3" class="tk">char_T</a> <a id="60c10" class="tk">f8</a>;</td></tr>
+<td><a id="l60" class='ln'>60</a></td><td><span class="pp">#endif</span>                                 <span class="ct">/*typedef_cell_wrap_Final_test_T*/</span></td></tr>
 <tr name="61" id="61">
-<td><a id="l61" class='ln'>61</a></td><td>  <a id="61c3" class="tk">char_T</a> <a id="61c10" class="tk">f9</a>[2];</td></tr>
+<td><a id="l61" class='ln'>61</a></td><td></td></tr>
 <tr name="62" id="62">
-<td><a id="l62" class='ln'>62</a></td><td>  <a id="62c3" class="tk">char_T</a> <a id="62c10" class="tk">f10</a>[2];</td></tr>
+<td><a id="l62" class='ln'>62</a></td><td><span class="pp">#ifndef</span> <a id="62c9" class="tk">typedef_cell_Final_test_T</a></td></tr>
 <tr name="63" id="63">
-<td><a id="l63" class='ln'>63</a></td><td>  <a id="63c3" class="tk">char_T</a> <a id="63c10" class="tk">f11</a>[2];</td></tr>
+<td><a id="l63" class='ln'>63</a></td><td><span class="pp">#define</span> <a id="63c9" class="tk">typedef_cell_Final_test_T</a></td></tr>
 <tr name="64" id="64">
-<td><a id="l64" class='ln'>64</a></td><td>  <a id="64c3" class="tk">char_T</a> <a id="64c10" class="tk">f12</a>[2];</td></tr>
+<td><a id="l64" class='ln'>64</a></td><td></td></tr>
 <tr name="65" id="65">
-<td><a id="l65" class='ln'>65</a></td><td><span class="br">}</span> <a id="65c3" class="tk">cell_Final_test_T</a>;</td></tr>
+<td><a id="l65" class='ln'>65</a></td><td><span class="kw">typedef</span> <span class="kw">struct</span> <span class="br">{</span></td></tr>
 <tr name="66" id="66">
-<td><a id="l66" class='ln'>66</a></td><td></td></tr>
+<td><a id="l66" class='ln'>66</a></td><td>  <a id="66c3" class="tk">char_T</a> <a id="66c10" class="tk">f1</a>;</td></tr>
 <tr name="67" id="67">
-<td><a id="l67" class='ln'>67</a></td><td><span class="pp">#endif</span>                                 <span class="ct">/*typedef_cell_Final_test_T*/</span></td></tr>
+<td><a id="l67" class='ln'>67</a></td><td>  <a id="67c3" class="tk">char_T</a> <a id="67c10" class="tk">f2</a>;</td></tr>
 <tr name="68" id="68">
-<td><a id="l68" class='ln'>68</a></td><td></td></tr>
+<td><a id="l68" class='ln'>68</a></td><td>  <a id="68c3" class="tk">char_T</a> <a id="68c10" class="tk">f3</a>;</td></tr>
 <tr name="69" id="69">
-<td><a id="l69" class='ln'>69</a></td><td><span class="pp">#ifndef</span> <a id="69c9" class="tk">typedef_codertarget_arduinobase_inter_T</a></td></tr>
+<td><a id="l69" class='ln'>69</a></td><td>  <a id="69c3" class="tk">char_T</a> <a id="69c10" class="tk">f4</a>;</td></tr>
 <tr name="70" id="70">
-<td><a id="l70" class='ln'>70</a></td><td><span class="pp">#define</span> <a id="70c9" class="tk">typedef_codertarget_arduinobase_inter_T</a></td></tr>
+<td><a id="l70" class='ln'>70</a></td><td>  <a id="70c3" class="tk">char_T</a> <a id="70c10" class="tk">f5</a>;</td></tr>
 <tr name="71" id="71">
-<td><a id="l71" class='ln'>71</a></td><td></td></tr>
+<td><a id="l71" class='ln'>71</a></td><td>  <a id="71c3" class="tk">char_T</a> <a id="71c10" class="tk">f6</a>;</td></tr>
 <tr name="72" id="72">
-<td><a id="l72" class='ln'>72</a></td><td><span class="kw">typedef</span> <span class="kw">struct</span> <span class="br">{</span></td></tr>
+<td><a id="l72" class='ln'>72</a></td><td>  <a id="72c3" class="tk">char_T</a> <a id="72c10" class="tk">f7</a>;</td></tr>
 <tr name="73" id="73">
-<td><a id="l73" class='ln'>73</a></td><td>  <a id="73c3" class="tk">cell_Final_test_T</a> <a id="73c21" class="tk">AvailablePwmPinNames</a>;</td></tr>
+<td><a id="l73" class='ln'>73</a></td><td>  <a id="73c3" class="tk">char_T</a> <a id="73c10" class="tk">f8</a>;</td></tr>
 <tr name="74" id="74">
-<td><a id="l74" class='ln'>74</a></td><td><span class="br">}</span> <a id="74c3" class="tk">codertarget_arduinobase_inter_T</a>;</td></tr>
+<td><a id="l74" class='ln'>74</a></td><td>  <a id="74c3" class="tk">char_T</a> <a id="74c10" class="tk">f9</a>[2];</td></tr>
 <tr name="75" id="75">
-<td><a id="l75" class='ln'>75</a></td><td></td></tr>
+<td><a id="l75" class='ln'>75</a></td><td>  <a id="75c3" class="tk">char_T</a> <a id="75c10" class="tk">f10</a>[2];</td></tr>
 <tr name="76" id="76">
-<td><a id="l76" class='ln'>76</a></td><td><span class="pp">#endif</span>                                 <span class="ct">/*typedef_codertarget_arduinobase_inter_T*/</span></td></tr>
+<td><a id="l76" class='ln'>76</a></td><td>  <a id="76c3" class="tk">char_T</a> <a id="76c10" class="tk">f11</a>[2];</td></tr>
 <tr name="77" id="77">
-<td><a id="l77" class='ln'>77</a></td><td></td></tr>
+<td><a id="l77" class='ln'>77</a></td><td>  <a id="77c3" class="tk">char_T</a> <a id="77c10" class="tk">f12</a>[2];</td></tr>
 <tr name="78" id="78">
-<td><a id="l78" class='ln'>78</a></td><td><span class="pp">#ifndef</span> <a id="78c9" class="tk">typedef_codertarget_arduinobase_int_f_T</a></td></tr>
+<td><a id="l78" class='ln'>78</a></td><td><span class="br">}</span> <a id="78c3" class="tk">cell_Final_test_T</a>;</td></tr>
 <tr name="79" id="79">
-<td><a id="l79" class='ln'>79</a></td><td><span class="pp">#define</span> <a id="79c9" class="tk">typedef_codertarget_arduinobase_int_f_T</a></td></tr>
+<td><a id="l79" class='ln'>79</a></td><td></td></tr>
 <tr name="80" id="80">
-<td><a id="l80" class='ln'>80</a></td><td></td></tr>
+<td><a id="l80" class='ln'>80</a></td><td><span class="pp">#endif</span>                                 <span class="ct">/*typedef_cell_Final_test_T*/</span></td></tr>
 <tr name="81" id="81">
-<td><a id="l81" class='ln'>81</a></td><td><span class="kw">typedef</span> <span class="kw">struct</span> <span class="br">{</span></td></tr>
+<td><a id="l81" class='ln'>81</a></td><td></td></tr>
 <tr name="82" id="82">
-<td><a id="l82" class='ln'>82</a></td><td>  <a id="82c3" class="tk">boolean_T</a> <a id="82c13" class="tk">matlabCodegenIsDeleted</a>;</td></tr>
+<td><a id="l82" class='ln'>82</a></td><td><span class="pp">#ifndef</span> <a id="82c9" class="tk">typedef_codertarget_arduinobase_inter_T</a></td></tr>
 <tr name="83" id="83">
-<td><a id="l83" class='ln'>83</a></td><td>  <a id="83c3" class="tk">int32_T</a> <a id="83c11" class="tk">isInitialized</a>;</td></tr>
+<td><a id="l83" class='ln'>83</a></td><td><span class="pp">#define</span> <a id="83c9" class="tk">typedef_codertarget_arduinobase_inter_T</a></td></tr>
 <tr name="84" id="84">
-<td><a id="l84" class='ln'>84</a></td><td>  <a id="84c3" class="tk">boolean_T</a> <a id="84c13" class="tk">isSetupComplete</a>;</td></tr>
+<td><a id="l84" class='ln'>84</a></td><td></td></tr>
 <tr name="85" id="85">
-<td><a id="l85" class='ln'>85</a></td><td>  <a id="85c3" class="tk">codertarget_arduinobase_inter_T</a> <a id="85c35" class="tk">Hw</a>;</td></tr>
+<td><a id="l85" class='ln'>85</a></td><td><span class="kw">typedef</span> <span class="kw">struct</span> <span class="br">{</span></td></tr>
 <tr name="86" id="86">
-<td><a id="l86" class='ln'>86</a></td><td>  <a id="86c3" class="tk">MW_Handle_Type</a> <a id="86c18" class="tk">MW_PWM_HANDLE</a>;</td></tr>
+<td><a id="l86" class='ln'>86</a></td><td>  <a id="86c3" class="tk">cell_Final_test_T</a> <a id="86c21" class="tk">AvailablePwmPinNames</a>;</td></tr>
 <tr name="87" id="87">
-<td><a id="l87" class='ln'>87</a></td><td><span class="br">}</span> <a id="87c3" class="tk">codertarget_arduinobase_int_f_T</a>;</td></tr>
+<td><a id="l87" class='ln'>87</a></td><td><span class="br">}</span> <a id="87c3" class="tk">codertarget_arduinobase_inter_T</a>;</td></tr>
 <tr name="88" id="88">
 <td><a id="l88" class='ln'>88</a></td><td></td></tr>
 <tr name="89" id="89">
-<td><a id="l89" class='ln'>89</a></td><td><span class="pp">#endif</span>                                 <span class="ct">/*typedef_codertarget_arduinobase_int_f_T*/</span></td></tr>
+<td><a id="l89" class='ln'>89</a></td><td><span class="pp">#endif</span>                                 <span class="ct">/*typedef_codertarget_arduinobase_inter_T*/</span></td></tr>
 <tr name="90" id="90">
 <td><a id="l90" class='ln'>90</a></td><td></td></tr>
 <tr name="91" id="91">
-<td><a id="l91" class='ln'>91</a></td><td><span class="pp">#ifndef</span> <a id="91c9" class="tk">typedef_codertarget_arduinobase_in_fd_T</a></td></tr>
+<td><a id="l91" class='ln'>91</a></td><td><span class="pp">#ifndef</span> <a id="91c9" class="tk">typedef_codertarget_arduinobase_int_f_T</a></td></tr>
 <tr name="92" id="92">
-<td><a id="l92" class='ln'>92</a></td><td><span class="pp">#define</span> <a id="92c9" class="tk">typedef_codertarget_arduinobase_in_fd_T</a></td></tr>
+<td><a id="l92" class='ln'>92</a></td><td><span class="pp">#define</span> <a id="92c9" class="tk">typedef_codertarget_arduinobase_int_f_T</a></td></tr>
 <tr name="93" id="93">
 <td><a id="l93" class='ln'>93</a></td><td></td></tr>
 <tr name="94" id="94">
@@ -207,63 +207,119 @@
 <tr name="98" id="98">
 <td><a id="l98" class='ln'>98</a></td><td>  <a id="98c3" class="tk">codertarget_arduinobase_inter_T</a> <a id="98c35" class="tk">Hw</a>;</td></tr>
 <tr name="99" id="99">
-<td><a id="l99" class='ln'>99</a></td><td>  <a id="99c3" class="tk">MW_Handle_Type</a> <a id="99c18" class="tk">MW_ANALOGIN_HANDLE</a>;</td></tr>
+<td><a id="l99" class='ln'>99</a></td><td>  <a id="99c3" class="tk">MW_Handle_Type</a> <a id="99c18" class="tk">MW_PWM_HANDLE</a>;</td></tr>
 <tr name="100" id="100">
-<td><a id="l100" class='ln'>100</a></td><td>  <a id="100c3" class="tk">real_T</a> <a id="100c10" class="tk">SampleTime</a>;</td></tr>
+<td><a id="l100" class='ln'>100</a></td><td><span class="br">}</span> <a id="100c3" class="tk">codertarget_arduinobase_int_f_T</a>;</td></tr>
 <tr name="101" id="101">
-<td><a id="l101" class='ln'>101</a></td><td><span class="br">}</span> <a id="101c3" class="tk">codertarget_arduinobase_in_fd_T</a>;</td></tr>
+<td><a id="l101" class='ln'>101</a></td><td></td></tr>
 <tr name="102" id="102">
-<td><a id="l102" class='ln'>102</a></td><td></td></tr>
+<td><a id="l102" class='ln'>102</a></td><td><span class="pp">#endif</span>                                 <span class="ct">/*typedef_codertarget_arduinobase_int_f_T*/</span></td></tr>
 <tr name="103" id="103">
-<td><a id="l103" class='ln'>103</a></td><td><span class="pp">#endif</span>                                 <span class="ct">/*typedef_codertarget_arduinobase_in_fd_T*/</span></td></tr>
+<td><a id="l103" class='ln'>103</a></td><td></td></tr>
 <tr name="104" id="104">
-<td><a id="l104" class='ln'>104</a></td><td></td></tr>
+<td><a id="l104" class='ln'>104</a></td><td><span class="pp">#ifndef</span> <a id="104c9" class="tk">typedef_codertarget_arduinobase_in_fd_T</a></td></tr>
 <tr name="105" id="105">
-<td><a id="l105" class='ln'>105</a></td><td><span class="pp">#ifndef</span> <a id="105c9" class="tk">typedef_dsp_simulink_MovingAverage_Fi_T</a></td></tr>
+<td><a id="l105" class='ln'>105</a></td><td><span class="pp">#define</span> <a id="105c9" class="tk">typedef_codertarget_arduinobase_in_fd_T</a></td></tr>
 <tr name="106" id="106">
-<td><a id="l106" class='ln'>106</a></td><td><span class="pp">#define</span> <a id="106c9" class="tk">typedef_dsp_simulink_MovingAverage_Fi_T</a></td></tr>
+<td><a id="l106" class='ln'>106</a></td><td></td></tr>
 <tr name="107" id="107">
-<td><a id="l107" class='ln'>107</a></td><td></td></tr>
+<td><a id="l107" class='ln'>107</a></td><td><span class="kw">typedef</span> <span class="kw">struct</span> <span class="br">{</span></td></tr>
 <tr name="108" id="108">
-<td><a id="l108" class='ln'>108</a></td><td><span class="kw">typedef</span> <span class="kw">struct</span> <span class="br">{</span></td></tr>
+<td><a id="l108" class='ln'>108</a></td><td>  <a id="108c3" class="tk">boolean_T</a> <a id="108c13" class="tk">matlabCodegenIsDeleted</a>;</td></tr>
 <tr name="109" id="109">
-<td><a id="l109" class='ln'>109</a></td><td>  <a id="109c3" class="tk">boolean_T</a> <a id="109c13" class="tk">matlabCodegenIsDeleted</a>;</td></tr>
+<td><a id="l109" class='ln'>109</a></td><td>  <a id="109c3" class="tk">int32_T</a> <a id="109c11" class="tk">isInitialized</a>;</td></tr>
 <tr name="110" id="110">
-<td><a id="l110" class='ln'>110</a></td><td>  <a id="110c3" class="tk">int32_T</a> <a id="110c11" class="tk">isInitialized</a>;</td></tr>
+<td><a id="l110" class='ln'>110</a></td><td>  <a id="110c3" class="tk">boolean_T</a> <a id="110c13" class="tk">isSetupComplete</a>;</td></tr>
 <tr name="111" id="111">
-<td><a id="l111" class='ln'>111</a></td><td>  <a id="111c3" class="tk">boolean_T</a> <a id="111c13" class="tk">isSetupComplete</a>;</td></tr>
+<td><a id="l111" class='ln'>111</a></td><td>  <a id="111c3" class="tk">codertarget_arduinobase_inter_T</a> <a id="111c35" class="tk">Hw</a>;</td></tr>
 <tr name="112" id="112">
-<td><a id="l112" class='ln'>112</a></td><td>  <a id="112c3" class="tk">boolean_T</a> <a id="112c13" class="tk">TunablePropsChanged</a>;</td></tr>
+<td><a id="l112" class='ln'>112</a></td><td>  <a id="112c3" class="tk">MW_Handle_Type</a> <a id="112c18" class="tk">MW_ANALOGIN_HANDLE</a>;</td></tr>
 <tr name="113" id="113">
-<td><a id="l113" class='ln'>113</a></td><td>  <a id="113c3" class="tk">cell_wrap_Final_test_T</a> <a id="113c26" class="tk">inputVarSize</a>;</td></tr>
+<td><a id="l113" class='ln'>113</a></td><td>  <a id="113c3" class="tk">real_T</a> <a id="113c10" class="tk">SampleTime</a>;</td></tr>
 <tr name="114" id="114">
-<td><a id="l114" class='ln'>114</a></td><td>  <a id="114c3" class="tk">dsp_private_SlidingWindowAver_T</a> <a id="114c35" class="tk">*</a><a id="114c36" class="tk">pStatistic</a>;</td></tr>
+<td><a id="l114" class='ln'>114</a></td><td><span class="br">}</span> <a id="114c3" class="tk">codertarget_arduinobase_in_fd_T</a>;</td></tr>
 <tr name="115" id="115">
-<td><a id="l115" class='ln'>115</a></td><td>  <a id="115c3" class="tk">int32_T</a> <a id="115c11" class="tk">NumChannels</a>;</td></tr>
+<td><a id="l115" class='ln'>115</a></td><td></td></tr>
 <tr name="116" id="116">
-<td><a id="l116" class='ln'>116</a></td><td><span class="br">}</span> <a id="116c3" class="tk">dsp_simulink_MovingAverage_Fi_T</a>;</td></tr>
+<td><a id="l116" class='ln'>116</a></td><td><span class="pp">#endif</span>                                 <span class="ct">/*typedef_codertarget_arduinobase_in_fd_T*/</span></td></tr>
 <tr name="117" id="117">
 <td><a id="l117" class='ln'>117</a></td><td></td></tr>
 <tr name="118" id="118">
-<td><a id="l118" class='ln'>118</a></td><td><span class="pp">#endif</span>                                 <span class="ct">/*typedef_dsp_simulink_MovingAverage_Fi_T*/</span></td></tr>
+<td><a id="l118" class='ln'>118</a></td><td><span class="pp">#ifndef</span> <a id="118c9" class="tk">typedef_dsp_simulink_MovingAverage_Fi_T</a></td></tr>
 <tr name="119" id="119">
-<td><a id="l119" class='ln'>119</a></td><td></td></tr>
+<td><a id="l119" class='ln'>119</a></td><td><span class="pp">#define</span> <a id="119c9" class="tk">typedef_dsp_simulink_MovingAverage_Fi_T</a></td></tr>
 <tr name="120" id="120">
-<td><a id="l120" class='ln'>120</a></td><td><span class="ct">/* Parameters (default storage) */</span></td></tr>
+<td><a id="l120" class='ln'>120</a></td><td></td></tr>
 <tr name="121" id="121">
-<td><a id="l121" class='ln'>121</a></td><td><span class="kw">typedef</span> <span class="kw">struct</span> <a id="121c16" class="tk">P_Final_test_T_</a> <a id="121c32" class="tk">P_Final_test_T</a>;</td></tr>
+<td><a id="l121" class='ln'>121</a></td><td><span class="kw">typedef</span> <span class="kw">struct</span> <span class="br">{</span></td></tr>
 <tr name="122" id="122">
-<td><a id="l122" class='ln'>122</a></td><td></td></tr>
+<td><a id="l122" class='ln'>122</a></td><td>  <a id="122c3" class="tk">boolean_T</a> <a id="122c13" class="tk">matlabCodegenIsDeleted</a>;</td></tr>
 <tr name="123" id="123">
-<td><a id="l123" class='ln'>123</a></td><td><span class="ct">/* Forward declaration for rtModel */</span></td></tr>
+<td><a id="l123" class='ln'>123</a></td><td>  <a id="123c3" class="tk">int32_T</a> <a id="123c11" class="tk">isInitialized</a>;</td></tr>
 <tr name="124" id="124">
-<td><a id="l124" class='ln'>124</a></td><td><span class="kw">typedef</span> <span class="kw">struct</span> <a id="124c16" class="tk">tag_RTM_Final_test_T</a> <a id="124c37" class="tk">RT_MODEL_Final_test_T</a>;</td></tr>
+<td><a id="l124" class='ln'>124</a></td><td>  <a id="124c3" class="tk">boolean_T</a> <a id="124c13" class="tk">isSetupComplete</a>;</td></tr>
 <tr name="125" id="125">
-<td><a id="l125" class='ln'>125</a></td><td></td></tr>
+<td><a id="l125" class='ln'>125</a></td><td>  <a id="125c3" class="tk">boolean_T</a> <a id="125c13" class="tk">TunablePropsChanged</a>;</td></tr>
 <tr name="126" id="126">
-<td><a id="l126" class='ln'>126</a></td><td><span class="pp">#endif</span>                                 <span class="ct">/* RTW_HEADER_Final_test_types_h_ */</span></td></tr>
+<td><a id="l126" class='ln'>126</a></td><td>  <a id="126c3" class="tk">cell_wrap_Final_test_T</a> <a id="126c26" class="tk">inputVarSize</a>;</td></tr>
 <tr name="127" id="127">
-<td><a id="l127" class='ln'>127</a></td><td></td></tr>
+<td><a id="l127" class='ln'>127</a></td><td>  <a id="127c3" class="tk">dsp_private_SlidingWindowAver_T</a> <a id="127c35" class="tk">*</a><a id="127c36" class="tk">pStatistic</a>;</td></tr>
+<tr name="128" id="128">
+<td><a id="l128" class='ln'>128</a></td><td>  <a id="128c3" class="tk">int32_T</a> <a id="128c11" class="tk">NumChannels</a>;</td></tr>
+<tr name="129" id="129">
+<td><a id="l129" class='ln'>129</a></td><td><span class="br">}</span> <a id="129c3" class="tk">dsp_simulink_MovingAverage_Fi_T</a>;</td></tr>
+<tr name="130" id="130">
+<td><a id="l130" class='ln'>130</a></td><td></td></tr>
+<tr name="131" id="131">
+<td><a id="l131" class='ln'>131</a></td><td><span class="pp">#endif</span>                                 <span class="ct">/*typedef_dsp_simulink_MovingAverage_Fi_T*/</span></td></tr>
+<tr name="132" id="132">
+<td><a id="l132" class='ln'>132</a></td><td></td></tr>
+<tr name="133" id="133">
+<td><a id="l133" class='ln'>133</a></td><td><span class="pp">#ifndef</span> <a id="133c9" class="tk">typedef_dsp_simulink_MovingAverage_f_T</a></td></tr>
+<tr name="134" id="134">
+<td><a id="l134" class='ln'>134</a></td><td><span class="pp">#define</span> <a id="134c9" class="tk">typedef_dsp_simulink_MovingAverage_f_T</a></td></tr>
+<tr name="135" id="135">
+<td><a id="l135" class='ln'>135</a></td><td></td></tr>
+<tr name="136" id="136">
+<td><a id="l136" class='ln'>136</a></td><td><span class="kw">typedef</span> <span class="kw">struct</span> <span class="br">{</span></td></tr>
+<tr name="137" id="137">
+<td><a id="l137" class='ln'>137</a></td><td>  <a id="137c3" class="tk">boolean_T</a> <a id="137c13" class="tk">matlabCodegenIsDeleted</a>;</td></tr>
+<tr name="138" id="138">
+<td><a id="l138" class='ln'>138</a></td><td>  <a id="138c3" class="tk">int32_T</a> <a id="138c11" class="tk">isInitialized</a>;</td></tr>
+<tr name="139" id="139">
+<td><a id="l139" class='ln'>139</a></td><td>  <a id="139c3" class="tk">boolean_T</a> <a id="139c13" class="tk">isSetupComplete</a>;</td></tr>
+<tr name="140" id="140">
+<td><a id="l140" class='ln'>140</a></td><td>  <a id="140c3" class="tk">boolean_T</a> <a id="140c13" class="tk">TunablePropsChanged</a>;</td></tr>
+<tr name="141" id="141">
+<td><a id="l141" class='ln'>141</a></td><td>  <a id="141c3" class="tk">cell_wrap_Final_test_T</a> <a id="141c26" class="tk">inputVarSize</a>;</td></tr>
+<tr name="142" id="142">
+<td><a id="l142" class='ln'>142</a></td><td>  <a id="142c3" class="tk">dsp_private_SlidingWindowAv_f_T</a> <a id="142c35" class="tk">*</a><a id="142c36" class="tk">pStatistic</a>;</td></tr>
+<tr name="143" id="143">
+<td><a id="l143" class='ln'>143</a></td><td>  <a id="143c3" class="tk">int32_T</a> <a id="143c11" class="tk">NumChannels</a>;</td></tr>
+<tr name="144" id="144">
+<td><a id="l144" class='ln'>144</a></td><td><span class="br">}</span> <a id="144c3" class="tk">dsp_simulink_MovingAverage_f_T</a>;</td></tr>
+<tr name="145" id="145">
+<td><a id="l145" class='ln'>145</a></td><td></td></tr>
+<tr name="146" id="146">
+<td><a id="l146" class='ln'>146</a></td><td><span class="pp">#endif</span>                                 <span class="ct">/*typedef_dsp_simulink_MovingAverage_f_T*/</span></td></tr>
+<tr name="147" id="147">
+<td><a id="l147" class='ln'>147</a></td><td></td></tr>
+<tr name="148" id="148">
+<td><a id="l148" class='ln'>148</a></td><td><span class="ct">/* Parameters (default storage) */</span></td></tr>
+<tr name="149" id="149">
+<td><a id="l149" class='ln'>149</a></td><td><span class="kw">typedef</span> <span class="kw">struct</span> <a id="149c16" class="tk">P_Final_test_T_</a> <a id="149c32" class="tk">P_Final_test_T</a>;</td></tr>
+<tr name="150" id="150">
+<td><a id="l150" class='ln'>150</a></td><td></td></tr>
+<tr name="151" id="151">
+<td><a id="l151" class='ln'>151</a></td><td><span class="ct">/* Forward declaration for rtModel */</span></td></tr>
+<tr name="152" id="152">
+<td><a id="l152" class='ln'>152</a></td><td><span class="kw">typedef</span> <span class="kw">struct</span> <a id="152c16" class="tk">tag_RTM_Final_test_T</a> <a id="152c37" class="tk">RT_MODEL_Final_test_T</a>;</td></tr>
+<tr name="153" id="153">
+<td><a id="l153" class='ln'>153</a></td><td></td></tr>
+<tr name="154" id="154">
+<td><a id="l154" class='ln'>154</a></td><td><span class="pp">#endif</span>                                 <span class="ct">/* RTW_HEADER_Final_test_types_h_ */</span></td></tr>
+<tr name="155" id="155">
+<td><a id="l155" class='ln'>155</a></td><td></td></tr>
 </table>
 </pre>
 </body>

@@ -7,9 +7,9 @@
  *
  * Code generation for model "Final_test".
  *
- * Model version              : 1.42
+ * Model version              : 1.49
  * Simulink Coder version : 8.14 (R2018a) 06-Feb-2018
- * C source code generated on : Fri Sep  7 12:34:04 2018
+ * C source code generated on : Wed Sep 12 11:44:58 2018
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -35,7 +35,20 @@ typedef struct {
 
 #endif                                 /*typedef_dsp_private_SlidingWindowAver_T*/
 
-/* Custom Type definition for MATLABSystem: '<S4>/Analog Input' */
+#ifndef typedef_dsp_private_SlidingWindowAv_f_T
+#define typedef_dsp_private_SlidingWindowAv_f_T
+
+typedef struct {
+  int32_T isInitialized;
+  boolean_T isSetupComplete;
+  real_T pCumSum;
+  real_T pCumSumRev[9];
+  real_T pCumRevIndex;
+} dsp_private_SlidingWindowAv_f_T;
+
+#endif                                 /*typedef_dsp_private_SlidingWindowAv_f_T*/
+
+/* Custom Type definition for MATLABSystem: '<S3>/Analog Input' */
 #include "MW_SVD.h"
 #ifndef typedef_cell_wrap_Final_test_T
 #define typedef_cell_wrap_Final_test_T
@@ -116,6 +129,21 @@ typedef struct {
 } dsp_simulink_MovingAverage_Fi_T;
 
 #endif                                 /*typedef_dsp_simulink_MovingAverage_Fi_T*/
+
+#ifndef typedef_dsp_simulink_MovingAverage_f_T
+#define typedef_dsp_simulink_MovingAverage_f_T
+
+typedef struct {
+  boolean_T matlabCodegenIsDeleted;
+  int32_T isInitialized;
+  boolean_T isSetupComplete;
+  boolean_T TunablePropsChanged;
+  cell_wrap_Final_test_T inputVarSize;
+  dsp_private_SlidingWindowAv_f_T *pStatistic;
+  int32_T NumChannels;
+} dsp_simulink_MovingAverage_f_T;
+
+#endif                                 /*typedef_dsp_simulink_MovingAverage_f_T*/
 
 /* Parameters (default storage) */
 typedef struct P_Final_test_T_ P_Final_test_T;

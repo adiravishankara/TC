@@ -7,9 +7,9 @@
  *
  * Code generation for model "Final_test".
  *
- * Model version              : 1.42
+ * Model version              : 1.49
  * Simulink Coder version : 8.14 (R2018a) 06-Feb-2018
- * C source code generated on : Fri Sep  7 12:34:04 2018
+ * C source code generated on : Wed Sep 12 11:44:58 2018
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -38,6 +38,8 @@ static uint_T rtDataTypeSizes[] = {
   2*sizeof(uint32_T),
   sizeof(dsp_simulink_MovingAverage_Fi_T),
   sizeof(dsp_private_SlidingWindowAver_T),
+  sizeof(dsp_simulink_MovingAverage_f_T),
+  sizeof(dsp_private_SlidingWindowAv_f_T),
   sizeof(codertarget_arduinobase_int_f_T),
   sizeof(codertarget_arduinobase_in_fd_T)
 };
@@ -60,45 +62,51 @@ static const char_T * rtDataTypeNames[] = {
   "timer_uint32_pair_T",
   "dsp_simulink_MovingAverage_Fi_T",
   "dsp_private_SlidingWindowAver_T",
+  "dsp_simulink_MovingAverage_f_T",
+  "dsp_private_SlidingWindowAv_f_T",
   "codertarget_arduinobase_int_f_T",
   "codertarget_arduinobase_in_fd_T"
 };
 
 /* data type transitions for block I/O structure */
 static DataTypeTransition rtBTransitions[] = {
-  { (char_T *)(&Final_test_B.TransferFcn1), 0, 0, 24 }
+  { (char_T *)(&Final_test_B.Constant2), 0, 0, 28 }
   ,
+
+  { (char_T *)(&Final_test_DW.gobj_0), 17, 0, 2 },
 
   { (char_T *)(&Final_test_DW.obj), 14, 0, 1 },
 
-  { (char_T *)(&Final_test_DW.gobj_0), 15, 0, 2 },
-
-  { (char_T *)(&Final_test_DW.obj_g), 17, 0, 1 },
-
   { (char_T *)(&Final_test_DW.obj_n), 16, 0, 1 },
 
-  { (char_T *)(&Final_test_DW.DelayInput1_DSTATE), 0, 0, 8 },
+  { (char_T *)(&Final_test_DW.gobj_0_n), 15, 0, 2 },
 
-  { (char_T *)(&Final_test_DW.FromWs_PWORK.TimePtr), 11, 0, 9 },
+  { (char_T *)(&Final_test_DW.obj_g), 19, 0, 1 },
+
+  { (char_T *)(&Final_test_DW.obj_nv), 18, 0, 1 },
+
+  { (char_T *)(&Final_test_DW.DelayInput1_DSTATE), 0, 0, 11 },
+
+  { (char_T *)(&Final_test_DW.FromWs_PWORK.TimePtr), 11, 0, 11 },
 
   { (char_T *)(&Final_test_DW.FromWs_IWORK.PrevIndex), 10, 0, 1 },
 
-  { (char_T *)(&Final_test_DW.Integrator_PrevResetState), 2, 0, 4 },
+  { (char_T *)(&Final_test_DW.Integrator_PrevResetState), 2, 0, 5 },
 
-  { (char_T *)(&Final_test_DW.objisempty), 8, 0, 3 }
+  { (char_T *)(&Final_test_DW.objisempty), 8, 0, 4 }
 };
 
 /* data type transition table for block I/O structure */
 static DataTypeTransitionTable rtBTransTable = {
-  10U,
+  12U,
   rtBTransitions
 };
 
 /* data type transitions for Parameters structure */
 static DataTypeTransition rtPTransitions[] = {
-  { (char_T *)(&Final_test_P.DiscretePIDController_I), 0, 0, 41 },
+  { (char_T *)(&Final_test_P.DiscretePIDController_I), 0, 0, 49 },
 
-  { (char_T *)(&Final_test_P.ManualSwitch_CurrentSetting), 3, 0, 3 }
+  { (char_T *)(&Final_test_P.ManualSwitch_CurrentSetting), 3, 0, 4 }
 };
 
 /* data type transition table for Parameters structure */

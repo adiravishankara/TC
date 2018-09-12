@@ -7,9 +7,9 @@
  *
  * Code generation for model "Final_test".
  *
- * Model version              : 1.42
+ * Model version              : 1.49
  * Simulink Coder version : 8.14 (R2018a) 06-Feb-2018
- * C source code generated on : Fri Sep  7 12:34:04 2018
+ * C source code generated on : Wed Sep 12 11:44:58 2018
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -21,8 +21,8 @@
 #ifndef RTW_HEADER_Final_test_h_
 #define RTW_HEADER_Final_test_h_
 #include <math.h>
-#include <float.h>
 #include <string.h>
+#include <float.h>
 #include <stddef.h>
 #ifndef Final_test_COMMON_INCLUDES_
 # define Final_test_COMMON_INCLUDES_
@@ -176,50 +176,60 @@
 
 /* Block signals (default storage) */
 typedef struct {
+  real_T csumrev[9];
   real_T P_bar[4];
   real_T a[4];
   real_T xh_bar[2];
   real_T K[2];
-  real_T TransferFcn1;                 /* '<S4>/Transfer Fcn1' */
-  real_T e;                            /* '<S9>/Sum' */
-  real_T Product;                      /* '<S9>/Product' */
-  real_T Sum2;                         /* '<S9>/Sum2' */
-  real_T Product_m;                    /* '<S3>/Product' */
-  real_T ManualSwitch2;                /* '<Root>/Manual Switch2' */
-  real_T Add;                          /* '<S3>/Add' */
-  real_T Merge;                        /* '<S3>/Merge' */
+  real_T Constant2;                    /* '<Root>/Constant2' */
+  real_T e;                            /* '<S7>/Sum' */
+  real_T TransferFcn1;                 /* '<S3>/Transfer Fcn1' */
+  real_T Sum;                          /* '<S20>/Sum' */
+  real_T Saturation;                   /* '<S7>/Saturation' */
+  real_T Product;                      /* '<S5>/Product' */
+  real_T Sum2;                         /* '<S5>/Sum2' */
+  real_T Product_m;                    /* '<S2>/Product' */
+  real_T ManualPWM;                    /* '<Root>/Manual PWM' */
+  real_T Add;                          /* '<S2>/Add' */
+  real_T Merge;                        /* '<S2>/Merge' */
+  real_T Integrator1;                  /* '<S8>/Integrator1' */
+  real_T Sum_k;                        /* '<S6>/Sum' */
   real_T Clock;                        /* '<Root>/Clock' */
-  real_T Sum;                          /* '<S10>/Sum' */
-  real_T Integrator1;                  /* '<S11>/Integrator1' */
-  real_T ManualSwitch1[8];             /* '<Root>/Manual Switch1' */
-  real_T Gain2;                        /* '<S11>/Gain2' */
-  real_T Integrator;                   /* '<S11>/Integrator' */
-  real_T Sum_k;                        /* '<S11>/Sum' */
-  real_T Sum_l;                        /* '<S4>/Sum' */
+  real_T ManualSwitch1[7];             /* '<Root>/Manual Switch1' */
+  real_T Integrator;                   /* '<S8>/Integrator' */
+  real_T Gain2;                        /* '<S8>/Gain2' */
+  real_T Sum_kf;                       /* '<S8>/Sum' */
+  real_T Sum_l;                        /* '<S3>/Sum' */
+  real_T xest;                         /* '<S1>/MATLAB Function' */
+  real_T MovingAverage1;               /* '<Root>/Moving Average1' */
   real_T MovingAverage;                /* '<Root>/Moving Average' */
+  real_T cumRevIndex;
+  real_T csum;
   real_T z;
 } B_Final_test_T;
 
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
+  dsp_private_SlidingWindowAv_f_T gobj_0;/* '<Root>/Moving Average1' */
+  dsp_private_SlidingWindowAv_f_T gobj_1;/* '<Root>/Moving Average1' */
   dsp_simulink_MovingAverage_Fi_T obj; /* '<Root>/Moving Average' */
-  dsp_private_SlidingWindowAver_T gobj_0;/* '<Root>/Moving Average' */
-  dsp_private_SlidingWindowAver_T gobj_1;/* '<Root>/Moving Average' */
-  codertarget_arduinobase_in_fd_T obj_g;/* '<S4>/Analog Input' */
-  codertarget_arduinobase_int_f_T obj_n;/* '<S3>/PWM1' */
-  real_T DelayInput1_DSTATE;           /* '<S55>/Delay Input1' */
-  real_T Integrator_DSTATE;            /* '<S56>/Integrator' */
+  dsp_simulink_MovingAverage_f_T obj_n;/* '<Root>/Moving Average1' */
+  dsp_private_SlidingWindowAver_T gobj_0_n;/* '<Root>/Moving Average' */
+  dsp_private_SlidingWindowAver_T gobj_1_i;/* '<Root>/Moving Average' */
+  codertarget_arduinobase_in_fd_T obj_g;/* '<S3>/Analog Input' */
+  codertarget_arduinobase_int_f_T obj_nv;/* '<S2>/PWM1' */
+  real_T DelayInput1_DSTATE;           /* '<S16>/Delay Input1' */
+  real_T Integrator_DSTATE;            /* '<S20>/Integrator' */
+  real_T DelayInput1_DSTATE_m;         /* '<S14>/Delay Input1' */
+  real_T Integrator_DSTATE_g;          /* '<S15>/Integrator' */
+  real_T Memory_PreviousInput;         /* '<S1>/Memory' */
   real_T P[4];                         /* '<S1>/MATLAB Function' */
   real_T xh[2];                        /* '<S1>/MATLAB Function' */
   struct {
     void *TimePtr;
     void *DataPtr;
     void *RSimInfoPtr;
-  } FromWs_PWORK;                      /* '<S8>/FromWs' */
-
-  struct {
-    void *LoggedData[4];
-  } Scope_PWORK;                       /* '<Root>/Scope' */
+  } FromWs_PWORK;                      /* '<S4>/FromWs' */
 
   struct {
     void *LoggedData;
@@ -227,7 +237,19 @@ typedef struct {
 
   struct {
     void *LoggedData;
-  } Scope_PWORK_o;                     /* '<S9>/Scope' */
+  } Scope3_PWORK;                      /* '<Root>/Scope3' */
+
+  struct {
+    void *LoggedData;
+  } Scope_PWORK;                       /* '<S5>/Scope' */
+
+  struct {
+    void *LoggedData;
+  } Scope_PWORK_f;                     /* '<Root>/Scope' */
+
+  struct {
+    void *LoggedData[2];
+  } Scope_PWORK_h;                     /* '<S7>/Scope' */
 
   struct {
     void *LoggedData;
@@ -235,40 +257,50 @@ typedef struct {
 
   struct {
     void *LoggedData;
-  } Scope1_PWORK_g;                    /* '<S4>/Scope1' */
+  } Scope1_PWORK_g;                    /* '<S3>/Scope1' */
+
+  struct {
+    void *LoggedData;
+  } Scope_PWORK_a;                     /* '<S2>/Scope' */
+
+  struct {
+    void *LoggedData;
+  } Scope2_PWORK;                      /* '<Root>/Scope2' */
 
   struct {
     int_T PrevIndex;
-  } FromWs_IWORK;                      /* '<S8>/FromWs' */
+  } FromWs_IWORK;                      /* '<S4>/FromWs' */
 
-  int8_T Integrator_PrevResetState;    /* '<S56>/Integrator' */
-  int8_T If_ActiveSubsystem;           /* '<S3>/If' */
-  int8_T IfActionSubsystem1_SubsysRanBC;/* '<S3>/If Action Subsystem1' */
-  int8_T IfActionSubsystem_SubsysRanBC;/* '<S3>/If Action Subsystem' */
-  boolean_T objisempty;                /* '<S4>/Analog Input' */
-  boolean_T objisempty_b;              /* '<S3>/PWM1' */
+  int8_T Integrator_PrevResetState;    /* '<S20>/Integrator' */
+  int8_T Integrator_PrevResetState_k;  /* '<S15>/Integrator' */
+  int8_T If_ActiveSubsystem;           /* '<S2>/If' */
+  int8_T IfActionSubsystem1_SubsysRanBC;/* '<S2>/If Action Subsystem1' */
+  int8_T IfActionSubsystem_SubsysRanBC;/* '<S2>/If Action Subsystem' */
+  boolean_T objisempty;                /* '<S3>/Analog Input' */
+  boolean_T objisempty_b;              /* '<S2>/PWM1' */
+  boolean_T objisempty_d;              /* '<Root>/Moving Average1' */
   boolean_T objisempty_h;              /* '<Root>/Moving Average' */
 } DW_Final_test_T;
 
 /* Continuous states (default storage) */
 typedef struct {
-  real_T TransferFcn1_CSTATE;          /* '<S4>/Transfer Fcn1' */
-  real_T Integrator1_CSTATE;           /* '<S11>/Integrator1' */
-  real_T Integrator_CSTATE;            /* '<S11>/Integrator' */
+  real_T TransferFcn1_CSTATE;          /* '<S3>/Transfer Fcn1' */
+  real_T Integrator1_CSTATE;           /* '<S8>/Integrator1' */
+  real_T Integrator_CSTATE;            /* '<S8>/Integrator' */
 } X_Final_test_T;
 
 /* State derivatives (default storage) */
 typedef struct {
-  real_T TransferFcn1_CSTATE;          /* '<S4>/Transfer Fcn1' */
-  real_T Integrator1_CSTATE;           /* '<S11>/Integrator1' */
-  real_T Integrator_CSTATE;            /* '<S11>/Integrator' */
+  real_T TransferFcn1_CSTATE;          /* '<S3>/Transfer Fcn1' */
+  real_T Integrator1_CSTATE;           /* '<S8>/Integrator1' */
+  real_T Integrator_CSTATE;            /* '<S8>/Integrator' */
 } XDot_Final_test_T;
 
 /* State disabled  */
 typedef struct {
-  boolean_T TransferFcn1_CSTATE;       /* '<S4>/Transfer Fcn1' */
-  boolean_T Integrator1_CSTATE;        /* '<S11>/Integrator1' */
-  boolean_T Integrator_CSTATE;         /* '<S11>/Integrator' */
+  boolean_T TransferFcn1_CSTATE;       /* '<S3>/Transfer Fcn1' */
+  boolean_T Integrator1_CSTATE;        /* '<S8>/Integrator1' */
+  boolean_T Integrator_CSTATE;         /* '<S8>/Integrator' */
 } XDis_Final_test_T;
 
 #ifndef ODE3_INTG
@@ -285,34 +317,46 @@ typedef struct {
 /* Parameters (default storage) */
 struct P_Final_test_T_ {
   real_T DiscretePIDController_I;      /* Mask Parameter: DiscretePIDController_I
-                                        * Referenced by: '<S56>/Integral Gain'
+                                        * Referenced by: '<S15>/Integral Gain'
+                                        */
+  real_T PIDController3_I;             /* Mask Parameter: PIDController3_I
+                                        * Referenced by: '<S20>/Integral Gain'
+                                        */
+  real_T PIDController3_P;             /* Mask Parameter: PIDController3_P
+                                        * Referenced by: '<S20>/Proportional Gain'
                                         */
   real_T DiscretePIDController_P;      /* Mask Parameter: DiscretePIDController_P
-                                        * Referenced by: '<S56>/Proportional Gain'
+                                        * Referenced by: '<S15>/Proportional Gain'
                                         */
   real_T CompareToConstant_const;      /* Mask Parameter: CompareToConstant_const
-                                        * Referenced by: '<S52>/Constant'
+                                        * Referenced by: '<S11>/Constant'
                                         */
   real_T DetectChange_vinit;           /* Mask Parameter: DetectChange_vinit
-                                        * Referenced by: '<S55>/Delay Input1'
+                                        * Referenced by: '<S16>/Delay Input1'
+                                        */
+  real_T DetectChange_vinit_c;         /* Mask Parameter: DetectChange_vinit_c
+                                        * Referenced by: '<S14>/Delay Input1'
                                         */
   real_T Gain_Gain;                    /* Expression: 0.8
                                         * Referenced by: '<Root>/Gain'
                                         */
   real_T AnalogInput_SampleTime;       /* Expression: 0.01
-                                        * Referenced by: '<S4>/Analog Input'
+                                        * Referenced by: '<S3>/Analog Input'
+                                        */
+  real_T Memory_InitialCondition;      /* Expression: 0
+                                        * Referenced by: '<S1>/Memory'
+                                        */
+  real_T Constant2_Value;              /* Expression: 2.7456647398844
+                                        * Referenced by: '<Root>/Constant2'
                                         */
   real_T TransferFcn1_A;               /* Computed Parameter: TransferFcn1_A
-                                        * Referenced by: '<S4>/Transfer Fcn1'
+                                        * Referenced by: '<S3>/Transfer Fcn1'
                                         */
   real_T TransferFcn1_C;               /* Computed Parameter: TransferFcn1_C
-                                        * Referenced by: '<S4>/Transfer Fcn1'
-                                        */
-  real_T Wind_des_Value;               /* Expression: 650
-                                        * Referenced by: '<Root>/Wind_des'
+                                        * Referenced by: '<S3>/Transfer Fcn1'
                                         */
   real_T RunSim_Value;                 /* Expression: 1
-                                        * Referenced by: '<S3>/Run Sim'
+                                        * Referenced by: '<S2>/Run Sim'
                                         */
   real_T AutomaticControl_Value;       /* Expression: 0
                                         * Referenced by: '<Root>/Automatic Control'
@@ -321,94 +365,109 @@ struct P_Final_test_T_ {
                                         * Referenced by: '<Root>/Enable'
                                         */
   real_T Integrator_gainval;           /* Computed Parameter: Integrator_gainval
-                                        * Referenced by: '<S56>/Integrator'
+                                        * Referenced by: '<S20>/Integrator'
                                         */
   real_T Integrator_IC;                /* Expression: InitialConditionForIntegrator
-                                        * Referenced by: '<S56>/Integrator'
+                                        * Referenced by: '<S20>/Integrator'
+                                        */
+  real_T Saturation_UpperSat;          /* Expression: 40
+                                        * Referenced by: '<S7>/Saturation'
+                                        */
+  real_T Saturation_LowerSat;          /* Expression: 0
+                                        * Referenced by: '<S7>/Saturation'
+                                        */
+  real_T Wind_des_Value;               /* Expression: 650
+                                        * Referenced by: '<Root>/Wind_des'
+                                        */
+  real_T Integrator_gainval_l;         /* Computed Parameter: Integrator_gainval_l
+                                        * Referenced by: '<S15>/Integrator'
+                                        */
+  real_T Integrator_IC_g;              /* Expression: InitialConditionForIntegrator
+                                        * Referenced by: '<S15>/Integrator'
                                         */
   real_T Gain1_Gain;                   /* Expression: 5.6e-4
-                                        * Referenced by: '<S9>/Gain1'
+                                        * Referenced by: '<S5>/Gain1'
                                         */
   real_T Gain_Gain_g;                  /* Expression: -.61
-                                        * Referenced by: '<S9>/Gain'
+                                        * Referenced by: '<S5>/Gain'
                                         */
   real_T Constant_Value;               /* Expression: 170
-                                        * Referenced by: '<S9>/Constant'
+                                        * Referenced by: '<S5>/Constant'
                                         */
   real_T Constant_Value_j;             /* Expression: 1
                                         * Referenced by: '<Root>/Constant'
                                         */
-  real_T ManualPWM_Gain;               /* Expression: 4.3770433256849
+  real_T ManualPWM_Gain;               /* Expression: 5.0990117390951
                                         * Referenced by: '<Root>/Manual PWM'
                                         */
   real_T Switch2_Threshold;            /* Expression: 0
-                                        * Referenced by: '<S3>/Switch2'
+                                        * Referenced by: '<S2>/Switch2'
                                         */
   real_T PWMsaturation_UpperSat;       /* Expression: 40
-                                        * Referenced by: '<S3>/PWM saturation'
+                                        * Referenced by: '<S2>/PWM saturation'
                                         */
   real_T PWMsaturation_LowerSat;       /* Expression: 0
-                                        * Referenced by: '<S3>/PWM saturation'
+                                        * Referenced by: '<S2>/PWM saturation'
                                         */
   real_T MotorSwitch_Value;            /* Expression: 0
                                         * Referenced by: '<Root>/Motor Switch'
                                         */
   real_T minPWM_Value;                 /* Expression: 40
-                                        * Referenced by: '<S3>/min PWM'
+                                        * Referenced by: '<S2>/min PWM'
                                         */
   real_T Constant4_Value;              /* Expression: 40
-                                        * Referenced by: '<S3>/Constant4'
-                                        */
-  real_T Constant_Value_n;             /* Expression: 6.146
-                                        * Referenced by: '<S10>/Constant'
-                                        */
-  real_T Gain_Gain_j;                  /* Expression: 4.701e-15
-                                        * Referenced by: '<S10>/Gain'
-                                        */
-  real_T Constant1_Value;              /* Expression: 0.0731
-                                        * Referenced by: '<S10>/Constant1'
+                                        * Referenced by: '<S2>/Constant4'
                                         */
   real_T Integrator1_IC;               /* Expression: 0
-                                        * Referenced by: '<S11>/Integrator1'
+                                        * Referenced by: '<S8>/Integrator1'
                                         */
-  real_T Constant1_Value_i;            /* Expression: 40
-                                        * Referenced by: '<Root>/Constant1'
+  real_T Constant_Value_n;             /* Expression: 6.146
+                                        * Referenced by: '<S6>/Constant'
+                                        */
+  real_T Gain_Gain_j;                  /* Expression: 4.701e-15
+                                        * Referenced by: '<S6>/Gain'
+                                        */
+  real_T Constant1_Value;              /* Expression: 0.0731
+                                        * Referenced by: '<S6>/Constant1'
                                         */
   real_T a_Value;                      /* Expression: 0.3933
-                                        * Referenced by: '<S13>/a'
+                                        * Referenced by: '<S10>/a'
                                         */
   real_T b_Gain;                       /* Expression: 0.03432
-                                        * Referenced by: '<S13>/b'
+                                        * Referenced by: '<S10>/b'
                                         */
   real_T c_Value;                      /* Expression: 0.005561
-                                        * Referenced by: '<S13>/c'
-                                        */
-  real_T a_Value_d;                    /* Expression: .99
-                                        * Referenced by: '<S57>/a'
-                                        */
-  real_T b_Gain_n;                     /* Expression: .003
-                                        * Referenced by: '<S57>/b'
-                                        */
-  real_T c_Value_e;                    /* Expression: .057
-                                        * Referenced by: '<S57>/c'
-                                        */
-  real_T Gain2_Gain;                   /* Expression: 4
-                                        * Referenced by: '<S11>/Gain2'
-                                        */
-  real_T Integrator_IC_e;              /* Expression: 0
-                                        * Referenced by: '<S11>/Integrator'
-                                        */
-  real_T Gain_Gain_n;                  /* Expression: 3
-                                        * Referenced by: '<S11>/Gain'
+                                        * Referenced by: '<S10>/c'
                                         */
   real_T Gain1_Gain_h;                 /* Expression: 4
-                                        * Referenced by: '<S11>/Gain1'
+                                        * Referenced by: '<S8>/Gain1'
+                                        */
+  real_T Integrator_IC_e;              /* Expression: 0
+                                        * Referenced by: '<S8>/Integrator'
+                                        */
+  real_T Gain_Gain_n;                  /* Expression: 3
+                                        * Referenced by: '<S8>/Gain'
+                                        */
+  real_T a_Value_d;                    /* Expression: .99
+                                        * Referenced by: '<S21>/a'
+                                        */
+  real_T b_Gain_n;                     /* Expression: .003
+                                        * Referenced by: '<S21>/b'
+                                        */
+  real_T c_Value_e;                    /* Expression: .057
+                                        * Referenced by: '<S21>/c'
+                                        */
+  real_T Gain2_Gain;                   /* Expression: 4
+                                        * Referenced by: '<S8>/Gain2'
                                         */
   real_T Constant_Value_p;             /* Expression: 485.3342
-                                        * Referenced by: '<S4>/Constant'
+                                        * Referenced by: '<S3>/Constant'
                                         */
   uint8_T ManualSwitch_CurrentSetting; /* Computed Parameter: ManualSwitch_CurrentSetting
                                         * Referenced by: '<Root>/Manual Switch'
+                                        */
+  uint8_T ManualSwitch3_CurrentSetting;/* Computed Parameter: ManualSwitch3_CurrentSetting
+                                        * Referenced by: '<Root>/Manual Switch3'
                                         */
   uint8_T ManualSwitch2_CurrentSetting;/* Computed Parameter: ManualSwitch2_CurrentSetting
                                         * Referenced by: '<Root>/Manual Switch2'
@@ -499,17 +558,34 @@ extern RT_MODEL_Final_test_T *const Final_test_M;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
- * Block '<S5>/FromWs' : Unused code path elimination
- * Block '<S6>/FromWs' : Unused code path elimination
- * Block '<S7>/FromWs' : Unused code path elimination
- * Block '<S10>/Power' : Unused code path elimination
- * Block '<S10>/a' : Unused code path elimination
- * Block '<S10>/b' : Unused code path elimination
+ * Block '<S6>/Power' : Unused code path elimination
+ * Block '<S6>/a' : Unused code path elimination
+ * Block '<S6>/b' : Unused code path elimination
+ * Block '<S17>/Integral Gain' : Unused code path elimination
+ * Block '<S17>/Integrator' : Unused code path elimination
+ * Block '<S17>/Proportional Gain' : Unused code path elimination
+ * Block '<S17>/Sum' : Unused code path elimination
+ * Block '<S18>/Derivative Gain' : Unused code path elimination
+ * Block '<S18>/Filter' : Unused code path elimination
+ * Block '<S18>/Filter Coefficient' : Unused code path elimination
+ * Block '<S18>/Integral Gain' : Unused code path elimination
+ * Block '<S18>/Integrator' : Unused code path elimination
+ * Block '<S18>/Proportional Gain' : Unused code path elimination
+ * Block '<S18>/Sum' : Unused code path elimination
+ * Block '<S18>/SumD' : Unused code path elimination
+ * Block '<S19>/Derivative Gain' : Unused code path elimination
+ * Block '<S19>/Filter' : Unused code path elimination
+ * Block '<S19>/Filter Coefficient' : Unused code path elimination
+ * Block '<S19>/Integral Gain' : Unused code path elimination
+ * Block '<S19>/Integrator' : Unused code path elimination
+ * Block '<S19>/Proportional Gain' : Unused code path elimination
+ * Block '<S19>/Sum' : Unused code path elimination
+ * Block '<S19>/SumD' : Unused code path elimination
  * Block '<Root>/Cast' : Eliminate redundant data type conversion
- * Block '<S3>/RT' : Eliminated since input and output rates are identical
- * Block '<S3>/RT1' : Eliminated since input and output rates are identical
- * Block '<S3>/RT2' : Eliminated since input and output rates are identical
- * Block '<S4>/Zero-Order Hold1' : Eliminated since input and output rates are identical
+ * Block '<S2>/RT' : Eliminated since input and output rates are identical
+ * Block '<S2>/RT1' : Eliminated since input and output rates are identical
+ * Block '<S2>/RT2' : Eliminated since input and output rates are identical
+ * Block '<S3>/Zero-Order Hold1' : Eliminated since input and output rates are identical
  */
 
 /*-
@@ -528,61 +604,25 @@ extern RT_MODEL_Final_test_T *const Final_test_M;
  *
  * '<Root>' : 'Final_test'
  * '<S1>'   : 'Final_test/Kalman Filter'
- * '<S2>'   : 'Final_test/Kalman Filter1'
- * '<S3>'   : 'Final_test/Output'
- * '<S4>'   : 'Final_test/Sensor'
- * '<S5>'   : 'Final_test/Step'
- * '<S6>'   : 'Final_test/Step1'
- * '<S7>'   : 'Final_test/Step2'
- * '<S8>'   : 'Final_test/Step3'
- * '<S9>'   : 'Final_test/Subsystem1'
- * '<S10>'  : 'Final_test/Subsystem2'
- * '<S11>'  : 'Final_test/Thrust Model'
- * '<S12>'  : 'Final_test/Kalman Filter/MATLAB Function'
- * '<S13>'  : 'Final_test/Kalman Filter/Subsystem1'
- * '<S14>'  : 'Final_test/Kalman Filter1/CalculatePL'
- * '<S15>'  : 'Final_test/Kalman Filter1/CalculateYhat'
- * '<S16>'  : 'Final_test/Kalman Filter1/DataTypeConversionA'
- * '<S17>'  : 'Final_test/Kalman Filter1/DataTypeConversionB'
- * '<S18>'  : 'Final_test/Kalman Filter1/DataTypeConversionC'
- * '<S19>'  : 'Final_test/Kalman Filter1/DataTypeConversionD'
- * '<S20>'  : 'Final_test/Kalman Filter1/DataTypeConversionG'
- * '<S21>'  : 'Final_test/Kalman Filter1/DataTypeConversionH'
- * '<S22>'  : 'Final_test/Kalman Filter1/DataTypeConversionN'
- * '<S23>'  : 'Final_test/Kalman Filter1/DataTypeConversionP0'
- * '<S24>'  : 'Final_test/Kalman Filter1/DataTypeConversionQ'
- * '<S25>'  : 'Final_test/Kalman Filter1/DataTypeConversionR'
- * '<S26>'  : 'Final_test/Kalman Filter1/DataTypeConversionX0'
- * '<S27>'  : 'Final_test/Kalman Filter1/DataTypeConversionu'
- * '<S28>'  : 'Final_test/Kalman Filter1/MemoryP'
- * '<S29>'  : 'Final_test/Kalman Filter1/Observer'
- * '<S30>'  : 'Final_test/Kalman Filter1/ReducedQRN'
- * '<S31>'  : 'Final_test/Kalman Filter1/ScalarExpansionP0'
- * '<S32>'  : 'Final_test/Kalman Filter1/ScalarExpansionQ'
- * '<S33>'  : 'Final_test/Kalman Filter1/ScalarExpansionR'
- * '<S34>'  : 'Final_test/Kalman Filter1/UseCurrentEstimator'
- * '<S35>'  : 'Final_test/Kalman Filter1/checkA'
- * '<S36>'  : 'Final_test/Kalman Filter1/checkB'
- * '<S37>'  : 'Final_test/Kalman Filter1/checkC'
- * '<S38>'  : 'Final_test/Kalman Filter1/checkD'
- * '<S39>'  : 'Final_test/Kalman Filter1/checkEnable'
- * '<S40>'  : 'Final_test/Kalman Filter1/checkG'
- * '<S41>'  : 'Final_test/Kalman Filter1/checkH'
- * '<S42>'  : 'Final_test/Kalman Filter1/checkN'
- * '<S43>'  : 'Final_test/Kalman Filter1/checkP0'
- * '<S44>'  : 'Final_test/Kalman Filter1/checkQ'
- * '<S45>'  : 'Final_test/Kalman Filter1/checkR'
- * '<S46>'  : 'Final_test/Kalman Filter1/checkReset'
- * '<S47>'  : 'Final_test/Kalman Filter1/checkX0'
- * '<S48>'  : 'Final_test/Kalman Filter1/checku'
- * '<S49>'  : 'Final_test/Kalman Filter1/checky'
- * '<S50>'  : 'Final_test/Kalman Filter1/Observer/MeasurementUpdate'
- * '<S51>'  : 'Final_test/Kalman Filter1/UseCurrentEstimator/Enabled Subsystem'
- * '<S52>'  : 'Final_test/Output/Compare To Constant'
- * '<S53>'  : 'Final_test/Output/If Action Subsystem'
- * '<S54>'  : 'Final_test/Output/If Action Subsystem1'
- * '<S55>'  : 'Final_test/Subsystem1/Detect Change'
- * '<S56>'  : 'Final_test/Subsystem1/Discrete PID Controller'
- * '<S57>'  : 'Final_test/Thrust Model/Subsystem'
+ * '<S2>'   : 'Final_test/Output'
+ * '<S3>'   : 'Final_test/Sensor'
+ * '<S4>'   : 'Final_test/Step2'
+ * '<S5>'   : 'Final_test/Subsystem1'
+ * '<S6>'   : 'Final_test/Subsystem2'
+ * '<S7>'   : 'Final_test/Subsystem3'
+ * '<S8>'   : 'Final_test/Thrust Model'
+ * '<S9>'   : 'Final_test/Kalman Filter/MATLAB Function'
+ * '<S10>'  : 'Final_test/Kalman Filter/Subsystem1'
+ * '<S11>'  : 'Final_test/Output/Compare To Constant'
+ * '<S12>'  : 'Final_test/Output/If Action Subsystem'
+ * '<S13>'  : 'Final_test/Output/If Action Subsystem1'
+ * '<S14>'  : 'Final_test/Subsystem1/Detect Change'
+ * '<S15>'  : 'Final_test/Subsystem1/Discrete PID Controller'
+ * '<S16>'  : 'Final_test/Subsystem3/Detect Change'
+ * '<S17>'  : 'Final_test/Subsystem3/PID Controller'
+ * '<S18>'  : 'Final_test/Subsystem3/PID Controller1'
+ * '<S19>'  : 'Final_test/Subsystem3/PID Controller2'
+ * '<S20>'  : 'Final_test/Subsystem3/PID Controller3'
+ * '<S21>'  : 'Final_test/Thrust Model/Subsystem'
  */
 #endif                                 /* RTW_HEADER_Final_test_h_ */

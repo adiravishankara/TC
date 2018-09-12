@@ -1,7 +1,7 @@
-prop_faultT= csvread("../final3/paper_data/prop_fault.csv",1,0);
+wdpT= csvread("../final3/paper_data/wind_disturb_pulse.csv",1,0);
 %  curr_testtorq = pt;
-[r,c] = find(prop_faultT(:,10) == 0);
-prop_faultT(r,:) = [];
+[r,c] = find(wdpT(:,10) == 0);
+wdpT(r,:) = [];
 
 % [r,c] = find(curr_testtorq(:,9) == 0);
 % 

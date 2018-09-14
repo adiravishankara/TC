@@ -1,0 +1,120 @@
+\documentclass[twocolumn]{article}
+\begin{document}
+
+
+\section{I}
+
+%How do drones work, the control system
+Multirotor Aerial Vehicles (MAV), specifically quadrotors, have become quite commonplace in many industries ranging from filmography to racing to even military operations. Over the past decade, there has been an incredible amount of research and advancement within this field leading to its proliferation and allowing for the technology to become more accessible. One of the major areas of research regarding MAV's is the control system that directs the motor-rotor system. The control mechanism can be as simple as a motor-rotor control, all the way to controlling the torque, or thrust or one of many other variables. The control of the motor-rotor has to account for multiple different factors, from the ambient wind speed, the rotation, the pitch of the propellor, all the way to the high level control system of the ESC. \\
+
+
+In general, there are two different types of control loops; open and closed. Open control loops are what the majority of MAV control systems are. There is a flight controller, that sends a signal to the ESC that applies a particular voltage to the motor based on previously calibrated settings. In this method, the final result of the motor spinning is unknown to the flight controller. Therefore given any disturbances, there will be large variances in the response of the overall system. In response to these systems there are smarter, closed loop control. This is the type of control we will focus on. Closed loop systems provide a certain way to meaure the output of the rotor based on the input from the FC. This allows for a smarter, more robust system and greater control of the output. \\
+
+%Intro into the problem
+The main problem we are trying to answer is how to create an effective, efficient, and reasonable solution to having a closed loop control system. This would include having a type of sensor which would measure the thrust output of the propellor and relay that onto the ESC so that the ESC can control the thrust output accordingly.
+
+%What are some of the technologies available, what are their pros and cons
+The simplest closed loop system available is the measurement of the voltage and current that the ESC sends to the motor. The theory is that for a motor to spin at a constant speed, the voltage and current are constant too. If there are disturbances in the air, then there would be a change in the voltage to keep the rpm the same. While this is simplistic, requires minimal computational power, and is easily applied,  it is a slow measurement as well not very precise. To fix this there are other methods researchers have gathered. One of the most common methods is modelling the wind forces using either an accelerometer, IMU, or some other similar method. This may also be used in combination with the v/a sensing. While this is a more robust method and gives back body frame data, there is still the issue of latency of the device as well as a high computational load based on having to determine the position of the drone. Therefore a less computationally intense solution is using some sort of external sensor to measure a physical response of the propellors. One way some researchers have gone about this is using torque sensors to mesure the constant torque provided by the motor. While strain guages have a fast response and could be used, they are subject to lots of errors and therefore are not feasible. 
+
+%INtro into the mahoney Paper
+Robert Mahoney and Bangura have developed a an estimation algorithm based on the voltage and current that can be sensed by the ESC. While according to their data, they see a reasonable response there is room for improvement. Their algorithm is computationally intense and as well requires a lot of calibration data prior to functioning. This includes the radius, pitch, chord length of the propellor as well as specifications of the motor. We intend to build upon and develop a system that could be simpler and be used on any configuration just as easily. 
+
+%Intro into wind sensor
+One method of sensing the thrust output of the propellors is to measure the wind output. Like the paper with the pitot tubes, we will have a sensor below the propellors measuring the wind. Unlike a pitot tube, we will use a hot wire anemometer (HWA) wind sensor (WS). The (WS) works on the principle of heating up a coil by running a current through it. As wind passes across it, the wind cools it down. The WS tries to maintain a constant temperature in the coil and the rate of cooling and heating lead to a measure of how much the wind speed is based on a pre-determined calibration. 
+\section{II}
+%Theory of the mahoney paper
+
+Since we are just focusing on on the static test, there are some assumptions we are making and some math we are skipping. 
+
+We are following the math along with the Mahoney Paper.
+
+We have to start by defining the three different velocities that we are measuring.\\
+
+$v_{x} , v_{y} , v_{z}$  Is the velocity of the drone, the body frame velocity. \\
+$v^s_{x} , v^s_{y} , v^s_{z}$ is the velocity of the wind approaching the propellors, the stream velocity. \\
+$v^i_{x} , v^i_{y} , v^i_{z}$ is the induced velocity of the propellors.\\
+
+Since we are doing only the static tests, we do not have to worry about horizontal winds, so we can say $v_s = v^s_{z}$ and $v_i = v^i_{z}$
+What the wind sensor will notice is $v_{tot} = v_{i} + v_{s}$\\
+
+Following along with the mahoney paper we have
+\begin{equation}
+\lambda = \frac{v_{i} + v_{s}}{\varpi R}
+= \frac{v_{i}}{\varpi R}+\frac{v_{s}}{\varpi R}
+=\lambda_{i} + \lambda_{s}
+\end{equation}
+
+Next we go on to calculate the Thurst relationship with the voltage and current through the equations F1Td and F2Td.
+
+\begin{equation}
+T_{d} = \frac{C_{T}}{K^2_{e}}(v_{a} - i_{a}R_{a})
+\end{equation}
+
+$K_{e}$ in this case is obtained by calibrating the system and applying a linear regression while $v_{a}, i_{a}, R_{a}$ are all obtained from the power sent to the motor. $C_{T}$ can be calculated by 
+\begin{equation}
+C_{T} = c_{p} \lambda ^i \lambda 
+\end{equation}
+\begin{equation}
+c_{p} = 2 \rho A R^2 \nonumber
+\end{equation}
+\begin{equation}
+C_{T} = 2 \rho A R^2 \frac{v_{i}}{\varpi R}\frac{v_{i} + v{s}}{\varpi R}  = \frac{2 \rho A (v_{i}^2 + v_{i}v_{s})}{\varpi ^2}
+\end{equation}
+
+After calculating these variables we can start to work towards how we control the motor. From the mahoney paper, they individually calculate the appropriate voltage and current to send to the motor. From teh paper to calculate $f_{1}(T_{d})$
+\begin{equation}
+T_{d} = \frac{C_{T}(v_{a} - i_{a}R_{a})^2}{k_{e}^2}
+ = \frac{2 \rho A}{\varpi ^2 k^2_{e}}(v^2_{i} + v_{i}v_{s})(v_{a} - i_{a}R_{a})^2
+\end{equation}
+$f_{1}(T_{d})$ is used to calculate the voltage. This can be rearranged to obtain $v_{a}$
+\begin{equation}
+v_{a} = k_{e} \varpi \sqrt{\frac{T_{d}}{2 \rho A (v_{i}^2 + v_{i}v_{s})}} + i_{a}R_{a}
+\end{equation}
+similarly from the paper we can calculate F2Td where 
+\begin{equation}
+T_{d} = C_{T} \frac{k_{q}}{C_{Q}}i_{a}
+\end{equation}
+from applying a similar algebraic reorganization, we get 
+\begin{equation}
+T_{d} = 2 \rho A \frac{v_{i}^2 + v_{i}v_{s}}{\tau} k_{q}i_a
+\end{equation}
+from which we can solve for the current and we get
+\begin{equation}
+i_a = \frac{T_d \tau}{2 \rho A (v_i^2 + v_i v_s) k_q}
+\end{equation}
+Once these values are calculated, they are sent to the ESC at which point the esc controls the speed of the motor. 
+Data from the ESC is collected to help make the thrust estimation. 
+Our wind sensor data will be replacing the estimation for the real value which will allow for a more accurate and crisp response.
+
+
+%Theory of the wind sensor
+talk about stream velocity and induced velocity. 
+talk about how there is an x,y,z in wind
+
+
+%How they will be used together
+Based on the math above, we will 
+\section{III} 
+%Proof of the mahoney paper
+
+%Proof of the wind sensor
+Graph showing the response of wind sensor and force torque.
+response of rpm based on voltage
+response to blocking. 
+
+\section{IV}
+%Experimental setup
+wind sensor hooked to the ESC so that 2khz speed rather than 50 hz
+only doing static test
+will do dynamic multirotor test later
+
+We have a wind sensor which is placed in an area of unperturbed flow from the propellor. The sensor outputs a voltage based on the wind and that voltage is what the control system will maintain. This voltage is fed to the ESC since the communication within the ESC is much faster than communication between the ESC and teh FC.  
+%Data
+
+%Results
+
+\section{V}
+%Conclusion
+
+%References
+\end{document}

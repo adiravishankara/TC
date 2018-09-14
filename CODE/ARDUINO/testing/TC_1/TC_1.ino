@@ -5,77 +5,49 @@ Servo myESC;
 //pin values
 const int wind_Input = A2;
 const int motor_Output = 12; //This controls the motor, sends out a PWM
-const int TC_ESC = A4; //The Analog Signal of 
-const int OPRPM = A6; //optical RPM
-float windSpeed,wSD = 800, P = 0.09,pwmD = 40;
-float start_Time,pwm;
-float RPM;
-boolean sys_Start = false;
+const int activation = A3; //This controls the activation signal from the RC board
 
-float esc_Speed = 30;
+int wS, wsD; //these values are the wind speed, and desired wind speed
+float P = 0.09, pwmD = 50; //these values are for the control system.
 
-void setup() {
-  // put your setup code here, to run once:
-  pinMode(wind_Input, INPUT);
-  pinMode(TC_ESC, INPUT);
+int active = 0; //This will read the esc output of the RCboard
+int pwm = 30;
+int startTime, sysStatus = 0;
+
+void setup(){
+  pinMode(wind_Input,INPUT);
+  pinMode(activation,INPUT);
 
   Serial.begin(115200);
   
   myESC.attach(motor_Output);
-  //while(!myESC.attached()){ myESC.attach(motor_Output);}
-  myESC.write(esc_Speed);
-  Serial.println("Time   WindV   RPM   PWM");
-  Serial.print(millis() - start_Time);
+  myESC.write(pwm);
+  delay(3000);
+  startTime = millis();
+  wS = analogRead(wind_Input);
+  Serial.print("TIME(ms), WINDSPEED(V), PWM(deg), STATUS");
+  Serial.print(millis() - startTime);
   Serial.print(",");
-  Serial.print(windSpeed);
+  Serial.print(wS);
   Serial.print(",");
-  Serial.print(RPM);
+  Serial.print(pwm);
   Serial.print(",");
-  Serial.println(esc_Speed);
-
-  
+  Serial.println(sysStatus);
 }
-
-void loop() {
-  // put your main code here, to run repeatedly:
-  TC_Sync();
-  if(sys_Start == true){
-    windSpeed = readWind();    
-    RPM = analogRead(OPRPM);
-    esc_Speed = motor_Control(windSpeed);
-    myESC.write(esc_Speed);
-  	Serial.print(millis() - start_Time);
-  	Serial.print(",");
-  	Serial.print(windSpeed);
-  	Serial.print(",");
-  	Serial.print(RPM);
-  	Serial.print(",");
-  	Serial.println(esc_Speed);
+void loop()
+{
+  active = pulseIn(activation,HIGH);
+  if(active > 1000){
+    sysStatus = 1;
+    pwm = pwmD;
   }
-  else{
-    Serial.println("No activation signal");
-  }
+  wS = analogRead(wind_Input);
+  myESC.write(pwm);
+  Serial.print(millis() - startTime);
+  Serial.print(",");
+  Serial.print(wS);
+  Serial.print(",");
+  Serial.print(pwm);
+  Serial.print(",");
+  Serial.println(sysStatus);
 }
-
-
-float readWind(){
-	return analogRead(wind_Input);
-}
-
-
-void TC_Sync(){
-  int TC_signal = pulseIn(TC_ESC,HIGH);
-  if(TC_signal > 0){
-    timer_start();
-    sys_Start = true;} 
-}
-float motor_Control(float windSpeed){
-  float err = wSD - windSpeed;
-  float uC = P*err;
-  pwm = pwmD + pwmD*uC;
-  return pwm;
-}
-void timer_start(){
-
-	start_Time = millis();
-} 

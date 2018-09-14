@@ -1,0 +1,104 @@
+\documentclass[twocolumn]{article}
+\usepackage{subfig}
+\begin{document}
+	\title{\begin{titlepage}
+		My paper
+	\end{titlepage}}
+
+	\section{I}
+	
+	%How do drones work, the control system
+	Multirotor Aerial Vehicles (MAV), specifically quadrotors, have become quite commonplace in many industries ranging from filmography to racing to even military operations. Over the past decade, there has been an incredible amount of research and advancement within this field leading to its proliferation and allowing for the technology to become more accessible. One of the major areas of research regarding MAV's is the control system that directs the motor-rotor system. The control mechanism can be as simple as a motor-rotor control, all the way to controlling the torque, or thrust or one of many other variables. The control of the motor-rotor has to account for multiple different factors, from the ambient wind speed, the rotation, the pitch of the propeller, all the way to the high level control system of the ESC. \\
+	
+	
+	In general, there are two different types of control loops; open and closed. Open control loops are what the majority of MAV control systems are. There is a flight controller, that sends a signal to the ESC that applies a particular voltage to the motor based on previously calibrated settings. In this method, the final result of the motor spinning is unknown to the flight controller. Therefore given any disturbances, there will be large variances in the response of the overall system. In response to these systems there are smarter, closed loop control. This is the type of control we will focus on. Closed loop systems provide a certain way to measure the output of the rotor based on the input from the FC. This allows for a smarter, more robust system and greater control of the output. \\
+	
+	%Intro into the problem
+	The main problem we are trying to answer is how to create an effective, efficient, and reasonable solution to having a closed loop control system. This would include having a type of sensor which would measure the thrust output of the propellor and relay that onto the ESC so that the ESC can control the thrust output accordingly.
+	
+	%What are some of the technologies available, what are their pros and cons
+	The simplest closed loop system available is the measurement of the voltage and current that the ESC sends to the motor. The theory is that for a motor to spin at a constant speed, the voltage and current are constant too. If there are disturbances in the air, then there would be a change in the voltage to keep the rpm the same. While this is simplistic, requires minimal computational power, and is easily applied,  it is a slow measurement as well not very precise. To fix this there are other methods researchers have gathered. One of the most common methods is modelling the wind forces using either an accelerometer, IMU, or some other similar method. This may also be used in combination with the v/a sensing. While this is a more robust method and gives back body frame data, there is still the issue of latency of the device as well as a high computational load based on having to determine the position of the drone. Therefore a less computationally intense solution is using some sort of external sensor to measure a physical response of the propellers. One way some researchers have gone about this is using torque sensors to measure the constant torque provided by the motor. While strain guages have a fast response and could be used, they are subject to lots of errors and therefore are not feasible. 
+	
+	Robert Mahoney and Bangura have developed a an estimation algorithm based on the voltage and current that can be sensed by the ESC. While according to their data, they see a reasonable response there is room for improvement. Their algorithm is computationally intense and as well requires a lot of calibration data prior to functioning. This includes the radius, pitch, chord length of the propellor as well as specifications of the motor. 
+	
+	In this paper, we present a novel control system for MAV's based around a sensor that measures wind speed and uses a observer kalman filter to handle the data and provide an optimal output to maintain a desired thrust value. The goal of our system is to provide a similar or better response to that of Mahoney et al. while also being computationally less intense. 
+	\section{Paper Review}
+	Yeo et al. developed a pitot tube method of sensing the wind speed. The purpose of their sensing was for detection of other drones, but their method can be related to. The pitot tubes are connected to a sensor that measures changes in pressure. They detail a relationship between wind speed and pressure and therefore use detected pressure to measure the overall downwash windspeed of each propeller. Their results showed a high level of response to changes in wind with a high level of accuracy. The issue that was faced was that there was a very limited range under which the drone could
+	
+	Mahoney et al (2017) have developed an algorithm which bases the control system around an estimation of the thrust from a propeller based on the voltage and current given to the motor by the ESC. Their system works to maintain a thrust given some disturbance. From looking over their algorithm, they have a system which runs through a for loop before detecting an appropriate response to extraneous forces. This system while it allows for a valid estimation of the thrust, it is a complex system that requires relatively heavy computation and therefore is not feasible. As well this method of thrust based control requires a significant amount of calibration for both the propellers and 
+	
+	Real-Time Wind Speed Estimation and Compensation for Improved Flight
+	
+	Streit developed a control system to compensate for wind disturbances using a pitot-tube sensor coupled with the GPS sensor along with an accompanying estimation algorithm. While this seems similar to the Yeo et al paper, there are some major differences. Streit has only one pitot sensor onboard the UAV which is uni-directional and therefore only applies to forward motion. As well the pitot-tube is made of brass and therefore not feasible for all smaller UAV's as it will be too heavy. 
+	
+	Onboard Flow Sensing for Downwash Detection and Avoidance with a Small Quadrotor Helicopter
+	
+	Yeo et al have developed a system similar to our proposed idea by fabricating pitot tubes to sit below each propeller and measure the rotor downwash and compare them to the estimated expected wind speed. Their system is ultimately used to localize external noise from other UAV's and therefore an exceedingly accurate measurement is not as important. While the sensor can accurately measure wind speed accurately during vertical motion, there is significant divergence from the ground speed measurement during lateral movement. As well there is a very limited range of speeds that are available for measurement from the probe. 
+	\section{II}
+	%Talk about the theory of the wind.
+	%Theory of things like the low pass filter, the algoright, the PID controller, and whatever else we have. Maybe even the statistics
+	We have to start by defining the three different velocities that we are measuring.\\
+	\begin{eqnarray}
+	\label{e1}
+	v_x , v_y , v_z \\
+	\label{e2}
+	v^s_{x} , v^s_{y} , v^s_{z} \\
+	\label{e3}
+	v^i_{x} , v^i_{y} , v^i_{z}
+	\end{eqnarray}
+	Where \ref{e1} Is the velocity of the drone, the body frame velocity. \ref{e2} is the velocity of the wind approaching the propellers, the stream velocity, and \ref{e3} is the induced velocity of the propellers.\\
+	Since we are doing only the static tests, we do not have to worry about horizontal winds, so we can say 
+	\begin{eqnarray}
+	\nonumber
+	v_s = v^s_{z}\\
+	\nonumber
+	v_i = v^i_{z}
+	\end{eqnarray}
+	What the wind sensor will notice is 
+	\begin{equation}
+	v_{tot} = v_{i} + v_{s}
+	\label{vtot}
+	\end{equation}	
+	\section{III} 
+	%THE THRUST STAND
+	In our setup we used a thrust stand obtained from RCBenchmark. This thrust stand incorporates an arduino board along with three, three-axis strain guage to measure the forces and the torque derived by the propeller. The board also collects data on the voltage, current and the signal to the ESC's which allows us to measure the power draw of the motor, and the RPM of the motor. Along with this there is a GUI which allows us to collect and visualize the data. From measuring the pulse rate of the board, we can see that the board collects data at a 1kHz speed. At this rate, it is much faster than most ESC's and FC's and therefore is an adequate way to measure how the system responds to external stimuli. The measurement from the thrust stand will be our "ground truth".
+	
+	The wind sensor we have chosen to use is the "Modern Device- Wind Sensor Rev. P". This device is a hot wire anemometer that is designed to measure wind from any direction. Hot wire anemometers work by passing a current through a wire which heats up due to the current. The heat causes the resistance of the wire to change. As wind passes the wire it cools down the wire, which changes the resistance and is measured by the anemometer. Then the anemometer passes more current through the wire to maintain a particular resistance/temperature. This system allows us to measure the wind speed that is resultant of the propeller. From measuring the data rate of the sensor, we measure that the sensor communicates and measures at a rate of 4kHz. We started by measuring the lower and upper limits of the wind sensor. We also incorporated a way to diminish the wind output, which allows us to measure somewhat higher speeds. An orientation test was included to measure changes in the wind in different orientations; specifically normal to the wind, parallel to the wind, and away from the wind. The test shows us that the minimum value with $0 km/h$ is averaged at $450 mV$, while a speed of $15 km/h$ results in a voltage of $750 mV$.
+	
+	%Insert a graph here. Explain how the graph shows the lower and upper limits of the wind sensor. 
+	
+	We also tested how quickly the wind sensor responds to changes in speed. We did this by oscillating the propeller on the thrust stand between high and low speeds. Since the thrust stand measures the force exerted by the propeller, we can sync measuring the force of the propeller on the stand and the wind output with the sensor. This way we can test for the delay in the sensor. The delay that the wind sensor faces is approximately $4ms$ in relation to the thrust-stand. While this is a a significant delay, for the purposes of MAV control, this is a reasonable response rate. 
+	
+	%Insert graph on oscillating fan measurement
+	
+	Next we tested how the wind sensor's placement effects how the sensor measures wind. This is done by maintaining a stable thrust on the thrust stand. Next we position the wind sensor in various locations moving in a grid like pattern. With this method we can determine areas of most wind measurement and least. Next we move the sensor from a distance, towards the propeller and measure the average voltage. The area with the highest voltage results in the highest sensing. 
+	
+	%Insert the three part graph here with wind placement data.
+	
+	From the collected data, we see that there is approximately a semicircle around which the wind sensor can be placed, and a distance of 15 cm away from the propeller is the convergence point 
+	
+	%include the algorithm here.
+	
+	 
+	\section{IV}
+	%Experimental setup
+	The first step we took was to determine the relationship between the rotation speed of the propeller and the voltage the wind sensor observed. This gave us a linear relationship which allows us to automatically set the desired voltage within the algorithm. 
+	%insert graph of therelationship
+	next we run a deterministic response. ie. graph 6. Show the response of adding disturbance and remove disturbance. shows that we have a more accurate response of wind.
+	%include graph 6
+	Next we also did a reponse of the propeller with the propeller on.
+	wind sensor hooked to the ESC so that 2khz speed rather than 50 hz
+	only doing static test
+	will do dynamic multirotor test later
+	We have a wind sensor which is placed in an area of unperturbed flow from the propeller. The sensor outputs a voltage based on the wind and that voltage is what the control system will maintain. This voltage is fed to the ESC since the communication within the ESC is much faster than communication between the ESC and teh FC.  
+	
+
+	%Data
+	
+	%Results
+	
+	\section{V}
+	%Conclusion
+	
+	%References	
+\end{document}

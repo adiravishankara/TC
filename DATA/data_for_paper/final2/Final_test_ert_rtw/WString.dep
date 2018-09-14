@@ -1,0 +1,14 @@
+WString.o: \
+ /home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/WString.cpp \
+ /home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/WString.h \
+ /home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/avr/pgmspace.h \
+ /home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/itoa.h \
+ /home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/avr/dtostrf.h
+
+/home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/WString.h:
+
+/home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/avr/pgmspace.h:
+
+/home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/itoa.h:
+
+/home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/avr/dtostrf.h:

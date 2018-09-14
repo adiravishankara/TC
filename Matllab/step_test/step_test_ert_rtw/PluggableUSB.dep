@@ -1,0 +1,32 @@
+PluggableUSB.o: \
+ /home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/USB/PluggableUSB.cpp \
+ /home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/USB/USBAPI.h \
+ /home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/RingBuffer.h \
+ /home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/Stream.h \
+ /home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/Print.h \
+ /home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/WString.h \
+ /home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/avr/pgmspace.h \
+ /home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/Printable.h \
+ /home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/USB/USBDesc.h \
+ /home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/USB/USBCore.h \
+ /home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/USB/PluggableUSB.h
+
+/home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/USB/USBAPI.h:
+
+/home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/RingBuffer.h:
+
+/home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/Stream.h:
+
+/home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/Print.h:
+
+/home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/WString.h:
+
+/home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/avr/pgmspace.h:
+
+/home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/Printable.h:
+
+/home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/USB/USBDesc.h:
+
+/home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/USB/USBCore.h:
+
+/home/adiravishankara/Documents/MATLAB/SupportPackages/R2018a/3P.instrset/arduinoide.instrset/idepkgs/packages/arduino/hardware/sam/1.6.11/cores/arduino/USB/PluggableUSB.h:

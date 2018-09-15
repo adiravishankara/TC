@@ -2,6 +2,7 @@
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
 \usepackage{graphicx}
+\graphicspath{images}
 \usepackage{textcomp}
 \usepackage{xcolor}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
@@ -35,15 +36,17 @@
 	Multirotor Aerial Vehicles (MAV), specifically quadrotors, have become quite commonplace in many industries ranging from filmography to racing to even military operations. Over the past decade, there has been an incredible amount of research and advancement within this field leading to its proliferation and allowing for the technology to become more accessible. One of the major areas of research regarding MAV's is the control system that directs the motor-rotor system. The control mechanism ranges in complexity from the common motor-rotor control, to a more complex system that takes into consideration parameters such as thrust or torque. The control of the motor-rotor has to account for multiple different external and internal factors, from the ambient wind speed, the rotation speed of the propeller (RPM), the pitch of the propeller, and for more complex controllers, the internal loops of the Electronic Speed Controller (ESC) or Flight Controller (FC). \\
 	In general, there are two different types of control loops; open and closed. Open control loops are what the majority of MAV control systems are. There is an FC, that sends a value to the ESC that applies a particular voltage to the motor based on previously calibrated settings. In this method, the final result of the motor spinning is unknown to the flight controller. Therefore given any disturbances, there will be large variances in the response of the overall system. In response to these systems there are smarter, closed loop control. This is the type of control we will focus on. Closed loop systems provide a certain way to measure the output of the rotor based on the input from the FC. This allows for a smarter, more robust system and greater control of the output. \\
 	\subsection{Intro to the problem}
-	The problem we address with this paper is on how to create an effective, efficient and reasonable closed loop control system for MAV motor-rotors. This would require a method to measure the thrust output of the MAV, relay the information back to the system upon which the system would correct for any errors due to disturbances.
+	The main problem we address in this paper is determining a type of sensor that can accurately and efficiently measure the output of the propellers in a meaningful way such that a closed control loop can be devised.
 	\subsection{Lit review}
+	There has been an enormous strive to develop methods to obtain a closed loop control system for MAV's. The methods range from estimation to sensing based on different vectors. The majority of the estimation based controls rely on the voltage or current draw by the motors. Mahoney et al \cite{Mahoney1} devised such a system which estimates the thrust using a for loop based calculation of the thrust. This system while it allows for a valid estimation of the thrust, it is a complex system that requires relatively heavy computation and therefore is not feasible. As well their system requires heavy calibration and would not be easily transferable between systems. Similarly Awan et al \cite{awan} developed an adaptive observer based thrust estimation system. This method allowed for the MAV to maintain a hover with higher precision compared to previous methods involving thrust estimation. The main issue along this method is that their paper only accounts for hover not flight, as well their models were based around a linearized system and any nonlinear disturbances would cause errors in their system. In contrast Sydney et al \cite{sydney} developed a highly complex system where they modeled the entire system, both linear and nonlinear. By doing so their 	
+	
 	Mahoney et al (2017) have developed an algorithm which bases the control system around an estimation of the thrust from a propeller based on the voltage and current given to the motor by the ESC. Their system works to maintain a thrust given some disturbance. From looking over their algorithm, they have a system which runs through a for loop before detecting an appropriate response to extraneous forces. This system while it allows for a valid estimation of the thrust, it is a complex system that requires relatively heavy computation and therefore is not feasible. As well this method of thrust based control requires a significant amount of calibration for both the propellers and 
 	Real-Time Wind Speed Estimation and Compensation for Improved Flight
 	Streit developed a control system to compensate for wind disturbances using a pitot-tube sensor coupled with the GPS sensor along with an accompanying estimation algorithm. While this seems similar to the Yeo et al paper, there are some major differences. Streit has only one pitot sensor onboard the UAV which is uni-directional and therefore only applies to forward motion. As well the pitot-tube is made of brass and therefore not feasible for all smaller UAV's as it will be too heavy. 
 	Onboard Flow Sensing for Downwash Detection and Avoidance with a Small Quadrotor Helicopter
 	Yeo et al have developed a system similar to our proposed idea by fabricating pitot tubes to sit below each propeller and measure the rotor downwash and compare them to the estimated expected wind speed. Their system is ultimately used to localize external noise from other UAV's and therefore an exceedingly accurate measurement is not as important. While the sensor can accurately measure wind speed accurately during vertical motion, there is significant divergence from the ground speed measurement during lateral movement. As well there is a very limited range of speeds that are available for measurement from the probe. 
 	\subsection{Scope and application}
-	The scope of this paper is to introduce a wind sensor as an external sensor and develop the relationship between the downwash rotor wind speed and the thrust vector of the propeller. Doing that we can implement a closed loop control system by which the wind sensor can be used to maintain a thrust given disturbances or faults within the system. This allows for the MAV to have a more accurate and reliable response but also allows for a more agile system. In this sense for applications such as drone racing, filmography, and even research, it would allow for a smoother and and more stable system. 
+	The scope of this paper is to introduce a hot wire anemometer, or wind sensor, as viable option for an external sensor and develop the relationship between the downwash rotor wind speed and the thrust vector of the propeller. With the addition of the sensor, we generate a control system based around the measurements of the wind sensor, using a kalman filter and a simple PI controller. This allows the system to be more robust towards external disturbances such as wind gusts and also more tolerant to internal errors. One other application of the wind sensor is to have an onboard fault detection system, which is in contrast to the majority of prior research, where the fault detection is more of an estimation. The applications for the sensor we introduce can be in any field where MAV's are prevalent, such as filmography, racing, and any other area that requires, agile and reliable control. 
 	\section{2}
 	\subsection{Wind sensor math/theory}
 	We have to start by defining the three different velocities that apply to a propeller.\\
@@ -115,17 +118,13 @@
 	By characterizing the wind sensor, we can ensure that it is in the optimal configuration for us to collect data.
 	\section{Results}
 	\subsection{Experimental Setup- How we set up the kalman/Algorithm}
-	\begin{figure}[]
-		\includegraphics[width=\textwidth]{block_diagram}
-		\caption{Block Diagram}
-		\label{block_diagram}
-	\end{figure}
-	We developed a control architecture as pictured in fig \ref{block_diagram} where there are two sources of measurement for the thrust value. The first, main value, is from the wind sensor which is measured through an Arduino. The voltage value that the arduino measures is then converted to a thrust value through the power function
+
+	We developed a control architecture as pictured in fig \ref{block_diagram} where there are two sources of measurement for the thrust value. the primary value is from the wind sensor which is measured through an Arduino. The voltage value that the arduino measures is then converted to a thrust value through the power function
 	\begin{equation}
 	Thrust = 4.701 * 10^{15} * V_w^{6.146} + 0.0731
 	\label{wind_power}
 	\end{equation}
-	The second measurement of thrust is a polynomial function that converts the recorded PWM value that is used to control the propeller to thrust. \newline
+	The secondary measurement of thrust is a polynomial function that converts the output PWM value that is used to control the propeller. \newline
 	\begin{eqnarray}
 	Thrust = 1.957*10^{-5}*PWM^4 \\
 	- 7.476*10^{-4}*PWM^3 \nonumber\\ 
@@ -135,7 +134,7 @@
 	\end{eqnarray}
 	These values are then passed through a Kalman Filter weighted towards the wind sensor. This method allows for the system to accurately determine the thrust value output while reducing noise due to the nature of the wind. Next this value is passed to a PI controller which generates the appropriate response for the error between desired and measured. 
 	\subsection{The tests}
-	To ensure the viability of our algorithm and if it would respond to external stimuli the way we expected, we performed several tests that caused significant errors in the propeller's response. The first test that we ran was to measure the response of the kalman filter and ensure that our thrust calculation was accurate in relation to the testbed recorded thrust. To do this we measured  As seen in fig \ref{kalman} the kalman filter, while noisy due to the wind variations in the wind sensor data, follows the thrust value from the testbed closely. This result gives us the confidence to setup the PI based on the kalman filter's value. 
+	To ensure the viability of our algorithm and if it would respond to external stimuli the way we expected, we performed several tests that caused significant errors in the propeller's response. The first test that we ran was to measure the response of the kalman filter and ensure that our thrust calculation was accurate in relation to the testbed recorded thrust. As seen in fig \ref{kalman} the kalman filter, while noisy due to the wind variations in the wind sensor data, follows the thrust value from the testbed closely. This result gives us the confidence to setup the PI based on the kalman filter's value. 
 	To ensure the functionality of the controller we set up several faults and disturbances to test the response of the system. The first step was to create an external disturbance by placing another propeller and blowing wind perpendicular to the axis of the main propeller. This would be akin to horizontal crosswind flow across the propeller.
 	\begin{figure}
 		\label{content...}
@@ -144,22 +143,32 @@
 	\begin{figure}
 		content...
 	\end{figure}
-	Next we 
-	\subsection{4.3}
 	\subsection{Shortcomings and limitations}
+	As mentioned previously, having a closed loop system allows for a more robust and agile system which allows for better flight performance. Some of the application for this level of performance include a better landing algorithm, proximity detection of other MAV's, more sophisticated hovering control, fault detection, and fault tolerance. These areas would all benefit by having a physical measurement of the thrust rather than an estimation.
+	
+	There are certain limitations within our setup that we have to address. The first of which is the low range of the wind sensor which can maximally measure only $25%$ of the motor's maximum RPM. The other major shortcoming of our paper is the static nature of the experiments. Our tests have only been in a fixed and controlled environment, with only one motor as the test. In real situations on a quadrotor or such, the behaviour of our system might be significantly different.  
+	
 	low wind speed. Have not accounted for multiple sources of wind. fixed and controlled environment. only one propeller. 
 	\section{5}
 	\subsection{Reiteration of results}
-	In this paper we presented a closed loop control system for the purposes of controlling MAV rotor systems by the introduction of a hot wire anemometer. The anemometer measures the rate of wind flow from the downwash of the MAV rotor and there is a linear relationship that is developed between wind flow velocity and the thrust output of the system. Through this relationship we developed a PI controller that corrects for any errors in thrust output due to both internal and external disturbances.
+	In this paper we presented a closed loop control system for the purposes of controlling MAV rotor systems by the introduction of a hot wire anemometer. The anemometer measures the rate of wind flow from the downwash of the MAV rotor and there is a linear relationship that is developed between wind flow velocity and the thrust output of the system. Through this relationship we developed a PI controller that maintains a desired thrust value against internal and external disturbances.
 	\subsection{Reiteration of applications}
 	
-	\subsection
+	\subsection{}
 	\subsection{5.4}
+		\begin{figure}[b]
+		\includegraphics[width=\textwidth / 2]{images/block_diagram.png}
+		\caption{Block Diagram}
+		\label{block_diagram}
+	\end{figure}
 	\begin{thebibliography}{99}
-		\bibitem{Mahoney1} Mahoney 2012
+		\bibitem{mahoney1} Mahoney 2012
 		\bibitem{rcb} https://www.rcbenchmark.com/dynamometer-series-1580/
 		\bibitem{md} https://moderndevice.com/product/wind-sensor-rev-p/
 		\bibitem{hot_wire} Extended Applications of the Hot‐Wire Anemometer, Stanley Corrsin,Review of Scientific Instruments 1947 18:7, 469-471 
+		\bibitem{awan} A. U. Awan, J. Park and H. J. Kim, "Thrust estimation of quadrotor UAV using adaptive observer," 2011 11th International Conference on Control, Automation and Systems, Gyeonggi-do, 2011, pp. 131-136.
+		\bibitem{sydney} N. Sydney, B. Smyth and D. A. Paley, "Dynamic control of autonomous quadrotor flight in an estimated wind field," 52nd IEEE Conference on Decision and Control, Florence, 2013, pp. 3609-3616.
+		doi: 10.1109/CDC.2013.6760438
 		
 	\end{thebibliography}
 

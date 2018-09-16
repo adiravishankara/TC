@@ -1,4 +1,4 @@
-wind_d= csvread("friday_night/wind_d_comparison.csv",1,0);
+wind_d= csvread("paper_data/wind_disturbance.csv",1,0);
 %  curr_testtorq = pt;
 [r,c] = find(wind_d(:,10) == 0);
 wind_d(r,:) = [];

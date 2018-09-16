@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.9.13)  15 SEP 2018 20:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.9.13)  15 SEP 2018 22:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -416,17 +416,12 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 45.
-LaTeX Font Info:    Try loading font information for U+msa on input line 45.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 45.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ô in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ô in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ô in font ptmr7t!
@@ -437,165 +432,130 @@ Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ô in font ptmr7t!
 
-
-LaTeX Warning: Citation `str' on page 1 undefined on input line 59.
-
-Missing character: There is no ‚ in font ptmr7t!
-Missing character: There is no Ä in font ptmr7t!
-Missing character: There is no ô in font ptmr7t!
-Missing character: There is no ‚ in font ptmr7t!
-Missing character: There is no Ä in font ptmr7t!
-Missing character: There is no ô in font ptmr7t!
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 64--65
+LaTeX Font Info:    Try loading font information for U+msa on input line 55.
 
- []
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 55.
 
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
 
-LaTeX Warning: Citation `someone' on page 2 undefined on input line 112.
+LaTeX Warning: Citation `someone' on page 2 undefined on input line 88.
 
-Missing character: There is no ‚ in font ptmr7t!
-Missing character: There is no Ä in font ptmr7t!
-Missing character: There is no ì in font ptmr7t!
-[2]
-
-LaTeX Warning: Reference `orient_test' on page 3 undefined on input line 136.
-
-
-LaTeX Warning: Reference `min_max' on page 3 undefined on input line 136.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 147--149
-
- []
-
-[3]
-
-LaTeX Warning: Reference `wind_disturb' on page 4 undefined on input line 163.
-
-
-LaTeX Warning: File `images/Figure_2/Block Diagram.jpg' not found on input line
- 177.
-
-<images/Figure_2/Block Diagram.jpg, id=22, 636.57825pt x 255.354pt>
-File: images/Figure_2/Block Diagram.jpg Graphic file (type jpg)
-
-<use images/Figure_2/Block Diagram.jpg>
-Package pdftex.def Info: images/Figure_2/Block Diagram.jpg used on input line 1
-77.
-(pdftex.def)             Requested size: 199.16928pt x 79.89534pt.
-
-<images/figure_1/area_heatmap.jpg, id=23, 562.1pt x 421.575pt>
-File: images/figure_1/area_heatmap.jpg Graphic file (type jpg)
-
-<use images/figure_1/area_heatmap.jpg>
-Package pdftex.def Info: images/figure_1/area_heatmap.jpg used on input line 18
-2.
-(pdftex.def)             Requested size: 284.52756pt x 213.39221pt.
-
-Overfull \hbox (32.52756pt too wide) in paragraph at lines 182--183
-[][] 
- []
-
-<images/figure_1/dist_heatmap.jpg, id=24, 562.1pt x 421.575pt>
-File: images/figure_1/dist_heatmap.jpg Graphic file (type jpg)
-
-<use images/figure_1/dist_heatmap.jpg>
-Package pdftex.def Info: images/figure_1/dist_heatmap.jpg used on input line 18
-7.
-(pdftex.def)             Requested size: 199.16928pt x 149.3739pt.
-
-<images/figure_1/orientation.jpg, id=25, 562.1pt x 421.575pt>
+[2] <images/figure_1/orientation.jpg, id=18, 562.1pt x 421.575pt>
 File: images/figure_1/orientation.jpg Graphic file (type jpg)
 
 <use images/figure_1/orientation.jpg>
-Package pdftex.def Info: images/figure_1/orientation.jpg used on input line 192
+Package pdftex.def Info: images/figure_1/orientation.jpg used on input line 114
 .
-(pdftex.def)             Requested size: 284.52756pt x 213.39221pt.
+(pdftex.def)             Requested size: 199.16928pt x 149.3739pt.
 
-Overfull \hbox (32.52756pt too wide) in paragraph at lines 192--193
-[][] 
- []
-
-<images/figure_1/range.jpg, id=26, 562.1pt x 421.575pt>
+<images/figure_1/range.jpg, id=19, 562.1pt x 421.575pt>
 File: images/figure_1/range.jpg Graphic file (type jpg)
 
 <use images/figure_1/range.jpg>
-Package pdftex.def Info: images/figure_1/range.jpg used on input line 197.
-(pdftex.def)             Requested size: 284.52756pt x 213.39221pt.
+Package pdftex.def Info: images/figure_1/range.jpg used on input line 120.
+(pdftex.def)             Requested size: 199.16928pt x 149.3739pt.
 
-Overfull \hbox (32.52756pt too wide) in paragraph at lines 197--198
-[][] 
- []
-
-<images/figure_1/response.jpg, id=27, 572.1375pt x 423.5825pt>
+<images/figure_1/response.jpg, id=20, 572.1375pt x 423.5825pt>
 File: images/figure_1/response.jpg Graphic file (type jpg)
 
 <use images/figure_1/response.jpg>
-Package pdftex.def Info: images/figure_1/response.jpg used on input line 202.
-(pdftex.def)             Requested size: 284.52756pt x 210.65318pt.
+Package pdftex.def Info: images/figure_1/response.jpg used on input line 127.
+(pdftex.def)             Requested size: 199.16928pt x 147.45464pt.
 
-Overfull \hbox (32.52756pt too wide) in paragraph at lines 202--203
-[][] 
+<images/figure_1/area_heatmap.jpg, id=21, 562.1pt x 421.575pt>
+File: images/figure_1/area_heatmap.jpg Graphic file (type jpg)
+
+<use images/figure_1/area_heatmap.jpg>
+Package pdftex.def Info: images/figure_1/area_heatmap.jpg used on input line 13
+4.
+(pdftex.def)             Requested size: 199.16928pt x 149.3739pt.
+
+<images/figure_1/dist_heatmap.jpg, id=22, 562.1pt x 421.575pt>
+File: images/figure_1/dist_heatmap.jpg Graphic file (type jpg)
+
+<use images/figure_1/dist_heatmap.jpg>
+Package pdftex.def Info: images/figure_1/dist_heatmap.jpg used on input line 13
+9.
+(pdftex.def)             Requested size: 199.16928pt x 149.3739pt.
+
+<images/Figure_2/Block_Diagram.jpg, id=23, 636.57825pt x 255.354pt>
+File: images/Figure_2/Block_Diagram.jpg Graphic file (type jpg)
+
+<use images/Figure_2/Block_Diagram.jpg>
+Package pdftex.def Info: images/Figure_2/Block_Diagram.jpg used on input line 1
+46.
+(pdftex.def)             Requested size: 199.16928pt x 79.89534pt.
+ [3 <./images/figure_1/orientation.jpg> <./images/figure_1/range.jpg> <./images
+/figure_1/response.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 154--156
+
  []
 
-<images/akf1.jpg, id=28, 653.44125pt x 339.2675pt>
+<images/akf1.jpg, id=27, 653.44125pt x 339.2675pt>
 File: images/akf1.jpg Graphic file (type jpg)
  <use images/akf1.jpg>
-Package pdftex.def Info: images/akf1.jpg used on input line 207.
-(pdftex.def)             Requested size: 284.52756pt x 147.72511pt.
+Package pdftex.def Info: images/akf1.jpg used on input line 167.
+(pdftex.def)             Requested size: 199.16928pt x 103.40654pt.
 
-Overfull \hbox (32.52756pt too wide) in paragraph at lines 207--208
-[][] 
- []
-
-<images/akf2.jpg, id=29, 668.4975pt x 354.32375pt>
+<images/akf2.jpg, id=28, 668.4975pt x 354.32375pt>
 File: images/akf2.jpg Graphic file (type jpg)
  <use images/akf2.jpg>
-Package pdftex.def Info: images/akf2.jpg used on input line 212.
-(pdftex.def)             Requested size: 284.52756pt x 150.80997pt.
+Package pdftex.def Info: images/akf2.jpg used on input line 172.
+(pdftex.def)             Requested size: 199.16928pt x 105.56265pt.
 
-Overfull \hbox (32.52756pt too wide) in paragraph at lines 212--213
-[][] 
- []
-
-<images/Figure_2/kalman.jpg, id=30, 1861.95625pt x 1004.75375pt>
+<images/Figure_2/kalman.jpg, id=29, 1861.95625pt x 1004.75375pt>
 File: images/Figure_2/kalman.jpg Graphic file (type jpg)
 
 <use images/Figure_2/kalman.jpg>
-Package pdftex.def Info: images/Figure_2/kalman.jpg used on input line 217.
-(pdftex.def)             Requested size: 284.52756pt x 153.52751pt.
+Package pdftex.def Info: images/Figure_2/kalman.jpg used on input line 179.
+(pdftex.def)             Requested size: 199.16928pt x 107.47232pt.
 
-Overfull \hbox (32.52756pt too wide) in paragraph at lines 217--218
-[][] 
- []
-
-<images/Figure_2/pwm_reduc.jpg, id=31, 1861.95625pt x 1004.75375pt>
+<images/Figure_2/pwm_reduc.jpg, id=30, 1861.95625pt x 1004.75375pt>
 File: images/Figure_2/pwm_reduc.jpg Graphic file (type jpg)
 
 <use images/Figure_2/pwm_reduc.jpg>
-Package pdftex.def Info: images/Figure_2/pwm_reduc.jpg used on input line 222.
-(pdftex.def)             Requested size: 284.52756pt x 153.52751pt.
+Package pdftex.def Info: images/Figure_2/pwm_reduc.jpg used on input line 184.
+(pdftex.def)             Requested size: 199.16928pt x 107.47232pt.
 
-Overfull \hbox (32.52756pt too wide) in paragraph at lines 222--223
-[][] 
- []
+<images/Figure_2/wind_d.jpg, id=31, 1861.95625pt x 1004.75375pt>
+File: images/Figure_2/wind_d.jpg Graphic file (type jpg)
 
-<images/Figure_2/wind_disturbance.jpg, id=32, 552.0625pt x 391.4625pt>
-File: images/Figure_2/wind_disturbance.jpg Graphic file (type jpg)
+<use images/Figure_2/wind_d.jpg>
+Package pdftex.def Info: images/Figure_2/wind_d.jpg used on input line 189.
+(pdftex.def)             Requested size: 199.16928pt x 107.47232pt.
 
-<use images/Figure_2/wind_disturbance.jpg>
-Package pdftex.def Info: images/Figure_2/wind_disturbance.jpg used on input lin
-e 227.
-(pdftex.def)             Requested size: 284.52756pt x 201.76372pt.
 
-Overfull \hbox (32.52756pt too wide) in paragraph at lines 227--228
-[][] 
- []
+LaTeX Warning: Reference `pwm_reduc_active' on page 4 undefined on input line 1
+96.
 
+<images/Figure_2/wind_ctl.jpg, id=32, 1861.95625pt x 1004.75375pt>
+File: images/Figure_2/wind_ctl.jpg Graphic file (type jpg)
+
+<use images/Figure_2/wind_ctl.jpg>
+Package pdftex.def Info: images/Figure_2/wind_ctl.jpg used on input line 198.
+(pdftex.def)             Requested size: 199.16928pt x 107.47232pt.
+
+<images/Figure_2/pwm_control.jpg, id=33, 1861.95625pt x 1004.75375pt>
+File: images/Figure_2/pwm_control.jpg Graphic file (type jpg)
+
+<use images/Figure_2/pwm_control.jpg>
+Package pdftex.def Info: images/Figure_2/pwm_control.jpg used on input line 203
+.
+(pdftex.def)             Requested size: 199.16928pt x 107.47232pt.
+ [4 <./images/figure_1/area_heatmap.jpg> <./images/figure_1/dist_heatmap.jpg> <
+./images/Figure_2/Block_Diagram.jpg> <./images/akf1.jpg> <./images/akf2.jpg>]
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ô in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ú in font ptmr7t!
@@ -635,6 +595,9 @@ Missing character: There is no ù in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ì in font ptmr7t!
+ [5 <./images/Figure_2/kalman.jpg> <./images/Figure_2/pwm_reduc.jpg> <./images/
+Figure_2/wind_d.jpg> <./images/Figure_2/wind_ctl.jpg> <./images/Figure_2/pwm_co
+ntrol.jpg>]
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ú in font ptmr7t!
@@ -653,8 +616,6 @@ Missing character: There is no ù in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ì in font ptmr7t!
-[4 <./images/Figure_2/Block Diagram.jpg> <./images/figure_1/area_heatmap.jpg> <
-./images/figure_1/dist_heatmap.jpg>]
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ú in font ptmr7t!
@@ -680,12 +641,10 @@ Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ê in font ptmr7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 262--263
+Underfull \hbox (badness 10000) in paragraph at lines 240--241
 []\OT1/ptm/m/n/8 Extended Ap-pli-ca-tions of the HotWire Anemome-ter, Stan-ley
  []
 
-[5 <./images/figure_1/orientation.jpg> <./images/figure_1/range.jpg> <./images/
-figure_1/response.jpg> <./images/akf1.jpg> <./images/akf2.jpg>]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -697,20 +656,21 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[6 <./images/Figure_2/kalman.jpg> <./images/Figure_2/pwm_reduc.jpg> <./images/F
-igure_2/wind_disturbance.jpg>] (./IEEE_VERSION.aux)
+[6
+
+] (./IEEE_VERSION.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4487 strings out of 493029
- 65444 string characters out of 6136234
+ 4464 strings out of 493029
+ 65275 string characters out of 6136234
  136991 words of memory out of 5000000
- 7950 multiletter control sequences out of 15000+600000
- 41145 words of font info for 88 fonts, out of 8000000 for 9000
+ 7930 multiletter control sequences out of 15000+600000
+ 35813 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,11n,35p,2487b,302s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,8n,35p,2623b,246s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/
@@ -721,10 +681,10 @@ sfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on IEEE_VERSION.pdf (6 pages, 602288 bytes).
+Output written on IEEE_VERSION.pdf (6 pages, 833530 bytes).
 PDF statistics:
- 75 PDF objects out of 1000 (max. 8388607)
+ 77 PDF objects out of 1000 (max. 8388607)
  45 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

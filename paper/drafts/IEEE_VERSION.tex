@@ -22,8 +22,8 @@
 \IEEEauthorblockN{Bara Emran*}
 \IEEEauthorblockA{bara.emran@gmail.com}
 \and
-\IEEEauthorblockN{Sherman**}
-\IEEEauthorblockA{Sherman@sherman.com}
+\IEEEauthorblockN{Alsharman Mohammad**}
+\IEEEauthorblockA{alsharman.mohammad@gmail.com}
 \and
 \IEEEauthorblockN{Homayoun Najjaran*}
 \IEEEauthorblockA{homayoun.najjaran@ubc.ca}
@@ -50,7 +50,7 @@ Awan et. al. \cite{awan} developed an adaptive observer-based thrust estimation 
 
 
 \section{2}
-\subsection{Wind sensor math/theory}
+\subsection{Wind Flow Theory}
 We have to start by defining the three different velocities that apply to a propeller.
 $v_x , v_y , v_z$ is the velocity of the drone, the body frame velocity, $v^s_{x} , v^s_{y} , v^s_{z}$ is the velocity of the wind approaching the propellers, the stream velocity, and $ v^i_{x} , v^i_{y} , v^i_{z}$ is the induced velocity of the propellers.\\
 Since we are doing only the static tests in this paper, we can disregard the horizontal components of the wind as well as the body frame velocities. Then we can state $v_s = v^s_{z}$ and $ v_i = v^i_{z} $.\\
@@ -112,39 +112,34 @@ The wind sensor we have chosen to use is the "Modern Device- Wind Sensor Rev. P"
 To understand the limitations of the wind sensor, we performed a series of tests to characterize the sensor. The first of which was to determine under which orientation the sensor observed the highest range of wind speeds. As seen in \ref{orientation}, the orientation of placing the wind sensor normal to the direction of wind flow allowed for the highest range of measurement. 
 	\begin{figure}[htbp]
 	\includegraphics[width=7cm]{images/figure_1/orientation.jpg}
-	\caption{Block Diagram}
+	\caption{Results of exposing the wind sensor in different orientations to a range of wind velocities. The orientation normal to the wind shows the highest sensitivity. }
 	\label{orientation}
 \end{figure}
 Next we performed a test to determine the feasible range of measurement. This was done by exposing the wind sensor to a step-signal test and a pulse signal test ranging from the minimal PWM value to approximately $25\%$ of the motor's max value, the results of which are in \ref{range}. The PWM values in this case are based around the Simulink-Arduino Library PWM module.  This resulted in a working range from $PWM = 44$ to $PWM = 60$. While there is possibility for the wind sensor to measure higher wind speeds, there is a significant amount of noise even with the addition of a low-pass filter, hence we decided to limit the max speed of our experiment.
 	\begin{figure}[htbp]
 	\includegraphics[width=7cm]{images/figure_1/range.jpg}
-	\caption{range}
+	\caption{Results of the test to determine the measuring range of the sensor. The sensor can easily measure the low end of the motor's RPM, but as the RPM surpasses $25\%$ of max RPM, there accumulates significant noise.  }
 	\label{range}
 \end{figure}
- 
 One other factor of a sensor that is important to determine is the measurement lag. This is the time it takes for the sensor to notice and measure a change in the value. To measure this vector we introduced a large change in RPM for the propeller and then measured the average time lag between when the thrust stand noticed the change and when the wind sensor noticed the change. This test resulted in a near 2 second lag in extreme changes. While this seems like a rather long delay, for smaller changes, the sensor can react much quicker. The results of this test are show in fig \ref{response}.
 	\begin{figure}[htbp]
 	\includegraphics[width=7cm]{images/figure_1/response.jpg}
-	\caption{response}
+	\caption{A test to measure the lag in response time between the thrust stand and the wind sensor.}
 	\label{response}
 \end{figure}
-Lastly we measured the location of the wind sensor in relation to the propellers. To do so we measured a semi-circle area behind the propeller to deem the location of highest wind sensitivity. Resulting in a map as seen in figure \ref{area},\ref{dist}. This results in a location approximately 7 cm above the axis of the propeller and 5 cm behind the propeller.
+Lastly we measured the location of the wind sensor in relation to the propellers. To do so we measured a semi-circle area behind the propeller to deem the location of highest wind sensitivity. Resulting in a map as seen in figure \ref{area}. This results in a location approximately 7 cm above the axis of the propeller and 5 cm behind the propeller.
 By characterizing the wind sensor, we can ensure that it is in the optimal configuration for the collection of data.
 	\begin{figure}[htbp]
-	\includegraphics[width=7cm]{images/figure_1/area_heatmap.jpg}
-	\caption{Block Diagram}
+	\includegraphics[width=7cm]{images/figure_1/comb_heatmap.jpg}
+	\caption{A visual display of where the propeller's downwash is the strongest. a. shows how the wind flow is measured along a plane parallel to the propeller. b. shows how the wind flow changes in the plane perpendicular to the propeller}
 	\label{area}
 \end{figure}
-\begin{figure}[htbp]
-	\includegraphics[width = 7cm]{images/figure_1/dist_heatmap.jpg}
-	\caption{Block Diagram}
-	\label{dist}
-\end{figure}
+
 \section{Results}
 \subsection{Control Loop Setup}
 	\begin{figure}[htbp]
 	\includegraphics[width=7cm]{images/Figure_2/Block_Diagram.jpg}
-	\caption{Block Diagram}
+	\caption{Our proposed control system based around measurements from the wind sensor.}
 	\label{block_diagram}
 \end{figure}
 We developed a control architecture as pictured in fig \ref{block_diagram} where there are two sources of measurement for the thrust value. the primary value is from the wind sensor which is measured through an Arduino. The voltage value that the arduino measures is then converted to a thrust value through the power function
@@ -165,63 +160,54 @@ These values are then passed through a Kalman Filter weighted towards the wind s
 Figures \ref{akf1},\ref{akf2} demonstrate the thrust estimation using the conventional and the adaptive fuzzy state estimation techniques. As can be seen, the proposed AFKF has exhibited better performance in terms of rejecting the noise associated with the measurement compared to the classical KF. Figures \ref{akf1},\ref{akf2} presents the estimation errors of the position states. The AFKF shows lower magnitudes of estimation error compared to these of the KF. 
 \begin{figure}[htbp]
 	\includegraphics[width=7cm]{images/akf1.jpg}
-	\caption{response}
+	\caption{Thrust State Estimation}
 	\label{akf1}
 \end{figure}
 \begin{figure}[htbp]
 	\includegraphics[width=7cm]{images/akf2.jpg}
-	\caption{response}
+	\caption{Thrust Estimation Error}
 	\label{akf2}
 \end{figure}
 
 To ensure the viability of our algorithm and if it would respond to external stimuli the way we expected, we performed several tests that caused significant errors in the propeller's response. The first test that we ran was to measure the response of the kalman filter and ensure that our thrust estimation was accurate with the actual thrust measured by the thrust stand. We ran this as a series with no error as seen in \ref{kalman}, an internal error of a PWM drop by $20\%$ as seen in \ref{pwm_reduc}, and lastly a wind disturbance which would decrease the thrust output of the propellers, even while maintaining a particular RPM as seen in \ref{wind_d}.
 \begin{figure}[htbp]
 	\includegraphics[width=7cm]{images/Figure_2/kalman.jpg}
-	\caption{response}
+	\caption{The response of the Kalman Filter, when there is no meaningful disturbance.}
 	\label{kalman}
 \end{figure}
 \begin{figure}[htbp]
 	\includegraphics[width=7cm]{images/Figure_2/pwm_reduc.jpg}
-	\caption{response}
+	\caption{The response of the Kalman Filter when there is an internal error to reduce the motor command by $20\%$.}
 	\label{pwm_reduc}
 \end{figure}
 \begin{figure}[htbp]
 	\includegraphics[width=7cm]{images/Figure_2/wind_d.jpg}
-	\caption{response}
+	\caption{The response of the Kalman Filter when there is a wind disturbance reducing the thrust output of the propeller.}
 	\label{wind_d}
 \end{figure}
 
  As seen in \ref{kalman} the kalman filter, while noisy due to the wind variations in the wind sensor data, follows the thrust value from the testbed closely even while there are major errors in play.Therefore we have confidence to send this value to the PI controller to control the system. 
  
-We performed the same tests, this time with the controller active, to measure the active response of the controller. Since the response of the wind sensor has a lot of intrinsic noise, the controller, responds with a lot of fluctuations. With this being the case, it is shown in \ref{wind_disturbance} and \ref{pwm_reduc_active}, that the average response of the active controller versus no control is significantly more along the desired thrust value. 
+We perform tests with similar errors to measure the active response of the controller. Since the response of the wind sensor has a lot of intrinsic noise, the controller, responds with a lot of fluctuations. With this being the case, it is shown in \ref{wind_disturbance} and \ref{PWM_control}, that the average response of the active controller versus no control is significantly more along the desired thrust value. Hence the controller, and the sensor work to act as a viable option to create a closed loop control system.
 \begin{figure}[htbp]
 	\includegraphics[width=7cm]{images/Figure_2/wind_ctl.jpg}
-	\caption{response}
+	\caption{The response of the active controller to a wind disturbance. Compared to no control, the system reponds with a thrust value that matches closely to the desired thrust value.}
 	\label{wind_disturbance}
 	\end{figure}
 \begin{figure}[htbp]
 	\includegraphics[width=7cm]{images/Figure_2/pwm_control.jpg}
-	\caption{response}
+	\caption{The response of the active controller to an internal error. Compared to co control, the system responds with a more accurate control to maintain the desired thrust.}
 	\label{PWM_control}
 \end{figure}
 
-\subsection{Shortcomings and limitations}
-As mentioned previously, having a closed loop system allows for a more robust and agile system which allows for better flight performance. Some of the application for this level of performance include a better landing algorithm, proximity detection of other MAV's, more sophisticated hovering control, fault detection, and fault tolerance. These areas would all benefit by having a physical measurement of the thrust rather than an estimation.
+\subsection{Further Work}
+As mentioned previously, having a closed loop system allows for a more robust and agile system which allows for better flight performance. Some of the application for this level of performance include a better landing algorithm, proximity detection of other MAV's, more sophisticated hovering control, fault detection, and fault tolerance. These areas would all benefit by having a physical measurement of the thrust rather than an estimation. In the future we hope to apply our method towards these problems and find a solution that fits our criteria of measuring the wind to estimate thrust rather than a more complicated system.
 
-There are certain limitations within our setup that we have to address. The first of which is the low range of the wind sensor which can maximally measure only $25\%$ of the motor's maximum RPM. The other major shortcoming of our paper is the static nature of the experiments. Our tests have only been in a fixed and controlled environment, with only one motor as the test. In real situations on a quadrotor or such, the behaviour of our system might be significantly different.  	
+There are certain limitations within our setup that we have to address. The first of which is the low range of the wind sensor which can maximally measure only $25\%$ of the motor's maximum RPM. The other major shortcoming of our paper is the static nature of the experiments. Our tests have only been in a fixed and controlled environment, with only one motor as the test. In real situations on a quadrotor or such, the behaviour of our system might be significantly different. In the future we will move our setup onto a quadrotor where we can model how the system will behave with multiple rotors and in a more dynamic environment.
 \section{Conclusion}
 
 In this paper, we have proposed a low-cost system for real-time estimation and regulation of aerodynamic thrust for multirotor aerial vehicles. The scheme mainly targets the rotor with a fixed-blade pitch which is commonly used in UAV. The proposed system includes the integration of an onboard wind sensor, effective adaptive Kalman filter, and a simple PI control system. The main features of the proposed system are the ability for a direct sensing and precise controlling of rotor thrust. The experimental tests showed a robust behavior towards external disturbances including wind gusts and also tolerant to efficiency loss in the rotor. 
 The future work involves validating the proposed system’s features for a flying UAV. This includes implementing the developed system on a UAV to perform hover flight with external wind and aggressive flight maneuvers. 
-
-
-
-
-
-
-
-
-
 
 
 \begin{thebibliography}{00}

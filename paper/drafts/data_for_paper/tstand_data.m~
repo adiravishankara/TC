@@ -1,0 +1,10 @@
+thrust= csvread("friday_night/pwm_r_",1,0);
+%  curr_testtorq = pt;
+[r,c] = find(thrust(:,10) == 0);
+thrust(r,:) = [];
+
+% [r,c] = find(curr_testtorq(:,9) == 0);
+% 
+% curr_testtorq(r,:) = [];
+% 
+clear r c

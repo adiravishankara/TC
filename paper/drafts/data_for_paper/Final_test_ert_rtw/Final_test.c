@@ -7,9 +7,9 @@
  *
  * Code generation for model "Final_test".
  *
- * Model version              : 1.49
+ * Model version              : 1.54
  * Simulink Coder version : 8.14 (R2018a) 06-Feb-2018
- * C source code generated on : Fri Sep 14 14:53:31 2018
+ * C source code generated on : Sat Sep 15 17:33:20 2018
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -295,18 +295,18 @@ static void matlabCodegenHandle_matlabCodeg(dsp_simulink_MovingAverage_Fi_T *obj
 static void SystemProp_matlabCodegenSet_fdg(codertarget_arduinobase_in_fd_T *obj,
   boolean_T value)
 {
-  /* Start for MATLABSystem: '<S3>/Analog Input' */
+  /* Start for MATLABSystem: '<S4>/Analog Input' */
   obj->matlabCodegenIsDeleted = value;
 }
 
 static void matlabCodegenHandle_matlabC_fdg(codertarget_arduinobase_in_fd_T *obj)
 {
-  /* Start for MATLABSystem: '<S3>/Analog Input' */
+  /* Start for MATLABSystem: '<S4>/Analog Input' */
   if (!obj->matlabCodegenIsDeleted) {
     SystemProp_matlabCodegenSet_fdg(obj, true);
   }
 
-  /* End of Start for MATLABSystem: '<S3>/Analog Input' */
+  /* End of Start for MATLABSystem: '<S4>/Analog Input' */
 }
 
 static void SystemProp_matlabCodegenSetA_fd(codertarget_arduinobase_int_f_T *obj,
@@ -332,7 +332,7 @@ void Final_test_step(void)
   /* local block i/o variables */
   real_T rtb_PWMsaturation;
   real_T rtb_IntegralGain;
-  real_T rtb_IntegralGain_g;
+  real_T rtb_IntegralGain_c;
   boolean_T rtb_FixPtRelationalOperator;
   boolean_T rtb_FixPtRelationalOperator_b;
   static const int8_T R[4] = { 20, 0, 0, 20 };
@@ -340,9 +340,9 @@ void Final_test_step(void)
   static const real_T a[4] = { 0.9998, -0.0394, 0.009851, 0.9702 };
 
   uint16_T rtb_AnalogInput_0;
+  real_T z;
   boolean_T p;
   boolean_T p_0;
-  real_T rtb_Product;
   int32_T i;
   if (rtmIsMajorTimeStep(Final_test_M)) {
     /* set solver stop time */
@@ -368,163 +368,8 @@ void Final_test_step(void)
 
   /* Reset subsysRan breadcrumbs */
   srClearBC(Final_test_DW.IfActionSubsystem1_SubsysRanBC);
-  if (rtmIsMajorTimeStep(Final_test_M)) {
-    /* Start for MATLABSystem: '<Root>/Kalman ' incorporates:
-     *  Memory: '<S1>/Memory'
-     */
-    if (Final_test_DW.obj.TunablePropsChanged) {
-      Final_test_DW.obj.TunablePropsChanged = false;
-    }
 
-    if (Final_test_DW.obj.pStatistic->isInitialized != 1) {
-      Final_test_DW.obj.pStatistic->isSetupComplete = false;
-      Final_test_DW.obj.pStatistic->isInitialized = 1;
-      Final_test_DW.obj.pStatistic->pCumSum = 0.0;
-      Final_test_DW.obj.pStatistic->pCumRevIndex = 1.0;
-      Final_test_DW.obj.pStatistic->isSetupComplete = true;
-      Final_test_DW.obj.pStatistic->pCumSum = 0.0;
-      memset(&Final_test_DW.obj.pStatistic->pCumSumRev[0], 0, 9U * sizeof(real_T));
-      Final_test_DW.obj.pStatistic->pCumRevIndex = 1.0;
-    }
-
-    Final_test_B.cumRevIndex = Final_test_DW.obj.pStatistic->pCumRevIndex;
-    Final_test_B.csum = Final_test_DW.obj.pStatistic->pCumSum;
-    for (i = 0; i < 9; i++) {
-      Final_test_B.csumrev[i] = Final_test_DW.obj.pStatistic->pCumSumRev[i];
-    }
-
-    Final_test_B.csum += Final_test_DW.Memory_PreviousInput;
-    i = (int32_T)Final_test_B.cumRevIndex - 1;
-    Final_test_B.z = Final_test_B.csumrev[i] + Final_test_B.csum;
-    Final_test_B.csumrev[i] = Final_test_DW.Memory_PreviousInput;
-    if (Final_test_B.cumRevIndex != 9.0) {
-      Final_test_B.cumRevIndex++;
-    } else {
-      Final_test_B.cumRevIndex = 1.0;
-      Final_test_B.csum = 0.0;
-      for (i = 7; i >= 0; i--) {
-        Final_test_B.csumrev[i] += Final_test_B.csumrev[i + 1];
-      }
-    }
-
-    Final_test_DW.obj.pStatistic->pCumSum = Final_test_B.csum;
-    memcpy(&Final_test_DW.obj.pStatistic->pCumSumRev[0], &Final_test_B.csumrev[0],
-           9U * sizeof(real_T));
-    Final_test_DW.obj.pStatistic->pCumRevIndex = Final_test_B.cumRevIndex;
-
-    /* MATLABSystem: '<Root>/Kalman ' */
-    Final_test_B.Kalman = Final_test_B.z / 10.0;
-
-    /* Sum: '<S8>/Sum' incorporates:
-     *  Constant: '<Root>/Constant2'
-     */
-    Final_test_B.e = Final_test_P.Constant2_Value - Final_test_B.Kalman;
-
-    /* Product: '<S8>/Product' incorporates:
-     *  Constant: '<Root>/Automatic Control'
-     */
-    rtb_Product = Final_test_B.e * Final_test_P.AutomaticControl_Value;
-
-    /* RelationalOperator: '<S18>/FixPt Relational Operator' incorporates:
-     *  Constant: '<Root>/Automatic Control'
-     *  UnitDelay: '<S18>/Delay Input1'
-     */
-    rtb_FixPtRelationalOperator = (Final_test_P.AutomaticControl_Value !=
-      Final_test_DW.DelayInput1_DSTATE);
-
-    /* DiscreteIntegrator: '<S22>/Integrator' */
-    if (rtb_FixPtRelationalOperator && (Final_test_DW.Integrator_PrevResetState <=
-         0)) {
-      Final_test_DW.Integrator_DSTATE = Final_test_P.Integrator_IC;
-    }
-
-    /* Sum: '<S22>/Sum' incorporates:
-     *  DiscreteIntegrator: '<S22>/Integrator'
-     *  Gain: '<S22>/Proportional Gain'
-     */
-    Final_test_B.Sum = Final_test_P.PIDController3_P * rtb_Product +
-      Final_test_DW.Integrator_DSTATE;
-
-    /* Saturate: '<S8>/Saturation' */
-    if (Final_test_B.Sum > Final_test_P.Saturation_UpperSat) {
-      Final_test_B.Saturation = Final_test_P.Saturation_UpperSat;
-    } else if (Final_test_B.Sum < Final_test_P.Saturation_LowerSat) {
-      Final_test_B.Saturation = Final_test_P.Saturation_LowerSat;
-    } else {
-      Final_test_B.Saturation = Final_test_B.Sum;
-    }
-
-    /* End of Saturate: '<S8>/Saturation' */
-  }
-
-  /* TransferFcn: '<S3>/Transfer Fcn1' */
-  Final_test_B.TransferFcn1 = 0.0;
-  Final_test_B.TransferFcn1 += Final_test_P.TransferFcn1_C *
-    Final_test_X.TransferFcn1_CSTATE;
-
-  /* Product: '<S7>/Product' incorporates:
-   *  Constant: '<Root>/Automatic Control'
-   *  Constant: '<Root>/Wind_des'
-   *  Sum: '<S7>/Sum'
-   */
-  Final_test_B.Product = (Final_test_P.Wind_des_Value -
-    Final_test_B.TransferFcn1) * Final_test_P.AutomaticControl_Value;
-  if (rtmIsMajorTimeStep(Final_test_M)) {
-    /* RelationalOperator: '<S16>/FixPt Relational Operator' incorporates:
-     *  Constant: '<Root>/Automatic Control'
-     *  UnitDelay: '<S16>/Delay Input1'
-     */
-    rtb_FixPtRelationalOperator_b = (Final_test_P.AutomaticControl_Value !=
-      Final_test_DW.DelayInput1_DSTATE_m);
-
-    /* DiscreteIntegrator: '<S17>/Integrator' */
-    if (rtb_FixPtRelationalOperator_b &&
-        (Final_test_DW.Integrator_PrevResetState_k <= 0)) {
-      Final_test_DW.Integrator_DSTATE_g = Final_test_P.Integrator_IC_g;
-    }
-
-    /* Sum: '<S7>/Sum2' incorporates:
-     *  Constant: '<Root>/Wind_des'
-     *  Constant: '<S7>/Constant'
-     *  Gain: '<S7>/Gain'
-     *  Gain: '<S7>/Gain1'
-     *  Math: '<S7>/Square'
-     */
-    Final_test_B.Sum2 = (Final_test_P.Wind_des_Value *
-                         Final_test_P.Wind_des_Value * Final_test_P.Gain1_Gain +
-                         Final_test_P.Gain_Gain_g * Final_test_P.Wind_des_Value)
-      + Final_test_P.Constant_Value;
-
-    /* ManualSwitch: '<Root>/Manual Switch3' incorporates:
-     *  DiscreteIntegrator: '<S17>/Integrator'
-     *  Gain: '<S17>/Proportional Gain'
-     *  Sum: '<S17>/Sum'
-     *  Sum: '<S7>/Sum1'
-     */
-    if (Final_test_P.ManualSwitch3_CurrentSetting == 1) {
-      Final_test_B.csum = (Final_test_P.DiscretePIDController_P *
-                           Final_test_B.Product +
-                           Final_test_DW.Integrator_DSTATE_g) +
-        Final_test_B.Sum2;
-    } else {
-      Final_test_B.csum = Final_test_B.Saturation;
-    }
-
-    /* End of ManualSwitch: '<Root>/Manual Switch3' */
-
-    /* Product: '<S2>/Product' incorporates:
-     *  Constant: '<Root>/Enable'
-     */
-    Final_test_B.Product_m = Final_test_P.Enable_Value * Final_test_B.csum;
-
-    /* Gain: '<Root>/Manual PWM' incorporates:
-     *  Constant: '<Root>/Constant'
-     */
-    Final_test_B.ManualPWM = Final_test_P.ManualPWM_Gain *
-      Final_test_P.Constant_Value_j;
-  }
-
-  /* FromWorkspace: '<S6>/FromWs' */
+  /* FromWorkspace: '<S10>/FromWs' */
   {
     real_T *pDataValues = (real_T *) Final_test_DW.FromWs_PWORK.DataPtr;
     real_T *pTimeValues = (real_T *) Final_test_DW.FromWs_PWORK.TimePtr;
@@ -534,8 +379,8 @@ void Final_test_step(void)
     /* Get index */
     if (t <= pTimeValues[0]) {
       currTimeIndex = 0;
-    } else if (t >= pTimeValues[34]) {
-      currTimeIndex = 33;
+    } else if (t >= pTimeValues[19]) {
+      currTimeIndex = 18;
     } else {
       if (t < pTimeValues[currTimeIndex]) {
         while (t < pTimeValues[currTimeIndex]) {
@@ -569,43 +414,278 @@ void Final_test_step(void)
         d1 = pDataValues[TimeIndex];
         d2 = pDataValues[TimeIndex + 1];
         rtb_PWMsaturation = (real_T) rtInterpolate(d1, d2, f1, f2);
-        pDataValues += 35;
+        pDataValues += 20;
       }
     }
   }
 
-  /* ManualSwitch: '<Root>/Manual Switch2' */
-  if (Final_test_P.ManualSwitch2_CurrentSetting == 1) {
-    Final_test_B.cumRevIndex = Final_test_B.ManualPWM;
+  /* ManualSwitch: '<Root>/Manual Switch4' incorporates:
+   *  Constant: '<Root>/Constant2'
+   */
+  if (Final_test_P.ManualSwitch4_CurrentSetting == 1) {
+    Final_test_B.ManualSwitch4 = rtb_PWMsaturation;
   } else {
-    Final_test_B.cumRevIndex = rtb_PWMsaturation;
+    Final_test_B.ManualSwitch4 = Final_test_P.Constant2_Value;
   }
 
-  /* End of ManualSwitch: '<Root>/Manual Switch2' */
+  /* End of ManualSwitch: '<Root>/Manual Switch4' */
+  if (rtmIsMajorTimeStep(Final_test_M)) {
+    /* Start for MATLABSystem: '<Root>/Kalman ' incorporates:
+     *  Memory: '<S1>/Memory'
+     */
+    if (Final_test_DW.obj.TunablePropsChanged) {
+      Final_test_DW.obj.TunablePropsChanged = false;
+    }
+
+    if (Final_test_DW.obj.pStatistic->isInitialized != 1) {
+      Final_test_DW.obj.pStatistic->isSetupComplete = false;
+      Final_test_DW.obj.pStatistic->isInitialized = 1;
+      Final_test_DW.obj.pStatistic->pCumSum = 0.0;
+      Final_test_DW.obj.pStatistic->pCumRevIndex = 1.0;
+      Final_test_DW.obj.pStatistic->isSetupComplete = true;
+      Final_test_DW.obj.pStatistic->pCumSum = 0.0;
+      memset(&Final_test_DW.obj.pStatistic->pCumSumRev[0], 0, 9U * sizeof(real_T));
+      Final_test_DW.obj.pStatistic->pCumRevIndex = 1.0;
+    }
+
+    Final_test_B.cumRevIndex = Final_test_DW.obj.pStatistic->pCumRevIndex;
+    Final_test_B.csum = Final_test_DW.obj.pStatistic->pCumSum;
+    for (i = 0; i < 9; i++) {
+      Final_test_B.csumrev[i] = Final_test_DW.obj.pStatistic->pCumSumRev[i];
+    }
+
+    Final_test_B.csum += Final_test_DW.Memory_PreviousInput;
+    i = (int32_T)Final_test_B.cumRevIndex - 1;
+    z = Final_test_B.csumrev[i] + Final_test_B.csum;
+    Final_test_B.csumrev[i] = Final_test_DW.Memory_PreviousInput;
+    if (Final_test_B.cumRevIndex != 9.0) {
+      Final_test_B.cumRevIndex++;
+    } else {
+      Final_test_B.cumRevIndex = 1.0;
+      Final_test_B.csum = 0.0;
+      for (i = 7; i >= 0; i--) {
+        Final_test_B.csumrev[i] += Final_test_B.csumrev[i + 1];
+      }
+    }
+
+    Final_test_DW.obj.pStatistic->pCumSum = Final_test_B.csum;
+    memcpy(&Final_test_DW.obj.pStatistic->pCumSumRev[0], &Final_test_B.csumrev[0],
+           9U * sizeof(real_T));
+    Final_test_DW.obj.pStatistic->pCumRevIndex = Final_test_B.cumRevIndex;
+
+    /* MATLABSystem: '<Root>/Kalman ' */
+    Final_test_B.Kalman = z / 10.0;
+  }
+
+  /* Sum: '<S13>/Sum' */
+  Final_test_B.e = Final_test_B.ManualSwitch4 - Final_test_B.Kalman;
+
+  /* TransferFcn: '<S4>/Transfer Fcn1' */
+  Final_test_B.TransferFcn1 = 0.0;
+  Final_test_B.TransferFcn1 += Final_test_P.TransferFcn1_C *
+    Final_test_X.TransferFcn1_CSTATE;
+
+  /* Product: '<S12>/Product' incorporates:
+   *  Constant: '<Root>/Automatic Control'
+   *  Constant: '<Root>/Wind_des'
+   *  Sum: '<S12>/Sum'
+   */
+  Final_test_B.Product = (Final_test_P.Wind_des_Value -
+    Final_test_B.TransferFcn1) * Final_test_P.AutomaticControl_Value;
+  if (rtmIsMajorTimeStep(Final_test_M)) {
+    /* RelationalOperator: '<S21>/FixPt Relational Operator' incorporates:
+     *  Constant: '<Root>/Automatic Control'
+     *  UnitDelay: '<S21>/Delay Input1'
+     */
+    rtb_FixPtRelationalOperator = (Final_test_P.AutomaticControl_Value !=
+      Final_test_DW.DelayInput1_DSTATE);
+
+    /* DiscreteIntegrator: '<S22>/Integrator' */
+    if (rtb_FixPtRelationalOperator && (Final_test_DW.Integrator_PrevResetState <=
+         0)) {
+      Final_test_DW.Integrator_DSTATE = Final_test_P.Integrator_IC;
+    }
+
+    /* Sum: '<S12>/Sum2' incorporates:
+     *  Constant: '<Root>/Wind_des'
+     *  Constant: '<S12>/Constant'
+     *  Gain: '<S12>/Gain'
+     *  Gain: '<S12>/Gain1'
+     *  Math: '<S12>/Square'
+     */
+    Final_test_B.Sum2 = (Final_test_P.Wind_des_Value *
+                         Final_test_P.Wind_des_Value * Final_test_P.Gain1_Gain_n
+                         + Final_test_P.Gain_Gain_g *
+                         Final_test_P.Wind_des_Value) +
+      Final_test_P.Constant_Value;
+
+    /* Sum: '<S12>/Sum1' incorporates:
+     *  DiscreteIntegrator: '<S22>/Integrator'
+     *  Gain: '<S22>/Proportional Gain'
+     *  Sum: '<S22>/Sum'
+     */
+    Final_test_B.Sum1 = (Final_test_P.DiscretePIDController_P *
+                         Final_test_B.Product + Final_test_DW.Integrator_DSTATE)
+      + Final_test_B.Sum2;
+  }
+
+  /* Product: '<S13>/Product' incorporates:
+   *  Constant: '<Root>/Automatic Control'
+   */
+  Final_test_B.Product_d = Final_test_B.e * Final_test_P.AutomaticControl_Value;
+  if (rtmIsMajorTimeStep(Final_test_M)) {
+    /* RelationalOperator: '<S23>/FixPt Relational Operator' incorporates:
+     *  Constant: '<Root>/Automatic Control'
+     *  UnitDelay: '<S23>/Delay Input1'
+     */
+    rtb_FixPtRelationalOperator_b = (Final_test_P.AutomaticControl_Value !=
+      Final_test_DW.DelayInput1_DSTATE_j);
+
+    /* DiscreteIntegrator: '<S27>/Integrator' */
+    if (rtb_FixPtRelationalOperator_b &&
+        (Final_test_DW.Integrator_PrevResetState_i <= 0)) {
+      Final_test_DW.Integrator_DSTATE_b = Final_test_P.Integrator_IC_d;
+    }
+
+    /* Sum: '<S27>/Sum' incorporates:
+     *  DiscreteIntegrator: '<S27>/Integrator'
+     *  Gain: '<S27>/Proportional Gain'
+     */
+    Final_test_B.Sum = Final_test_P.PIDController3_P * Final_test_B.Product_d +
+      Final_test_DW.Integrator_DSTATE_b;
+  }
+
+  /* ManualSwitch: '<Root>/Manual Switch2' incorporates:
+   *  Gain: '<S13>/Gain'
+   *  Sum: '<S13>/Add'
+   */
+  rtb_PWMsaturation = Final_test_P.Gain_Gain_d * Final_test_B.ManualSwitch4 +
+    Final_test_B.Sum;
+
+  /* Saturate: '<S13>/Saturation' */
+  if (rtb_PWMsaturation > Final_test_P.Saturation_UpperSat) {
+    Final_test_B.Saturation = Final_test_P.Saturation_UpperSat;
+  } else if (rtb_PWMsaturation < Final_test_P.Saturation_LowerSat) {
+    Final_test_B.Saturation = Final_test_P.Saturation_LowerSat;
+  } else {
+    Final_test_B.Saturation = rtb_PWMsaturation;
+  }
+
+  /* End of Saturate: '<S13>/Saturation' */
+  if (rtmIsMajorTimeStep(Final_test_M)) {
+    /* Gain: '<Root>/Manual PWM' incorporates:
+     *  Constant: '<Root>/Constant'
+     */
+    Final_test_B.ManualPWM = Final_test_P.ManualPWM_Gain *
+      Final_test_P.Constant_Value_j;
+  }
+
+  /* FromWorkspace: '<S5>/FromWs' */
+  {
+    real_T *pDataValues = (real_T *) Final_test_DW.FromWs_PWORK_i.DataPtr;
+    real_T *pTimeValues = (real_T *) Final_test_DW.FromWs_PWORK_i.TimePtr;
+    int_T currTimeIndex = Final_test_DW.FromWs_IWORK_d.PrevIndex;
+    real_T t = Final_test_M->Timing.t[0];
+
+    /* Get index */
+    if (t <= pTimeValues[0]) {
+      currTimeIndex = 0;
+    } else if (t >= pTimeValues[9]) {
+      currTimeIndex = 8;
+    } else {
+      if (t < pTimeValues[currTimeIndex]) {
+        while (t < pTimeValues[currTimeIndex]) {
+          currTimeIndex--;
+        }
+      } else {
+        while (t >= pTimeValues[currTimeIndex + 1]) {
+          currTimeIndex++;
+        }
+      }
+    }
+
+    Final_test_DW.FromWs_IWORK_d.PrevIndex = currTimeIndex;
+
+    /* Post output */
+    {
+      real_T t1 = pTimeValues[currTimeIndex];
+      real_T t2 = pTimeValues[currTimeIndex + 1];
+      if (t1 == t2) {
+        if (t < t1) {
+          rtb_PWMsaturation = pDataValues[currTimeIndex];
+        } else {
+          rtb_PWMsaturation = pDataValues[currTimeIndex + 1];
+        }
+      } else {
+        real_T f1 = (t2 - t) / (t2 - t1);
+        real_T f2 = 1.0 - f1;
+        real_T d1;
+        real_T d2;
+        int_T TimeIndex= currTimeIndex;
+        d1 = pDataValues[TimeIndex];
+        d2 = pDataValues[TimeIndex + 1];
+        rtb_PWMsaturation = (real_T) rtInterpolate(d1, d2, f1, f2);
+        pDataValues += 10;
+      }
+    }
+  }
 
   /* Switch: '<S2>/Switch2' incorporates:
    *  Constant: '<Root>/Automatic Control'
    *  ManualSwitch: '<Root>/Manual Switch'
+   *  ManualSwitch: '<Root>/Manual Switch2'
    */
   if (Final_test_P.AutomaticControl_Value > Final_test_P.Switch2_Threshold) {
-    rtb_PWMsaturation = Final_test_B.Product_m;
-  } else if (Final_test_P.ManualSwitch_CurrentSetting == 1) {
-    /* ManualSwitch: '<Root>/Manual Switch' incorporates:
-     *  Gain: '<Root>/Gain'
+    /* ManualSwitch: '<Root>/Manual Switch3' incorporates:
+     *  ManualSwitch: '<Root>/Manual Switch5'
      */
-    rtb_PWMsaturation = Final_test_P.Gain_Gain * Final_test_B.cumRevIndex;
+    if (Final_test_P.ManualSwitch3_CurrentSetting == 1) {
+      Final_test_B.cumRevIndex = Final_test_B.Sum1;
+    } else if (Final_test_P.ManualSwitch5_CurrentSetting == 1) {
+      /* ManualSwitch: '<Root>/Manual Switch5' incorporates:
+       *  Gain: '<Root>/Gain1'
+       */
+      Final_test_B.cumRevIndex = Final_test_P.Gain1_Gain *
+        Final_test_B.Saturation;
+    } else {
+      Final_test_B.cumRevIndex = Final_test_B.Saturation;
+    }
+
+    /* End of ManualSwitch: '<Root>/Manual Switch3' */
+
+    /* ManualSwitch: '<Root>/Manual Switch2' incorporates:
+     *  Constant: '<Root>/Enable'
+     *  Product: '<S2>/Product'
+     */
+    rtb_PWMsaturation = Final_test_P.Enable_Value * Final_test_B.cumRevIndex;
+  } else if (Final_test_P.ManualSwitch_CurrentSetting == 1) {
+    /* ManualSwitch: '<Root>/Manual Switch2' incorporates:
+     *  Gain: '<Root>/Gain'
+     *  ManualSwitch: '<Root>/Manual Switch'
+     */
+    if (Final_test_P.ManualSwitch2_CurrentSetting == 1) {
+      rtb_PWMsaturation = Final_test_B.ManualPWM;
+    }
+
+    rtb_PWMsaturation *= Final_test_P.Gain_Gain;
   } else {
-    /* ManualSwitch: '<Root>/Manual Switch' */
-    rtb_PWMsaturation = Final_test_B.cumRevIndex;
+    if (Final_test_P.ManualSwitch2_CurrentSetting == 1) {
+      /* ManualSwitch: '<Root>/Manual Switch2' incorporates:
+       *  ManualSwitch: '<Root>/Manual Switch'
+       */
+      rtb_PWMsaturation = Final_test_B.ManualPWM;
+    }
   }
 
   /* End of Switch: '<S2>/Switch2' */
 
   /* Saturate: '<S2>/PWM saturation' */
   if (rtb_PWMsaturation > Final_test_P.PWMsaturation_UpperSat) {
+    /* ManualSwitch: '<Root>/Manual Switch2' */
     rtb_PWMsaturation = Final_test_P.PWMsaturation_UpperSat;
   } else {
     if (rtb_PWMsaturation < Final_test_P.PWMsaturation_LowerSat) {
+      /* ManualSwitch: '<Root>/Manual Switch2' */
       rtb_PWMsaturation = Final_test_P.PWMsaturation_LowerSat;
     }
   }
@@ -615,10 +695,10 @@ void Final_test_step(void)
   /* Sum: '<S2>/Add' incorporates:
    *  Clock: '<S2>/Clock'
    *  Constant: '<Root>/Motor Switch'
-   *  Constant: '<S13>/Constant'
+   *  Constant: '<S18>/Constant'
    *  Constant: '<S2>/min PWM'
    *  Product: '<S2>/Product1'
-   *  RelationalOperator: '<S13>/Compare'
+   *  RelationalOperator: '<S18>/Compare'
    */
   Final_test_B.Add = rtb_PWMsaturation * Final_test_P.MotorSwitch_Value *
     (real_T)(Final_test_M->Timing.t[0] > Final_test_P.CompareToConstant_const) +
@@ -626,7 +706,7 @@ void Final_test_step(void)
   if (rtmIsMajorTimeStep(Final_test_M)) {
     /* If: '<S2>/If' incorporates:
      *  Constant: '<S2>/Run Sim'
-     *  Inport: '<S15>/In1'
+     *  Inport: '<S20>/In1'
      *  ZeroOrderHold: '<S2>/Zero-Order Hold'
      */
     if (rtmIsMajorTimeStep(Final_test_M)) {
@@ -637,19 +717,19 @@ void Final_test_step(void)
     switch (Final_test_DW.If_ActiveSubsystem) {
      case 0:
       /* Outputs for IfAction SubSystem: '<S2>/If Action Subsystem' incorporates:
-       *  ActionPort: '<S14>/Action Port'
+       *  ActionPort: '<S19>/Action Port'
        */
-      /* Stop: '<S14>/Stop Simulation' incorporates:
+      /* Stop: '<S19>/Stop Simulation' incorporates:
        *  Constant: '<S2>/Constant4'
-       *  DataTypeConversion: '<S14>/Cast'
+       *  DataTypeConversion: '<S19>/Cast'
        */
       if (Final_test_P.Constant4_Value != 0.0) {
         rtmSetStopRequested(Final_test_M, 1);
       }
 
-      /* End of Stop: '<S14>/Stop Simulation' */
+      /* End of Stop: '<S19>/Stop Simulation' */
 
-      /* SignalConversion: '<S14>/OutportBufferForOut1' incorporates:
+      /* SignalConversion: '<S19>/OutportBufferForOut1' incorporates:
        *  Constant: '<S2>/Constant4'
        */
       Final_test_B.Merge = Final_test_P.Constant4_Value;
@@ -662,7 +742,7 @@ void Final_test_step(void)
 
      case 1:
       /* Outputs for IfAction SubSystem: '<S2>/If Action Subsystem1' incorporates:
-       *  ActionPort: '<S15>/Action Port'
+       *  ActionPort: '<S20>/Action Port'
        */
       Final_test_B.Merge = Final_test_B.Add;
       if (rtmIsMajorTimeStep(Final_test_M)) {
@@ -676,32 +756,37 @@ void Final_test_step(void)
     /* End of If: '<S2>/If' */
   }
 
-  /* Integrator: '<S9>/Integrator1' */
+  /* Integrator: '<S14>/Integrator1' */
   Final_test_B.Integrator1 = Final_test_X.Integrator1_CSTATE;
 
-  /* Math: '<S10>/Power1' incorporates:
-   *  Constant: '<S10>/Constant'
+  /* Math: '<S15>/Power1' incorporates:
+   *  Constant: '<S15>/Constant'
    */
   if ((Final_test_B.TransferFcn1 < 0.0) && (Final_test_P.Constant_Value_n >
        floor(Final_test_P.Constant_Value_n))) {
-    Final_test_B.csum = -rt_powd_snf(-Final_test_B.TransferFcn1,
+    Final_test_B.cumRevIndex = -rt_powd_snf(-Final_test_B.TransferFcn1,
       Final_test_P.Constant_Value_n);
   } else {
-    Final_test_B.csum = rt_powd_snf(Final_test_B.TransferFcn1,
+    Final_test_B.cumRevIndex = rt_powd_snf(Final_test_B.TransferFcn1,
       Final_test_P.Constant_Value_n);
   }
 
-  /* End of Math: '<S10>/Power1' */
+  /* End of Math: '<S15>/Power1' */
 
-  /* Sum: '<S10>/Sum' incorporates:
-   *  Constant: '<S10>/Constant1'
-   *  Gain: '<S10>/Gain'
+  /* Sum: '<S15>/Sum' incorporates:
+   *  Constant: '<S15>/Constant1'
+   *  Gain: '<S15>/Gain'
    */
-  Final_test_B.Sum_k = Final_test_P.Gain_Gain_j * Final_test_B.csum +
+  Final_test_B.Sum_k = Final_test_P.Gain_Gain_j * Final_test_B.cumRevIndex +
     Final_test_P.Constant1_Value;
 
   /* Clock: '<Root>/Clock' */
   Final_test_B.Clock = Final_test_M->Timing.t[0];
+
+  /* Sum: '<Root>/Sum' incorporates:
+   *  Constant: '<Root>/Constant3'
+   */
+  Final_test_B.Sum_b = Final_test_B.Saturation + Final_test_P.Constant3_Value;
   if (rtmIsMajorTimeStep(Final_test_M)) {
     /* ManualSwitch: '<Root>/Manual Switch1' incorporates:
      *  ZeroOrderHold: '<Root>/Zero-Order Hold'
@@ -714,41 +799,13 @@ void Final_test_step(void)
       Final_test_B.ManualSwitch1[4] = Final_test_B.Sum_k;
       Final_test_B.ManualSwitch1[5] = Final_test_B.Integrator1;
       Final_test_B.ManualSwitch1[6] = Final_test_B.Kalman;
+      Final_test_B.ManualSwitch1[7] = Final_test_B.ManualSwitch4;
+      Final_test_B.ManualSwitch1[8] = Final_test_B.Sum_b;
     } else {
-      Final_test_B.ManualSwitch1[0] = 0.0;
-      Final_test_B.ManualSwitch1[1] = 0.0;
-      Final_test_B.ManualSwitch1[2] = 0.0;
-      Final_test_B.ManualSwitch1[3] = 0.0;
-      Final_test_B.ManualSwitch1[4] = 0.0;
-      Final_test_B.ManualSwitch1[5] = 0.0;
-      Final_test_B.ManualSwitch1[6] = 0.0;
+      memset(&Final_test_B.ManualSwitch1[0], 0, 9U * sizeof(real_T));
     }
 
     /* End of ManualSwitch: '<Root>/Manual Switch1' */
-  }
-
-  /* Math: '<S12>/Math Function1' incorporates:
-   *  Constant: '<S12>/a'
-   */
-  if ((Final_test_B.cumRevIndex < 0.0) && (Final_test_P.a_Value > floor
-       (Final_test_P.a_Value))) {
-    Final_test_B.csum = -rt_powd_snf(-Final_test_B.cumRevIndex,
-      Final_test_P.a_Value);
-  } else {
-    Final_test_B.csum = rt_powd_snf(Final_test_B.cumRevIndex,
-      Final_test_P.a_Value);
-  }
-
-  /* End of Math: '<S12>/Math Function1' */
-
-  /* Product: '<S12>/Product1' incorporates:
-   *  Constant: '<S12>/c'
-   *  Gain: '<S12>/b'
-   *  Sum: '<S12>/Sum1'
-   */
-  Final_test_B.Product1 = (Final_test_P.b_Gain * Final_test_B.csum +
-    Final_test_P.c_Value) * Final_test_B.cumRevIndex;
-  if (rtmIsMajorTimeStep(Final_test_M)) {
     /* MATLAB Function: '<S1>/MATLAB Function' */
     for (i = 0; i < 2; i++) {
       Final_test_B.a[i] = 0.0;
@@ -759,25 +816,25 @@ void Final_test_step(void)
       Final_test_B.a[i + 2] += a[i + 2] * Final_test_DW.P[3];
       Final_test_B.xh_bar[i] = (a[i + 2] * Final_test_DW.xh[1] + a[i] *
         Final_test_DW.xh[0]) + (0.039202 * (real_T)i + 0.000198) *
-        Final_test_B.Product1;
+        Final_test_B.Integrator1;
       Final_test_B.P_bar[i] = (Final_test_B.a[i + 2] * 0.009851 +
         Final_test_B.a[i] * 0.9998) + (real_T)R[i];
       Final_test_B.P_bar[i + 2] = (Final_test_B.a[i + 2] * 0.9702 +
         Final_test_B.a[i] * -0.0394) + (real_T)R[i + 2];
     }
 
-    Final_test_B.csum = 1.0 / (((0.0 * Final_test_B.P_bar[3] +
+    Final_test_B.cumRevIndex = 1.0 / (((0.0 * Final_test_B.P_bar[3] +
       Final_test_B.P_bar[2]) * 0.0 + (0.0 * Final_test_B.P_bar[1] +
       Final_test_B.P_bar[0])) + 4.0);
     Final_test_B.K[0] = (Final_test_B.P_bar[2] * 0.0 + Final_test_B.P_bar[0]) *
-      Final_test_B.csum;
+      Final_test_B.cumRevIndex;
     Final_test_B.K[1] = (Final_test_B.P_bar[3] * 0.0 + Final_test_B.P_bar[1]) *
-      Final_test_B.csum;
-    Final_test_B.csum = Final_test_B.Sum_k - (0.0 * Final_test_B.xh_bar[1] +
-      Final_test_B.xh_bar[0]);
+      Final_test_B.cumRevIndex;
+    Final_test_B.cumRevIndex = Final_test_B.Sum_k - (0.0 * Final_test_B.xh_bar[1]
+      + Final_test_B.xh_bar[0]);
     Final_test_B.xest = 0.0;
     for (i = 0; i < 2; i++) {
-      Final_test_DW.xh[i] = Final_test_B.K[i] * Final_test_B.csum +
+      Final_test_DW.xh[i] = Final_test_B.K[i] * Final_test_B.cumRevIndex +
         Final_test_B.xh_bar[i];
       Final_test_B.a[i] = 1.0 - Final_test_B.K[i];
       Final_test_B.a[i + 2] = 1.0 - Final_test_B.K[i] * 0.0;
@@ -793,43 +850,43 @@ void Final_test_step(void)
     /* End of MATLAB Function: '<S1>/MATLAB Function' */
   }
 
-  /* Integrator: '<S9>/Integrator' */
+  /* Integrator: '<S14>/Integrator' */
   Final_test_B.Integrator = Final_test_X.Integrator_CSTATE;
 
-  /* Math: '<S23>/Math Function1' incorporates:
-   *  Constant: '<S23>/a'
+  /* Math: '<S28>/Math Function1' incorporates:
+   *  Constant: '<S28>/a'
    */
-  if ((Final_test_B.cumRevIndex < 0.0) && (Final_test_P.a_Value_d > floor
-       (Final_test_P.a_Value_d))) {
-    Final_test_B.csum = -rt_powd_snf(-Final_test_B.cumRevIndex,
-      Final_test_P.a_Value_d);
+  if ((rtb_PWMsaturation < 0.0) && (Final_test_P.a_Value > floor
+       (Final_test_P.a_Value))) {
+    Final_test_B.cumRevIndex = -rt_powd_snf(-rtb_PWMsaturation,
+      Final_test_P.a_Value);
   } else {
-    Final_test_B.csum = rt_powd_snf(Final_test_B.cumRevIndex,
-      Final_test_P.a_Value_d);
+    Final_test_B.cumRevIndex = rt_powd_snf(rtb_PWMsaturation,
+      Final_test_P.a_Value);
   }
 
-  /* End of Math: '<S23>/Math Function1' */
+  /* End of Math: '<S28>/Math Function1' */
 
-  /* Sum: '<S9>/Sum' incorporates:
-   *  Constant: '<S23>/c'
-   *  Gain: '<S23>/b'
-   *  Gain: '<S9>/Gain'
-   *  Gain: '<S9>/Gain1'
-   *  Gain: '<S9>/Gain2'
-   *  Product: '<S9>/Product1'
-   *  Sum: '<S23>/Sum1'
+  /* Sum: '<S14>/Sum' incorporates:
+   *  Constant: '<S28>/c'
+   *  Gain: '<S14>/Gain'
+   *  Gain: '<S14>/Gain1'
+   *  Gain: '<S14>/Gain2'
+   *  Gain: '<S28>/b'
+   *  Product: '<S14>/Product1'
+   *  Sum: '<S28>/Sum1'
    */
-  Final_test_B.Sum_kf = ((Final_test_P.b_Gain_n * Final_test_B.csum +
-    Final_test_P.c_Value_e) * Final_test_B.cumRevIndex * Final_test_P.Gain2_Gain
-    - Final_test_P.Gain1_Gain_h * Final_test_B.Integrator1) -
+  Final_test_B.Sum_kf = ((Final_test_P.b_Gain * Final_test_B.cumRevIndex +
+    Final_test_P.c_Value) * rtb_PWMsaturation * Final_test_P.Gain2_Gain -
+    Final_test_P.Gain1_Gain_h * Final_test_B.Integrator1) -
     Final_test_P.Gain_Gain_n * Final_test_B.Integrator;
   if (rtmIsMajorTimeStep(Final_test_M)) {
-    /* Gain: '<S17>/Integral Gain' */
-    rtb_IntegralGain = Final_test_P.DiscretePIDController_I *
-      Final_test_B.Product;
+    /* Gain: '<S27>/Integral Gain' */
+    rtb_IntegralGain = Final_test_P.PIDController3_I * Final_test_B.Product_d;
 
     /* Gain: '<S22>/Integral Gain' */
-    rtb_IntegralGain_g = Final_test_P.PIDController3_I * rtb_Product;
+    rtb_IntegralGain_c = Final_test_P.DiscretePIDController_I *
+      Final_test_B.Product;
   }
 
   /* Start for MATLABSystem: '<Root>/Moving Average' */
@@ -863,7 +920,7 @@ void Final_test_step(void)
   Final_test_B.P_bar[3] = Final_test_DW.obj_c.pStatistic->pCumSumRev[3];
   Final_test_B.csum += Final_test_B.TransferFcn1;
   i = (int32_T)Final_test_B.cumRevIndex - 1;
-  Final_test_B.z = Final_test_B.P_bar[i] + Final_test_B.csum;
+  z = Final_test_B.P_bar[i] + Final_test_B.csum;
   Final_test_B.P_bar[i] = Final_test_B.TransferFcn1;
   if (Final_test_B.cumRevIndex != 4.0) {
     Final_test_B.cumRevIndex++;
@@ -883,9 +940,9 @@ void Final_test_step(void)
   Final_test_DW.obj_c.pStatistic->pCumRevIndex = Final_test_B.cumRevIndex;
 
   /* MATLABSystem: '<Root>/Moving Average' */
-  Final_test_B.MovingAverage = Final_test_B.z / 5.0;
+  Final_test_B.MovingAverage = z / 5.0;
   if (rtmIsMajorTimeStep(Final_test_M)) {
-    /* Start for MATLABSystem: '<S3>/Analog Input' */
+    /* Start for MATLABSystem: '<S4>/Analog Input' */
     p = false;
     p_0 = true;
     if (!(Final_test_DW.obj_g.SampleTime == Final_test_P.AnalogInput_SampleTime))
@@ -905,12 +962,12 @@ void Final_test_step(void)
     MW_AnalogInSingle_ReadResult(Final_test_DW.obj_g.MW_ANALOGIN_HANDLE,
       &rtb_AnalogInput_0, 3);
 
-    /* End of Start for MATLABSystem: '<S3>/Analog Input' */
+    /* End of Start for MATLABSystem: '<S4>/Analog Input' */
 
-    /* Sum: '<S3>/Sum' incorporates:
-     *  Constant: '<S3>/Constant'
-     *  DataTypeConversion: '<S3>/Cast'
-     *  MATLABSystem: '<S3>/Analog Input'
+    /* Sum: '<S4>/Sum' incorporates:
+     *  Constant: '<S4>/Constant'
+     *  DataTypeConversion: '<S4>/Cast'
+     *  MATLABSystem: '<S4>/Analog Input'
      */
     Final_test_B.Sum_l = (real_T)rtb_AnalogInput_0 -
       Final_test_P.Constant_Value_p;
@@ -924,26 +981,26 @@ void Final_test_step(void)
       /* Update for Memory: '<S1>/Memory' */
       Final_test_DW.Memory_PreviousInput = Final_test_B.xest;
 
-      /* Update for UnitDelay: '<S18>/Delay Input1' incorporates:
+      /* Update for UnitDelay: '<S21>/Delay Input1' incorporates:
        *  Constant: '<Root>/Automatic Control'
        */
       Final_test_DW.DelayInput1_DSTATE = Final_test_P.AutomaticControl_Value;
 
       /* Update for DiscreteIntegrator: '<S22>/Integrator' */
       Final_test_DW.Integrator_DSTATE += Final_test_P.Integrator_gainval *
-        rtb_IntegralGain_g;
+        rtb_IntegralGain_c;
       Final_test_DW.Integrator_PrevResetState = (int8_T)
         rtb_FixPtRelationalOperator;
 
-      /* Update for UnitDelay: '<S16>/Delay Input1' incorporates:
+      /* Update for UnitDelay: '<S23>/Delay Input1' incorporates:
        *  Constant: '<Root>/Automatic Control'
        */
-      Final_test_DW.DelayInput1_DSTATE_m = Final_test_P.AutomaticControl_Value;
+      Final_test_DW.DelayInput1_DSTATE_j = Final_test_P.AutomaticControl_Value;
 
-      /* Update for DiscreteIntegrator: '<S17>/Integrator' */
-      Final_test_DW.Integrator_DSTATE_g += Final_test_P.Integrator_gainval_l *
+      /* Update for DiscreteIntegrator: '<S27>/Integrator' */
+      Final_test_DW.Integrator_DSTATE_b += Final_test_P.Integrator_gainval_p *
         rtb_IntegralGain;
-      Final_test_DW.Integrator_PrevResetState_k = (int8_T)
+      Final_test_DW.Integrator_PrevResetState_i = (int8_T)
         rtb_FixPtRelationalOperator_b;
     }
 
@@ -1018,16 +1075,16 @@ void Final_test_derivatives(void)
   XDot_Final_test_T *_rtXdot;
   _rtXdot = ((XDot_Final_test_T *) Final_test_M->derivs);
 
-  /* Derivatives for TransferFcn: '<S3>/Transfer Fcn1' */
+  /* Derivatives for TransferFcn: '<S4>/Transfer Fcn1' */
   _rtXdot->TransferFcn1_CSTATE = 0.0;
   _rtXdot->TransferFcn1_CSTATE += Final_test_P.TransferFcn1_A *
     Final_test_X.TransferFcn1_CSTATE;
   _rtXdot->TransferFcn1_CSTATE += Final_test_B.Sum_l;
 
-  /* Derivatives for Integrator: '<S9>/Integrator1' */
+  /* Derivatives for Integrator: '<S14>/Integrator1' */
   _rtXdot->Integrator1_CSTATE = Final_test_B.Integrator;
 
-  /* Derivatives for Integrator: '<S9>/Integrator' */
+  /* Derivatives for Integrator: '<S14>/Integrator' */
   _rtXdot->Integrator_CSTATE = Final_test_B.Sum_kf;
 }
 
@@ -1079,15 +1136,15 @@ void Final_test_initialize(void)
   Final_test_M->Timing.stepSize0 = 0.01;
 
   /* External mode info */
-  Final_test_M->Sizes.checksums[0] = (1736117366U);
-  Final_test_M->Sizes.checksums[1] = (3899682362U);
-  Final_test_M->Sizes.checksums[2] = (3164199335U);
-  Final_test_M->Sizes.checksums[3] = (19014862U);
+  Final_test_M->Sizes.checksums[0] = (3966038292U);
+  Final_test_M->Sizes.checksums[1] = (4260020833U);
+  Final_test_M->Sizes.checksums[2] = (1976021332U);
+  Final_test_M->Sizes.checksums[3] = (482972058U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
     static RTWExtModeInfo rt_ExtModeInfo;
-    static const sysRanDType *systemRan[11];
+    static const sysRanDType *systemRan[13];
     Final_test_M->extModeInfo = (&rt_ExtModeInfo);
     rteiSetSubSystemActiveVectorAddresses(&rt_ExtModeInfo, systemRan);
     systemRan[0] = &rtAlwaysEnabled;
@@ -1098,9 +1155,11 @@ void Final_test_initialize(void)
     systemRan[5] = &rtAlwaysEnabled;
     systemRan[6] = &rtAlwaysEnabled;
     systemRan[7] = &rtAlwaysEnabled;
-    systemRan[8] = (sysRanDType *)&Final_test_DW.IfActionSubsystem_SubsysRanBC;
-    systemRan[9] = (sysRanDType *)&Final_test_DW.IfActionSubsystem1_SubsysRanBC;
-    systemRan[10] = &rtAlwaysEnabled;
+    systemRan[8] = &rtAlwaysEnabled;
+    systemRan[9] = &rtAlwaysEnabled;
+    systemRan[10] = (sysRanDType *)&Final_test_DW.IfActionSubsystem_SubsysRanBC;
+    systemRan[11] = (sysRanDType *)&Final_test_DW.IfActionSubsystem1_SubsysRanBC;
+    systemRan[12] = &rtAlwaysEnabled;
     rteiSetModelMappingInfoPtr(Final_test_M->extModeInfo,
       &Final_test_M->SpecialInfo.mappingInfo);
     rteiSetChecksumsPtr(Final_test_M->extModeInfo, Final_test_M->Sizes.checksums);
@@ -1143,6 +1202,20 @@ void Final_test_initialize(void)
     MW_AnalogIn_TriggerSource_Type trigger_val;
     codertarget_arduinobase_int_f_T *obj_0;
 
+    /* Start for FromWorkspace: '<S10>/FromWs' */
+    {
+      static real_T pTimeValues0[] = { -0.0, 10.0, 10.0, 13.0, 13.0, 20.0, 20.0,
+        25.0, 50.0, 65.0, 65.0, 70.0, 95.0, 110.0, 110.0, 115.0, 140.0, 155.0,
+        155.0, 180.0 } ;
+
+      static real_T pDataValues0[] = { 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0,
+        1.0, 1.0, 2.0, 2.0, 2.0, 2.0, 3.0, 3.0, 3.0, 3.0, -0.0, 0.0 } ;
+
+      Final_test_DW.FromWs_PWORK.TimePtr = (void *) pTimeValues0;
+      Final_test_DW.FromWs_PWORK.DataPtr = (void *) pDataValues0;
+      Final_test_DW.FromWs_IWORK.PrevIndex = 0;
+    }
+
     /* Start for MATLABSystem: '<Root>/Kalman ' */
     Final_test_DW.obj.matlabCodegenIsDeleted = true;
     Final_test_DW.obj.isInitialized = 0;
@@ -1157,21 +1230,17 @@ void Final_test_initialize(void)
     Final_test_DW.obj.isSetupComplete = true;
     Final_test_DW.obj.TunablePropsChanged = false;
 
-    /* Start for FromWorkspace: '<S6>/FromWs' */
+    /* Start for FromWorkspace: '<S5>/FromWs' */
     {
-      static real_T pTimeValues0[] = { 0.0, 10.0, 10.0, 12.0, 12.0, 30.0, 30.0,
-        80.0, 90.0, 90.0, 140.0, 150.0, 150.0, 200.0, 210.0, 210.0, 260.0, 270.0,
-        270.0, 320.0, 330.0, 330.0, 380.0, 390.0, 390.0, 440.0, 450.0, 450.0,
-        500.0, 510.0, 510.0, 560.0, 570.0, 570.0, 620.0 } ;
+      static real_T pTimeValues0[] = { 0.0, 4.0, 4.0, 6.0, 6.0, 18.0, 18.0, 30.0,
+        30.0, 35.0 } ;
 
-      static real_T pDataValues0[] = { 0.0, 0.0, 20.0, 20.0, 0.0, 0.0, 4.0, 4.0,
-        4.0, 6.0, 6.0, 6.0, 8.0, 8.0, 8.0, 10.0, 10.0, 10.0, 12.0, 12.0, 12.0,
-        14.0, 14.0, 14.0, 16.0, 16.0, 16.0, 18.0, 18.0, 18.0, 20.0, 20.0, 20.0,
-        0.0, 0.0 } ;
+      static real_T pDataValues0[] = { 0.0, 0.0, 20.0, 20.0, 0.0, 0.0, 20.0,
+        20.0, 0.0, 0.0 } ;
 
-      Final_test_DW.FromWs_PWORK.TimePtr = (void *) pTimeValues0;
-      Final_test_DW.FromWs_PWORK.DataPtr = (void *) pDataValues0;
-      Final_test_DW.FromWs_IWORK.PrevIndex = 0;
+      Final_test_DW.FromWs_PWORK_i.TimePtr = (void *) pTimeValues0;
+      Final_test_DW.FromWs_PWORK_i.DataPtr = (void *) pDataValues0;
+      Final_test_DW.FromWs_IWORK_d.PrevIndex = 0;
     }
 
     /* Start for If: '<S2>/If' */
@@ -1191,7 +1260,7 @@ void Final_test_initialize(void)
     Final_test_DW.obj_c.isSetupComplete = true;
     Final_test_DW.obj_c.TunablePropsChanged = false;
 
-    /* Start for MATLABSystem: '<S3>/Analog Input' */
+    /* Start for MATLABSystem: '<S4>/Analog Input' */
     Final_test_DW.obj_g.matlabCodegenIsDeleted = true;
     obj = &Final_test_DW.obj_g;
     Final_test_DW.obj_g.isInitialized = 0;
@@ -1238,27 +1307,27 @@ void Final_test_initialize(void)
   /* InitializeConditions for Memory: '<S1>/Memory' */
   Final_test_DW.Memory_PreviousInput = Final_test_P.Memory_InitialCondition;
 
-  /* InitializeConditions for TransferFcn: '<S3>/Transfer Fcn1' */
+  /* InitializeConditions for TransferFcn: '<S4>/Transfer Fcn1' */
   Final_test_X.TransferFcn1_CSTATE = 0.0;
 
-  /* InitializeConditions for UnitDelay: '<S18>/Delay Input1' */
+  /* InitializeConditions for UnitDelay: '<S21>/Delay Input1' */
   Final_test_DW.DelayInput1_DSTATE = Final_test_P.DetectChange_vinit;
 
   /* InitializeConditions for DiscreteIntegrator: '<S22>/Integrator' */
   Final_test_DW.Integrator_DSTATE = Final_test_P.Integrator_IC;
   Final_test_DW.Integrator_PrevResetState = 2;
 
-  /* InitializeConditions for UnitDelay: '<S16>/Delay Input1' */
-  Final_test_DW.DelayInput1_DSTATE_m = Final_test_P.DetectChange_vinit_c;
+  /* InitializeConditions for UnitDelay: '<S23>/Delay Input1' */
+  Final_test_DW.DelayInput1_DSTATE_j = Final_test_P.DetectChange_vinit_i;
 
-  /* InitializeConditions for DiscreteIntegrator: '<S17>/Integrator' */
-  Final_test_DW.Integrator_DSTATE_g = Final_test_P.Integrator_IC_g;
-  Final_test_DW.Integrator_PrevResetState_k = 2;
+  /* InitializeConditions for DiscreteIntegrator: '<S27>/Integrator' */
+  Final_test_DW.Integrator_DSTATE_b = Final_test_P.Integrator_IC_d;
+  Final_test_DW.Integrator_PrevResetState_i = 2;
 
-  /* InitializeConditions for Integrator: '<S9>/Integrator1' */
+  /* InitializeConditions for Integrator: '<S14>/Integrator1' */
   Final_test_X.Integrator1_CSTATE = Final_test_P.Integrator1_IC;
 
-  /* InitializeConditions for Integrator: '<S9>/Integrator' */
+  /* InitializeConditions for Integrator: '<S14>/Integrator' */
   Final_test_X.Integrator_CSTATE = Final_test_P.Integrator_IC_e;
 
   /* Start for MATLABSystem: '<Root>/Kalman ' */
@@ -1302,7 +1371,7 @@ void Final_test_terminate(void)
   /* Terminate for MATLABSystem: '<Root>/Moving Average' */
   matlabCodegenHandle_matlabCodeg(&Final_test_DW.obj_c);
 
-  /* Terminate for MATLABSystem: '<S3>/Analog Input' */
+  /* Terminate for MATLABSystem: '<S4>/Analog Input' */
   matlabCodegenHandle_matlabC_fdg(&Final_test_DW.obj_g);
 
   /* Terminate for MATLABSystem: '<S2>/PWM1' */

@@ -7,9 +7,9 @@
  *
  * Code generation for model "Final_test".
  *
- * Model version              : 1.49
+ * Model version              : 1.54
  * Simulink Coder version : 8.14 (R2018a) 06-Feb-2018
- * C source code generated on : Fri Sep 14 14:53:31 2018
+ * C source code generated on : Sat Sep 15 17:33:20 2018
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -70,7 +70,9 @@ static const char_T * rtDataTypeNames[] = {
 
 /* data type transitions for block I/O structure */
 static DataTypeTransition rtBTransitions[] = {
-  { (char_T *)(&Final_test_B.e), 0, 0, 27 }
+  { (char_T *)(&Final_test_B.ManualSwitch4), 0, 0, 25 },
+
+  { (char_T *)(&Final_test_B.Integrator), 0, 0, 6 }
   ,
 
   { (char_T *)(&Final_test_DW.gobj_0), 15, 0, 2 },
@@ -87,9 +89,9 @@ static DataTypeTransition rtBTransitions[] = {
 
   { (char_T *)(&Final_test_DW.DelayInput1_DSTATE), 0, 0, 11 },
 
-  { (char_T *)(&Final_test_DW.FromWs_PWORK.TimePtr), 11, 0, 11 },
+  { (char_T *)(&Final_test_DW.FromWs_PWORK.TimePtr), 11, 0, 12 },
 
-  { (char_T *)(&Final_test_DW.FromWs_IWORK.PrevIndex), 10, 0, 1 },
+  { (char_T *)(&Final_test_DW.FromWs_IWORK.PrevIndex), 10, 0, 2 },
 
   { (char_T *)(&Final_test_DW.Integrator_PrevResetState), 2, 0, 5 },
 
@@ -98,15 +100,15 @@ static DataTypeTransition rtBTransitions[] = {
 
 /* data type transition table for block I/O structure */
 static DataTypeTransitionTable rtBTransTable = {
-  12U,
+  13U,
   rtBTransitions
 };
 
 /* data type transitions for Parameters structure */
 static DataTypeTransition rtPTransitions[] = {
-  { (char_T *)(&Final_test_P.DiscretePIDController_I), 0, 0, 49 },
+  { (char_T *)(&Final_test_P.PIDController3_I), 0, 0, 49 },
 
-  { (char_T *)(&Final_test_P.ManualSwitch_CurrentSetting), 3, 0, 4 }
+  { (char_T *)(&Final_test_P.ManualSwitch_CurrentSetting), 3, 0, 6 }
 };
 
 /* data type transition table for Parameters structure */

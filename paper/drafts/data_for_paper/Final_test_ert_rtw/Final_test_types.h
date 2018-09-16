@@ -7,9 +7,9 @@
  *
  * Code generation for model "Final_test".
  *
- * Model version              : 1.49
+ * Model version              : 1.54
  * Simulink Coder version : 8.14 (R2018a) 06-Feb-2018
- * C source code generated on : Fri Sep 14 14:53:31 2018
+ * C source code generated on : Sat Sep 15 17:33:20 2018
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -48,7 +48,7 @@ typedef struct {
 
 #endif                                 /*typedef_dsp_private_SlidingWindowAv_f_T*/
 
-/* Custom Type definition for MATLABSystem: '<S3>/Analog Input' */
+/* Custom Type definition for MATLABSystem: '<S4>/Analog Input' */
 #include "MW_SVD.h"
 #ifndef typedef_cell_wrap_Final_test_T
 #define typedef_cell_wrap_Final_test_T

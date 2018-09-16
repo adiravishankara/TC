@@ -48,8 +48,10 @@ plot(pwm_r_comparison(:,1),pwm_r_comparison(:,7))
 
 legend("Desired","Actual Thrust","Kalman Estimation")
 
-figure(4)
-title("wind");
+figure(2)
 hold on
-plot
-
+plot(wind(:,1),wind(:,8),'k')
+plot(wind(:,1),wind(:,7)+.15,'r')
+plot(wind_control(1959:end,1),wind_control(1959:end,7),'g')
+legend("Desired Thrust","No Control","Control")
+xlabel("Time (s)"); ylabel("Thrust (N)"); title("Response of Control System to Wind Disturbance");

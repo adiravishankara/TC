@@ -7,9 +7,9 @@
  *
  * Code generation for model "Final_test".
  *
- * Model version              : 1.54
+ * Model version              : 1.55
  * Simulink Coder version : 8.14 (R2018a) 06-Feb-2018
- * C source code generated on : Sat Sep 15 17:33:20 2018
+ * C source code generated on : Sat Sep 15 19:14:33 2018
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -73,10 +73,10 @@ P_Final_test_T Final_test_P = {
    */
   0.01,
 
-  /* Expression: 1
+  /* Expression: .95
    * Referenced by: '<Root>/Constant2'
    */
-  1.0,
+  0.95,
 
   /* Expression: 0
    * Referenced by: '<S1>/Memory'
@@ -168,10 +168,10 @@ P_Final_test_T Final_test_P = {
    */
   1.0,
 
-  /* Expression: 0
+  /* Expression: 11.216335042318
    * Referenced by: '<Root>/Manual PWM'
    */
-  0.0,
+  11.216335042318,
 
   /* Expression: 0
    * Referenced by: '<S2>/Switch2'
@@ -291,7 +291,7 @@ P_Final_test_T Final_test_P = {
   /* Computed Parameter: ManualSwitch2_CurrentSetting
    * Referenced by: '<Root>/Manual Switch2'
    */
-  1U,
+  0U,
 
   /* Computed Parameter: ManualSwitch1_CurrentSetting
    * Referenced by: '<Root>/Manual Switch1'

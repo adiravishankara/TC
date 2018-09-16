@@ -7,9 +7,9 @@
  *
  * Code generation for model "Final_test".
  *
- * Model version              : 1.54
+ * Model version              : 1.55
  * Simulink Coder version : 8.14 (R2018a) 06-Feb-2018
- * C source code generated on : Sat Sep 15 17:33:20 2018
+ * C source code generated on : Sat Sep 15 19:14:33 2018
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -235,7 +235,7 @@ typedef struct {
     void *TimePtr;
     void *DataPtr;
     void *RSimInfoPtr;
-  } FromWs_PWORK_i;                    /* '<S5>/FromWs' */
+  } FromWs_PWORK_a;                    /* '<S8>/FromWs' */
 
   struct {
     void *LoggedData;
@@ -279,7 +279,7 @@ typedef struct {
 
   struct {
     int_T PrevIndex;
-  } FromWs_IWORK_d;                    /* '<S5>/FromWs' */
+  } FromWs_IWORK_c;                    /* '<S8>/FromWs' */
 
   int8_T Integrator_PrevResetState;    /* '<S22>/Integrator' */
   int8_T Integrator_PrevResetState_i;  /* '<S27>/Integrator' */
@@ -356,7 +356,7 @@ struct P_Final_test_T_ {
   real_T AnalogInput_SampleTime;       /* Expression: 0.01
                                         * Referenced by: '<S4>/Analog Input'
                                         */
-  real_T Constant2_Value;              /* Expression: 1
+  real_T Constant2_Value;              /* Expression: .95
                                         * Referenced by: '<Root>/Constant2'
                                         */
   real_T Memory_InitialCondition;      /* Expression: 0
@@ -413,7 +413,7 @@ struct P_Final_test_T_ {
   real_T Constant_Value_j;             /* Expression: 1
                                         * Referenced by: '<Root>/Constant'
                                         */
-  real_T ManualPWM_Gain;               /* Expression: 0
+  real_T ManualPWM_Gain;               /* Expression: 11.216335042318
                                         * Referenced by: '<Root>/Manual PWM'
                                         */
   real_T Switch2_Threshold;            /* Expression: 0
@@ -582,9 +582,9 @@ extern RT_MODEL_Final_test_T *const Final_test_M;
  * Block '<S17>/b' : Unused code path elimination
  * Block '<S17>/c' : Unused code path elimination
  * Block '<S3>/FromWs' : Unused code path elimination
+ * Block '<S5>/FromWs' : Unused code path elimination
  * Block '<S6>/FromWs' : Unused code path elimination
  * Block '<S7>/FromWs' : Unused code path elimination
- * Block '<S8>/FromWs' : Unused code path elimination
  * Block '<S9>/FromWs' : Unused code path elimination
  * Block '<S11>/FromWs' : Unused code path elimination
  * Block '<S24>/Integral Gain' : Unused code path elimination

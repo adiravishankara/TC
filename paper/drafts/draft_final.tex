@@ -103,8 +103,19 @@
 	\end{equation}
 	This is the reasoning behind why as winds buffet a drone mid-flight, the drone's thrust vector tends to drop. Hence we can measure this change in thrust and correct for it.
 	\subsection{Kalman Math}
-	\subsection{2.3}
-	\subsection{2.4}
+	Adaptive Fuzzy Kalman Filter 
+	Accurate a priori information of the measurement and process noise statistical matrices of the state estimator is needed to avoid the divergence of the filter [3], [4]. To resolve the problem of having imperfect a priori information, adapting R and/or Q matrices was introduced using several adaptive estimation techniques [5]–[7]. Among these, the Innovative-based Adaptive Estimation (IAE) and Multiple Model Adaptive Estimation (MMAE) are commonly utilized to adapt the Kalman filter. Incorporating the rules of fuzzy logic to adjust the variances of these matrices has been studied in several research works. The Adaptive Fuzzy Kalman Filter q (AFKF) has been designed to improve the performance of the conventional filter in rejecting the measurement noise and estimating the navigational states accurately [8], [9]. 
+	The recurrent adjustment process of the variances of the statistical matrices Rk is designed based on an IAE approach. This approach is based on a covariance-matching algorithm which examines the degree of the mismatch DoM between the actual covariance $v_{K+1}$ of the residual with its theoretical value $S_{K+1}$. 
+	\begin{equation}
+	DoM = S_{k+1} - C_{k+1}
+	\label{dom}
+	\end{equation}
+	After calculating DoM, a Fuzzy Inference System (FIS) has been tuned to compute the adjustment of the measurement noise matrix $R_{k+1}$ and update the matrix at each cycle of state estimation.
+	\begin{equation}
+	R_{k+1} = R_k +\delta R_{K+1}
+	\label{rk1}
+	\end{equation} 
+
 	\section{3}
 	\subsection{Thrust stand}
 	%THE THRUST STAND
@@ -134,6 +145,8 @@
 	\end{eqnarray}
 	These values are then passed through a Kalman Filter weighted towards the wind sensor. This method allows for the system to accurately determine the thrust value output while reducing noise due to the nature of the wind. Next this value is passed to a PI controller which generates the appropriate response for the error between desired and measured. 
 	\subsection{The tests}
+	Figures \ref{akf1},\ref{akf2} demonstrate the thrust estimation using the conventional and the adaptive fuzzy state estimation techniques. As can be seen, the proposed AFKF has exhibited better performance in terms of rejecting the noise associated with the measurement compared to the classical KF. Figures \ref{akf1},\ref{akf2} presents the estimation errors of the position states. The AFKF shows lower magnitudes of estimation error compared to these of the KF. 
+	
 	To ensure the viability of our algorithm and if it would respond to external stimuli the way we expected, we performed several tests that caused significant errors in the propeller's response. The first test that we ran was to measure the response of the kalman filter and ensure that our thrust calculation was accurate in relation to the testbed recorded thrust. As seen in fig \ref{kalman} the kalman filter, while noisy due to the wind variations in the wind sensor data, follows the thrust value from the testbed closely. This result gives us the confidence to setup the PI based on the kalman filter's value. 
 	To ensure the functionality of the controller we set up several faults and disturbances to test the response of the system. The first step was to create an external disturbance by placing another propeller and blowing wind perpendicular to the axis of the main propeller. This would be akin to horizontal crosswind flow across the propeller.
 	\begin{figure}
@@ -167,7 +180,7 @@
 		\bibitem{hot_wire} Extended Applications of the Hot‐Wire Anemometer, Stanley Corrsin,Review of Scientific Instruments 1947 18:7, 469-471 
 		\bibitem{awan} A. U. Awan, J. Park and H. J. Kim, "Thrust estimation of quadrotor UAV using adaptive observer," 2011 11th International Conference on Control, Automation and Systems, Gyeonggi-do, 2011, pp. 131-136.
 		\bibitem{sydney} N. Sydney, B. Smyth and D. A. Paley, "Dynamic control of autonomous quadrotor flight in an estimated wind field," 52nd IEEE Conference on Decision and Control, Florence, 2013, pp. 3609-3616.
-		doi: 10.1109/CDC.2013.6760438
+
 		
 	\end{thebibliography}
 

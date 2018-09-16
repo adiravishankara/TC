@@ -7,9 +7,9 @@
  *
  * Code generation for model "Final_test".
  *
- * Model version              : 1.54
+ * Model version              : 1.55
  * Simulink Coder version : 8.14 (R2018a) 06-Feb-2018
- * C source code generated on : Sat Sep 15 17:33:20 2018
+ * C source code generated on : Sat Sep 15 19:14:33 2018
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -140,8 +140,6 @@ static codertarget_arduinobase_int_f_T *arduino_PWMOutput_arduino_PWMOu
   (codertarget_arduinobase_int_f_T *obj)
 {
   codertarget_arduinobase_int_f_T *b_obj;
-
-  /* Start for MATLABSystem: '<S2>/PWM1' */
   obj->isInitialized = 0;
   b_obj = obj;
   obj->Hw.AvailablePwmPinNames.f1 = '2';
@@ -213,15 +211,12 @@ real_T rt_powd_snf(real_T u0, real_T u1)
 static void SystemProp_matlabCodegenSetAn_f(dsp_simulink_MovingAverage_f_T *obj,
   boolean_T value)
 {
-  /* Start for MATLABSystem: '<Root>/Kalman ' */
   obj->matlabCodegenIsDeleted = value;
 }
 
 static void Final_test_SystemCore_release_f(dsp_simulink_MovingAverage_f_T *obj)
 {
   dsp_private_SlidingWindowAv_f_T *obj_0;
-
-  /* Start for MATLABSystem: '<Root>/Kalman ' */
   if ((obj->isInitialized == 1) && obj->isSetupComplete) {
     obj_0 = obj->pStatistic;
     if (obj_0->isInitialized == 1) {
@@ -230,39 +225,30 @@ static void Final_test_SystemCore_release_f(dsp_simulink_MovingAverage_f_T *obj)
 
     obj->NumChannels = -1;
   }
-
-  /* End of Start for MATLABSystem: '<Root>/Kalman ' */
 }
 
 static void Final_test_SystemCore_delete_f(dsp_simulink_MovingAverage_f_T *obj)
 {
-  /* Start for MATLABSystem: '<Root>/Kalman ' */
   Final_test_SystemCore_release_f(obj);
 }
 
 static void matlabCodegenHandle_matlabCod_f(dsp_simulink_MovingAverage_f_T *obj)
 {
-  /* Start for MATLABSystem: '<Root>/Kalman ' */
   if (!obj->matlabCodegenIsDeleted) {
     SystemProp_matlabCodegenSetAn_f(obj, true);
     Final_test_SystemCore_delete_f(obj);
   }
-
-  /* End of Start for MATLABSystem: '<Root>/Kalman ' */
 }
 
 static void SystemProp_matlabCodegenSetAnyP(dsp_simulink_MovingAverage_Fi_T *obj,
   boolean_T value)
 {
-  /* Start for MATLABSystem: '<Root>/Moving Average' */
   obj->matlabCodegenIsDeleted = value;
 }
 
 static void Final_test_SystemCore_release(dsp_simulink_MovingAverage_Fi_T *obj)
 {
   dsp_private_SlidingWindowAver_T *obj_0;
-
-  /* Start for MATLABSystem: '<Root>/Moving Average' */
   if ((obj->isInitialized == 1) && obj->isSetupComplete) {
     obj_0 = obj->pStatistic;
     if (obj_0->isInitialized == 1) {
@@ -271,59 +257,45 @@ static void Final_test_SystemCore_release(dsp_simulink_MovingAverage_Fi_T *obj)
 
     obj->NumChannels = -1;
   }
-
-  /* End of Start for MATLABSystem: '<Root>/Moving Average' */
 }
 
 static void Final_test_SystemCore_delete(dsp_simulink_MovingAverage_Fi_T *obj)
 {
-  /* Start for MATLABSystem: '<Root>/Moving Average' */
   Final_test_SystemCore_release(obj);
 }
 
 static void matlabCodegenHandle_matlabCodeg(dsp_simulink_MovingAverage_Fi_T *obj)
 {
-  /* Start for MATLABSystem: '<Root>/Moving Average' */
   if (!obj->matlabCodegenIsDeleted) {
     SystemProp_matlabCodegenSetAnyP(obj, true);
     Final_test_SystemCore_delete(obj);
   }
-
-  /* End of Start for MATLABSystem: '<Root>/Moving Average' */
 }
 
 static void SystemProp_matlabCodegenSet_fdg(codertarget_arduinobase_in_fd_T *obj,
   boolean_T value)
 {
-  /* Start for MATLABSystem: '<S4>/Analog Input' */
   obj->matlabCodegenIsDeleted = value;
 }
 
 static void matlabCodegenHandle_matlabC_fdg(codertarget_arduinobase_in_fd_T *obj)
 {
-  /* Start for MATLABSystem: '<S4>/Analog Input' */
   if (!obj->matlabCodegenIsDeleted) {
     SystemProp_matlabCodegenSet_fdg(obj, true);
   }
-
-  /* End of Start for MATLABSystem: '<S4>/Analog Input' */
 }
 
 static void SystemProp_matlabCodegenSetA_fd(codertarget_arduinobase_int_f_T *obj,
   boolean_T value)
 {
-  /* Start for MATLABSystem: '<S2>/PWM1' */
   obj->matlabCodegenIsDeleted = value;
 }
 
 static void matlabCodegenHandle_matlabCo_fd(codertarget_arduinobase_int_f_T *obj)
 {
-  /* Start for MATLABSystem: '<S2>/PWM1' */
   if (!obj->matlabCodegenIsDeleted) {
     SystemProp_matlabCodegenSetA_fd(obj, true);
   }
-
-  /* End of Start for MATLABSystem: '<S2>/PWM1' */
 }
 
 /* Model step function */
@@ -430,7 +402,7 @@ void Final_test_step(void)
 
   /* End of ManualSwitch: '<Root>/Manual Switch4' */
   if (rtmIsMajorTimeStep(Final_test_M)) {
-    /* Start for MATLABSystem: '<Root>/Kalman ' incorporates:
+    /* MATLABSystem: '<Root>/Kalman ' incorporates:
      *  Memory: '<S1>/Memory'
      */
     if (Final_test_DW.obj.TunablePropsChanged) {
@@ -472,9 +444,9 @@ void Final_test_step(void)
     memcpy(&Final_test_DW.obj.pStatistic->pCumSumRev[0], &Final_test_B.csumrev[0],
            9U * sizeof(real_T));
     Final_test_DW.obj.pStatistic->pCumRevIndex = Final_test_B.cumRevIndex;
-
-    /* MATLABSystem: '<Root>/Kalman ' */
     Final_test_B.Kalman = z / 10.0;
+
+    /* End of MATLABSystem: '<Root>/Kalman ' */
   }
 
   /* Sum: '<S13>/Sum' */
@@ -580,18 +552,18 @@ void Final_test_step(void)
       Final_test_P.Constant_Value_j;
   }
 
-  /* FromWorkspace: '<S5>/FromWs' */
+  /* FromWorkspace: '<S8>/FromWs' */
   {
-    real_T *pDataValues = (real_T *) Final_test_DW.FromWs_PWORK_i.DataPtr;
-    real_T *pTimeValues = (real_T *) Final_test_DW.FromWs_PWORK_i.TimePtr;
-    int_T currTimeIndex = Final_test_DW.FromWs_IWORK_d.PrevIndex;
+    real_T *pDataValues = (real_T *) Final_test_DW.FromWs_PWORK_a.DataPtr;
+    real_T *pTimeValues = (real_T *) Final_test_DW.FromWs_PWORK_a.TimePtr;
+    int_T currTimeIndex = Final_test_DW.FromWs_IWORK_c.PrevIndex;
     real_T t = Final_test_M->Timing.t[0];
 
     /* Get index */
     if (t <= pTimeValues[0]) {
       currTimeIndex = 0;
-    } else if (t >= pTimeValues[9]) {
-      currTimeIndex = 8;
+    } else if (t >= pTimeValues[34]) {
+      currTimeIndex = 33;
     } else {
       if (t < pTimeValues[currTimeIndex]) {
         while (t < pTimeValues[currTimeIndex]) {
@@ -604,7 +576,7 @@ void Final_test_step(void)
       }
     }
 
-    Final_test_DW.FromWs_IWORK_d.PrevIndex = currTimeIndex;
+    Final_test_DW.FromWs_IWORK_c.PrevIndex = currTimeIndex;
 
     /* Post output */
     {
@@ -625,7 +597,7 @@ void Final_test_step(void)
         d1 = pDataValues[TimeIndex];
         d2 = pDataValues[TimeIndex + 1];
         rtb_PWMsaturation = (real_T) rtInterpolate(d1, d2, f1, f2);
-        pDataValues += 10;
+        pDataValues += 35;
       }
     }
   }
@@ -889,7 +861,7 @@ void Final_test_step(void)
       Final_test_B.Product;
   }
 
-  /* Start for MATLABSystem: '<Root>/Moving Average' */
+  /* MATLABSystem: '<Root>/Moving Average' */
   if (Final_test_DW.obj_c.TunablePropsChanged) {
     Final_test_DW.obj_c.TunablePropsChanged = false;
   }
@@ -938,11 +910,11 @@ void Final_test_step(void)
   Final_test_DW.obj_c.pStatistic->pCumSumRev[2] = Final_test_B.P_bar[2];
   Final_test_DW.obj_c.pStatistic->pCumSumRev[3] = Final_test_B.P_bar[3];
   Final_test_DW.obj_c.pStatistic->pCumRevIndex = Final_test_B.cumRevIndex;
-
-  /* MATLABSystem: '<Root>/Moving Average' */
   Final_test_B.MovingAverage = z / 5.0;
+
+  /* End of MATLABSystem: '<Root>/Moving Average' */
   if (rtmIsMajorTimeStep(Final_test_M)) {
-    /* Start for MATLABSystem: '<S4>/Analog Input' */
+    /* MATLABSystem: '<S4>/Analog Input' */
     p = false;
     p_0 = true;
     if (!(Final_test_DW.obj_g.SampleTime == Final_test_P.AnalogInput_SampleTime))
@@ -962,8 +934,6 @@ void Final_test_step(void)
     MW_AnalogInSingle_ReadResult(Final_test_DW.obj_g.MW_ANALOGIN_HANDLE,
       &rtb_AnalogInput_0, 3);
 
-    /* End of Start for MATLABSystem: '<S4>/Analog Input' */
-
     /* Sum: '<S4>/Sum' incorporates:
      *  Constant: '<S4>/Constant'
      *  DataTypeConversion: '<S4>/Cast'
@@ -972,7 +942,7 @@ void Final_test_step(void)
     Final_test_B.Sum_l = (real_T)rtb_AnalogInput_0 -
       Final_test_P.Constant_Value_p;
 
-    /* Start for MATLABSystem: '<S2>/PWM1' */
+    /* MATLABSystem: '<S2>/PWM1' */
     MW_PWM_SetDutyCycle(Final_test_DW.obj_n.MW_PWM_HANDLE, Final_test_B.Merge);
   }
 
@@ -1136,10 +1106,10 @@ void Final_test_initialize(void)
   Final_test_M->Timing.stepSize0 = 0.01;
 
   /* External mode info */
-  Final_test_M->Sizes.checksums[0] = (3966038292U);
-  Final_test_M->Sizes.checksums[1] = (4260020833U);
-  Final_test_M->Sizes.checksums[2] = (1976021332U);
-  Final_test_M->Sizes.checksums[3] = (482972058U);
+  Final_test_M->Sizes.checksums[0] = (1871559061U);
+  Final_test_M->Sizes.checksums[1] = (3246618748U);
+  Final_test_M->Sizes.checksums[2] = (117018499U);
+  Final_test_M->Sizes.checksums[3] = (3821278749U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -1230,17 +1200,21 @@ void Final_test_initialize(void)
     Final_test_DW.obj.isSetupComplete = true;
     Final_test_DW.obj.TunablePropsChanged = false;
 
-    /* Start for FromWorkspace: '<S5>/FromWs' */
+    /* Start for FromWorkspace: '<S8>/FromWs' */
     {
-      static real_T pTimeValues0[] = { 0.0, 4.0, 4.0, 6.0, 6.0, 18.0, 18.0, 30.0,
-        30.0, 35.0 } ;
+      static real_T pTimeValues0[] = { 0.0, 10.0, 10.0, 12.0, 12.0, 30.0, 30.0,
+        80.0, 90.0, 90.0, 140.0, 150.0, 150.0, 200.0, 210.0, 210.0, 260.0, 270.0,
+        270.0, 320.0, 330.0, 330.0, 380.0, 390.0, 390.0, 440.0, 450.0, 450.0,
+        500.0, 510.0, 510.0, 560.0, 570.0, 570.0, 620.0 } ;
 
-      static real_T pDataValues0[] = { 0.0, 0.0, 20.0, 20.0, 0.0, 0.0, 20.0,
-        20.0, 0.0, 0.0 } ;
+      static real_T pDataValues0[] = { 0.0, 0.0, 20.0, 20.0, 0.0, 0.0, 4.0, 4.0,
+        4.0, 6.0, 6.0, 6.0, 8.0, 8.0, 8.0, 10.0, 10.0, 10.0, 12.0, 12.0, 12.0,
+        14.0, 14.0, 14.0, 16.0, 16.0, 16.0, 18.0, 18.0, 18.0, 20.0, 20.0, 20.0,
+        0.0, 0.0 } ;
 
-      Final_test_DW.FromWs_PWORK_i.TimePtr = (void *) pTimeValues0;
-      Final_test_DW.FromWs_PWORK_i.DataPtr = (void *) pDataValues0;
-      Final_test_DW.FromWs_IWORK_d.PrevIndex = 0;
+      Final_test_DW.FromWs_PWORK_a.TimePtr = (void *) pTimeValues0;
+      Final_test_DW.FromWs_PWORK_a.DataPtr = (void *) pDataValues0;
+      Final_test_DW.FromWs_IWORK_c.PrevIndex = 0;
     }
 
     /* Start for If: '<S2>/If' */
@@ -1330,14 +1304,14 @@ void Final_test_initialize(void)
   /* InitializeConditions for Integrator: '<S14>/Integrator' */
   Final_test_X.Integrator_CSTATE = Final_test_P.Integrator_IC_e;
 
-  /* Start for MATLABSystem: '<Root>/Kalman ' */
+  /* InitializeConditions for MATLABSystem: '<Root>/Kalman ' */
   if (Final_test_DW.obj.pStatistic->isInitialized == 1) {
     Final_test_DW.obj.pStatistic->pCumSum = 0.0;
     memset(&Final_test_DW.obj.pStatistic->pCumSumRev[0], 0, 9U * sizeof(real_T));
     Final_test_DW.obj.pStatistic->pCumRevIndex = 1.0;
   }
 
-  /* End of Start for MATLABSystem: '<Root>/Kalman ' */
+  /* End of InitializeConditions for MATLABSystem: '<Root>/Kalman ' */
 
   /* SystemInitialize for MATLAB Function: '<S1>/MATLAB Function' */
   Final_test_DW.P[0] = 0.0;
@@ -1349,7 +1323,7 @@ void Final_test_initialize(void)
   Final_test_DW.P[3] = 1.0;
   Final_test_DW.xh[1] = 0.0;
 
-  /* Start for MATLABSystem: '<Root>/Moving Average' */
+  /* InitializeConditions for MATLABSystem: '<Root>/Moving Average' */
   if (Final_test_DW.obj_c.pStatistic->isInitialized == 1) {
     Final_test_DW.obj_c.pStatistic->pCumSum = 0.0;
     Final_test_DW.obj_c.pStatistic->pCumSumRev[0] = 0.0;
@@ -1359,7 +1333,7 @@ void Final_test_initialize(void)
     Final_test_DW.obj_c.pStatistic->pCumRevIndex = 1.0;
   }
 
-  /* End of Start for MATLABSystem: '<Root>/Moving Average' */
+  /* End of InitializeConditions for MATLABSystem: '<Root>/Moving Average' */
 }
 
 /* Model terminate function */

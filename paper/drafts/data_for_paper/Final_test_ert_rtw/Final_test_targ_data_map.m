@@ -566,7 +566,7 @@
 	  section.data(1).logicalSrcIdx = 15;
 	  section.data(1).dtTransOffset = 0;
 	
-	  ;% Final_test_DW.FromWs_PWORK_i.TimePtr
+	  ;% Final_test_DW.FromWs_PWORK_a.TimePtr
 	  section.data(2).logicalSrcIdx = 16;
 	  section.data(2).dtTransOffset = 1;
 	
@@ -617,7 +617,7 @@
 	  section.data(1).logicalSrcIdx = 26;
 	  section.data(1).dtTransOffset = 0;
 	
-	  ;% Final_test_DW.FromWs_IWORK_d.PrevIndex
+	  ;% Final_test_DW.FromWs_IWORK_c.PrevIndex
 	  section.data(2).logicalSrcIdx = 27;
 	  section.data(2).dtTransOffset = 1;
 	
@@ -701,8 +701,8 @@
   ;%
 
 
-  targMap.checksum0 = 3966038292;
-  targMap.checksum1 = 4260020833;
-  targMap.checksum2 = 1976021332;
-  targMap.checksum3 = 482972058;
+  targMap.checksum0 = 1871559061;
+  targMap.checksum1 = 3246618748;
+  targMap.checksum2 = 117018499;
+  targMap.checksum3 = 3821278749;
 

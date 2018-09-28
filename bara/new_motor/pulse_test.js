@@ -1,4 +1,4 @@
-var set_rpm = [1200,1000,1300,1000,1400,1000,1500,1000,1600,1000,1700,1000,1800,1000,1900,1000,2000,1000];
+var set_rpm = [1200,1000,1300,1000,1400,1000,1500,1000,1600,1000,1700,1000,1800];
 var run_time = 30;
 var i = 0;
 // Creates a new file in the directory and then activates sensor reading
@@ -25,7 +25,7 @@ function stepUP(){
     rcb.console.print(set_rpm[i]);
     rcb.output.pwm("esc",set_rpm[i]);
     i++;
-    if(i > 18){ i =18 ;}
+    if(i > 13){ i =13 ;}
     rcb.wait(stepUP,run_time);
 }
 
